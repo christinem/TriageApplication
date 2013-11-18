@@ -21,7 +21,8 @@
         android:layout_below="@+id/username"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/password" />
+        android:hint="@string/password" 
+        android:password = "true" />
 
     <Button
         android:id="@+id/button1"

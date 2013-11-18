@@ -3,6 +3,7 @@ package com.example.triageapplication;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
@@ -27,8 +28,22 @@ public class MainActivity extends Activity {
 		
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
-			}
-
+		
+		String string = "mathias\n1234\n\nchristine\n2345";
+        
+		OutputStreamWriter outputStreamWriter;
+		try {
+			outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput("passwords.txt", 
+			Context.MODE_PRIVATE));
+			outputStreamWriter.write(string);
+			outputStreamWriter.close();	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+		
 	/** Adds a menu title to this activity 
 	 * @param menu This activity's heading, the text
 	 *              in the action bar.
