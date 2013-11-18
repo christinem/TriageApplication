@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
 			if(!line.equals(username)){ //if you haven't found username in file
 				// read past password and blank line, to next username
 				line = scanner.nextLine();
-				//line = scanner.nextLine();
+				line = scanner.nextLine();
 			}
 			else { // if found username in file
 				// read down to password
