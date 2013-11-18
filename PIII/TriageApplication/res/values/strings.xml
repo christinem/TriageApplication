@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Log In Page -->
+    <string name="app_name">Hospital Triage</string>
+    <string name="action_settings">Settings</string>
+    <string name="header">Log-In</string>
+    <string name="submit_button">Log In!</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+
+    <!-- Home Page -->
+    <string name="title_activity_home_page">Home Page</string>
+    <string name="update_record">Update a Patient\'s Record</string>
+    <string name="find_patient">Access a Patient\'s Record</string>
+    <string name="add_patient">Check-In a New Patient</string>
+
+    <!-- Re Log In -->
+    <string name="title_activity_re_login">Re-Try Log In</string>
+    <string name="re_login">Username and/or password not found. Re-enter information:</string>
+
+    <!-- For adding a new patient and retrying adding a patient -->
+    <string name="title_activity_create_patient">Create A New Patient</string>
+    <string name="title_activity_retry_add_patient">RetryAddPatientActivity</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="day">dd</string>
+    <string name="month">mm</string>
+    <string name="year">yyyy</string>
+    <string name="add_new_patient">Add a New Patient</string>
+    <string name="healthcard_number">Health Card Number</string>
+    <string name="checkin_time">Check-In Time</string>
+    <string name="age">Age</string>
+    <string name="add">Add Patient</string>
+    <string name="birthdate_name">Birth Date</string>
+    <string name="retry_add">Invalid Input. Re-enter input:</string>
+
+    <!-- Updating a Patient Record -->
+    <string name="title_activity_update_patient">Update a Patient</string>
+    <string name="save_data">Save Data</string>
+    <string name="access_record">Access a Patient\'s Record</string>
+    <string name="update">Update A Patient</string>
+
+    <!-- Registering a new nurse -->
+    <string name="register_button">Register a New Nurse</string>
+    <string name="title_activity_register_nurse">Register a Nurse</string>
+    <string name="header_register">Register a Nurse</string>
+    <string name="register_nurse_button">Register</string>
+    <string name="choose_username">Choose a Username</string>
+    <string name="choose_password">Choose a Password</string>
+
+    <!-- Access and Re-Access Record -->
+    <string name="title_activity_access_record">Access a Record</string>
+    <string name="idnumber">Health Card Number</string>
+    <string name="enter_healthnumber">Enter Health Card Number:</string>
+    <string name="find_record">Access Record</string>
+    <string name="title_activity_force_access_record">Re-enter Health Card Number</string>
+    <string name="invalid_record">This record does not exist. Re-enter Health Card Number:</string>
+
+    <!-- Enter Update Info and Retry Updating -->
+    <string name="title_activity_enter_update_info">Enter Information</string>
+    <string name="blood_pressure">Blood Pressure</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="temperature">Temperature</string>
+    <string name="seen_by_doctor">Seen by Doctor (Yes/No)</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="update_patient_info">Update</string>
+    <string name="enter_update">Enter updated information</string>
+    <string name="title_activity_retry_update_info">Update a Patient</string>
+    <string name="retry_update">Invalid Input. Re-enter information:</string>
+
+    <!-- Others -->
+
+    <string name="hello_world">Hello world!</string>
+    
+
+</resources>
