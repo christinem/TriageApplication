@@ -1,5 +1,6 @@
 package com.example.triageapplication;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -93,6 +94,12 @@ public class StaffMember implements Serializable {
 			r.setupFile(context);
 			r.updateRecordAdmitted(context);
 			records.add(r);
+			try {
+				records.saveToFile(context.openFileOutput(
+						"PatientsAndRecords", Context.MODE_PRIVATE));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 	} 
 
