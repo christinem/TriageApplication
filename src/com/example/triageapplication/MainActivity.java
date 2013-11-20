@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
 				    try {
 						nurse.createRecordManager(
 								this.getApplicationContext().getFilesDir(),
-								"Records", 
+								"PatientsAndRecords", 
 								this.getApplicationContext());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
