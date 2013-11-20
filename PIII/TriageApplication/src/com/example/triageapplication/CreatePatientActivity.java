@@ -70,8 +70,10 @@ public class CreatePatientActivity extends Activity {
 			// Save to file
 			try {
 				StaffMember.getRecords().saveToFile(openFileOutput("Records", Context.MODE_PRIVATE));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+
 			}
 			
 			// With the new patient dealt with the application
