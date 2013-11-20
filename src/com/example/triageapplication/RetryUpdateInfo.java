@@ -32,7 +32,7 @@ public class RetryUpdateInfo extends Activity {
 		Intent intent = getIntent();
 
 		// Get nurse from AccessRecordActivity
-	    Nurse nurse = (Nurse) intent.getSerializableExtra("nurse");
+	    StaffMember nurse = (StaffMember) intent.getSerializableExtra("nurse");
 	    
 	    // Get Record from AccessRecordActivity
 	    Record record = (Record) intent.getSerializableExtra("record");

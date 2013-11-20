@@ -38,7 +38,7 @@ public class RetryAddPatientActivity extends Activity {
 		
 		// Get nurse from previous Activity
         Intent intentNurse = getIntent();
-        Nurse nurse = (Nurse) intentNurse.getSerializableExtra("nurse");
+        StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
         
 		EditText first_name = (EditText)findViewById(R.id.first_name);
 		String first = first_name.getText().toString();
@@ -68,7 +68,7 @@ public class RetryAddPatientActivity extends Activity {
 			
 			// Save to file
 			try {
-				Nurse.getRecords().saveToFile(openFileOutput("Records", Context.MODE_PRIVATE));
+				StaffMember.getRecords().saveToFile(openFileOutput("Records", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 					   username, pass);
 			   
 			   if(acceptLogIn){ // if login authenticated
-				    Nurse nurse = new Nurse(username);
+				    StaffMember nurse = new StaffMember(username);
 				    
 				    try {
 						nurse.createRecordManager(

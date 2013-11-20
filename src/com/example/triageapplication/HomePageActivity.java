@@ -14,7 +14,7 @@ public class HomePageActivity extends Activity {
 private TextView tv;
 
 /**This nurse has logged in.*/
-private Nurse nurse;
+private StaffMember nurse;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ private Nurse nurse;
         
         //String username = intent.getStringExtra("user");
         // Grabs the nurse object from the previous activity.
-        nurse = (Nurse) intent.getSerializableExtra("nurse");
+        nurse = (StaffMember) intent.getSerializableExtra("nurse");
         
         //Provides a welcome message to the nurse that has logged in.
         String message = "Welcome " + nurse.getUsername() + "!";

@@ -31,7 +31,7 @@ public class ForceAccessRecordActivity extends Activity {
 	public void getRecord(View view){
 		Record record = null;
 		Intent intentNurse = getIntent();
-	    Nurse nurse = (Nurse) intentNurse.getSerializableExtra("nurse");
+	    StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber);
 	    String healthNum = healthCardNum.getText().toString();

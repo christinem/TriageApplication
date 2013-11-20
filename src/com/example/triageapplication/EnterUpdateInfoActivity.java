@@ -35,7 +35,7 @@ public class EnterUpdateInfoActivity extends Activity {
 		Intent intent = getIntent();
 
 		// Get nurse from AccessRecordActivity
-	    Nurse nurse = (Nurse) intent.getSerializableExtra("nurse");
+	    StaffMember nurse = (StaffMember) intent.getSerializableExtra("nurse");
 	    
 	    // Get Record from AccessRecordActivity
 	    Record record = (Record) intent.getSerializableExtra("record");
@@ -83,9 +83,9 @@ public class EnterUpdateInfoActivity extends Activity {
 		}
 	    
 		try {
-			Nurse.getRecords().remove(record.getHealthCardNum());
-			Nurse.getRecords().add(record);
-			Nurse.getRecords().saveToFile(openFileOutput(
+			StaffMember.getRecords().remove(record.getHealthCardNum());
+			StaffMember.getRecords().add(record);
+			StaffMember.getRecords().saveToFile(openFileOutput(
 					"PatientsAndRecords", Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
