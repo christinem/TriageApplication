@@ -24,7 +24,7 @@ private Nurse nurse;
 		setContentView(R.layout.activity_home_page);
 		
 		// Creates the text area for the welcome message to be displayed in.
-		tv = (TextView) findViewById(R.id.textView1);
+		tv = (TextView) findViewById(R.id.textView2);
 		
 		// Get the message from the intent
         Intent intent = getIntent();

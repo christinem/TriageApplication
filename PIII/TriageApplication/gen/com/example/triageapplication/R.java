@@ -35,16 +35,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int access_display=0x7f090001;
-        public static final int access_record=0x7f090020;
-        public static final int action_settings=0x7f090022;
+        public static final int access_display=0x7f090000;
+        public static final int access_record=0x7f090021;
+        public static final int action_settings=0x7f090023;
         public static final int add=0x7f09000a;
         public static final int add_patient=0x7f090015;
         public static final int birthdate_header=0x7f090008;
         public static final int blood_pressure=0x7f090011;
-        public static final int button1=0x7f090017;
-        public static final int choose_password=0x7f09001e;
-        public static final int choose_username=0x7f09001d;
+        public static final int button1=0x7f090018;
+        public static final int choose_password=0x7f09001f;
+        public static final int choose_username=0x7f09001e;
         public static final int day=0x7f090007;
         public static final int display=0x7f09000d;
         public static final int display_info=0x7f090016;
@@ -56,19 +56,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int idnumber_display=0x7f090002;
         public static final int last_name=0x7f090005;
         public static final int month=0x7f090009;
-        public static final int pass=0x7f090018;
-        public static final int progressBar1=0x7f09001a;
-        public static final int progressBar2=0x7f09001c;
-        public static final int re_login=0x7f09001b;
-        public static final int register_nurse_botton=0x7f09001f;
-        public static final int save_data=0x7f090021;
+        public static final int pass=0x7f090019;
+        public static final int progressBar1=0x7f09001b;
+        public static final int progressBar2=0x7f09001d;
+        public static final int re_login=0x7f09001c;
+        public static final int register_nurse_botton=0x7f090020;
+        public static final int save_data=0x7f090022;
         public static final int seen_by_doctor=0x7f09000e;
         public static final int symptoms=0x7f09000f;
         public static final int temperature=0x7f090010;
-        public static final int textView1=0x7f090000;
+        public static final int textView1=0x7f090001;
+        public static final int textView2=0x7f090017;
         public static final int update_patient_info=0x7f090013;
         public static final int update_record=0x7f090014;
-        public static final int username=0x7f090019;
+        public static final int username=0x7f09001a;
         public static final int year=0x7f09000c;
     }
     public static final class layout {
