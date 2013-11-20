@@ -83,15 +83,12 @@ public class Record implements Serializable {
 	public void setupFile(Context context){
 		try {
 			final String header = new String (
-				  "											  " +
-				  "		  PATIENT RECORD				 " +
+				  "									    " +
+				  " PATIENT RECORD				 " +
 				  "				   \n" +
 				  "**********************************************" +
-				  "***********************************************" +
-				  "*********************\n" +
-				  "*********************************************" +
-				  "**********************************************" +
-				  "***********************\n" +
+				  "********" +
+				  "\n" +
 				  "Name: " + this.name[0].toString() + " " + 
 				  this.name[1].toString() + "\n" +
 				  "Health Card: " + this.healthCardNum + "\n" +
@@ -100,11 +97,8 @@ public class Record implements Serializable {
 				  this.dob[2].toString() + "\n" +
 				  "Age: " + String.valueOf(this.age) + "\n" +
 				  "*********************************************" +
-				  "**********************************************" +
-				  "***********************\n" +
-				  "*********************************************" +
-				  "**********************************************" +
-				  "***********************\n" +
+				  "********" +
+				  "\n" +
 				  "\n");
 		 
 	   
@@ -130,9 +124,8 @@ public class Record implements Serializable {
 	protected void updateRecordAdmitted(Context context) {
 		try {
 			String admitted = new String (
-			"***********************************************" +
-			"*******************" +
-			"************************************************\n" +
+			"************************************************" +
+			"******\n" +
 			"Admitted to Hospital: " + currentTime().toString()) + "\n\n";
 		
 
@@ -161,8 +154,7 @@ public class Record implements Serializable {
 	protected void updateRecordVitalsSymptoms(Context context) {
 		try {
 			String update = new String (
-				"******************************************************" +
-				"******************************************************" +
+				"************************************************" +
 				"******\n" +
 				"Date: " + currentTime() +
 				"\n" +
@@ -197,8 +189,7 @@ public class Record implements Serializable {
 		try {
 			String doctor = new String (
 					"************************************************" +
-					"**************************************************" +
-					"****************\n" +
+					"******\n" +
 					"Date: " + currentTime() +
 					"\n" +
 					"Seen by Doctor" + "\n\n");

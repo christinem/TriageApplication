@@ -8,12 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".HomePageActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
-
     <Button
         android:id="@+id/update_record"
         android:layout_width="wrap_content"
@@ -29,8 +23,26 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/update_record"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
-        android:text="@string/add_patient"
-        android:onClick="addPatient" />
+        android:layout_marginBottom="24dp"
+        android:onClick="addPatient"
+        android:text="@string/add_patient" />
+
+    <Button
+        android:id="@+id/display_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/update_record"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:onClick="displayInfo"
+        android:text="@string/display_info" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_patient"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp" />
 
 </RelativeLayout>

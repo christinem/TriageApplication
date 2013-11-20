@@ -14,6 +14,7 @@
     <string name="update_record">Update a Patient\'s Record</string>
     <string name="find_patient">Access a Patient\'s Record</string>
     <string name="add_patient">Check-In a New Patient</string>
+    <string name="display_info">Display a Patient\'s Record History</string>
 
     <!-- Re Log In -->
     <string name="title_activity_re_login">Re-Try Log In</string>
@@ -68,10 +69,16 @@
     <string name="enter_update">Enter updated information</string>
     <string name="title_activity_retry_update_info">Update a Patient</string>
     <string name="retry_update">Invalid Input. Re-enter information:</string>
+    
+    <!-- Access and Re-Acess Record (FOR DISPLAYING) -->
+    <string name="title_activity_access_display_record">Access Record</string>
+    <string name="idnumber_display">Health Card Number</string>
+    <string name="display">Display Record History</string>
 
     <!-- Others -->
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_display_information">Record History</string>
     
 
 </resources>

@@ -15,32 +15,42 @@
         android:text="@string/re_login" />
 
     <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/re_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="@string/username" />
+
+    <EditText
         android:id="@+id/pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="@string/password" 
-        android:password = "true" />
+        android:hint="@string/password"
+        android:password="true" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/pass"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="117dp"
         android:onClick="logIn"
         android:text="@string/submit_button" />
 
-    <EditText
-        android:id="@+id/username"
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/pass"
-        android:layout_below="@+id/re_login"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="@string/username" />
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/pass" 
+        android:visibility="gone" />
 
 </RelativeLayout>
