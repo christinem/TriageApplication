@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.app.ActionBar;
 
 /** This is the very first activity, and 
@@ -29,7 +30,7 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		String string = "mathias\n1234\n\nchristine\n2345\n\n";
+		/*String string = "mathias\n1234\n\nchristine\n2345\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
@@ -40,7 +41,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 		
@@ -65,6 +66,9 @@ public class MainActivity extends Activity {
 	 * @throws IOException  If this file is not found. 
 	 */
 	public void logIn(View view) throws FileNotFoundException, IOException {
+		ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar1);
+		progressBar.setVisibility(View.VISIBLE);
+		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		
 		// This user's input, username and password.
@@ -96,11 +100,13 @@ public class MainActivity extends Activity {
 					}
 				    intent.putExtra("nurse", nurse);
 					startActivity(intent);	
+					finish();
 			   } 
 			} catch (LogInNotAcceptedException e) { 
 				// re-prompt for new username and password
 				   Intent reenter = new Intent(this, ReLoginActivity.class);
 				   startActivity(reenter);
+				   finish();
 			}
 		
 		

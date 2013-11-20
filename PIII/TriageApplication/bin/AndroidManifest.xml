@@ -22,11 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.triageapplication.HomePageActivity" >
+        <activity 
+            android:name="com.example.triageapplication.HomePageActivity"
+            android:label="@string/title_activity_home_page" >
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
-            android:label="@string/title_activity_home_page" >
         </activity>
         <activity
             android:name="com.example.triageapplication.RegisterNurseActivity"
@@ -34,7 +35,7 @@
         </activity>
         <activity
             android:name="com.example.triageapplication.ReLoginActivity"
-            android:label="@string/title_activity_re_login" >
+            android:label="@string/title_activity_re_login"  >
         </activity>
         <activity
             android:name="com.example.triageapplication.CreatePatientActivity"
@@ -63,6 +64,14 @@
         <activity
             android:name="com.example.triageapplication.RetryUpdateInfo"
             android:label="@string/title_activity_retry_update_info" >
+        </activity>
+        <activity
+            android:name="com.example.triageapplication.DisplayInformationActivity"
+            android:label="@string/title_activity_display_information" >
+        </activity>
+        <activity
+            android:name="com.example.triageapplication.AccessDisplayRecordActivity"
+            android:label="@string/title_activity_access_display_record" >
         </activity>
     </application>
 

@@ -69,5 +69,16 @@ private Nurse nurse;
     	intent.putExtra("nurse", nurse);
     	startActivity(intent);
     }
+    
+    /**
+     * Passes the current activity into the AccessDisplayRecordActivity
+     * @param view A User Interface type
+     */
+    public void displayInfo(View view) {
+    	Intent intent = new Intent(this, AccessDisplayRecordActivity.class);
+    	intent.putExtra("nurse", nurse);
+    	startActivity(intent);
+    }
+
 
 }

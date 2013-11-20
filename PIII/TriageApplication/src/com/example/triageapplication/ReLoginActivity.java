@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 /** This activity allows a nurse to reenter their login information if
  *  it was not found in the system.
@@ -43,6 +44,9 @@ public class ReLoginActivity extends Activity {
 	 * @throws Exception If FileNotFound or 
 	 */
 	public void logIn(View view) throws FileNotFoundException, IOException {
+		ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+		progressBar.setVisibility(View.VISIBLE);
+		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		
 		EditText ID = (EditText) findViewById(R.id.username);
@@ -74,12 +78,14 @@ public class ReLoginActivity extends Activity {
 					}
 				    intent.putExtra("nurse", nurse);
 					startActivity(intent);	
+					finish();
 			   } 
 			   
 			} catch (LogInNotAcceptedException e) { 
 				// re-prompt for new username and password
 				   Intent reenter = new Intent(this, ReLoginActivity.class);
 				   startActivity(reenter);
+				   finish();
 			}  
 	}
     /**
