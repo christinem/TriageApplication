@@ -61,7 +61,7 @@ public class StaffMember implements Serializable {
 		if (!Pattern.matches("0[1-9]|[1][012]", dob[1])) {
 			throw new InvalidMonthOfBirthException();
 			}
-		if (!Pattern.matches("19|20)[0-9][0-9]", dob[2])) {
+		if (!Pattern.matches("(19|20)[0-9][0-9]", dob[2])) {
 			throw new InvalidYearOfBirthException();
 			}
 		if (!Pattern.matches("[0-9]{11}", healthCardNumber)) {
