@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		String string = "mathias\n1234\n\nchristine\n2345";
+		String string = "mathias\n1234\n\nchristine\n2345\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
