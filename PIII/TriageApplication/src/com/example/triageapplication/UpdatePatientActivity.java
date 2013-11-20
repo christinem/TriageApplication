@@ -18,7 +18,7 @@ public class UpdatePatientActivity extends Activity {
 	private Intent intent;
 	
 	/** This nurse is logged in. */
-	private Nurse nurse;
+	private StaffMember nurse;
 	
 	/** This record is being updated. */
 	private Record record;
@@ -30,7 +30,7 @@ public class UpdatePatientActivity extends Activity {
 		
 		// Get nurse and possibly record from last activity
 	    intent = getIntent();
-	    nurse = (Nurse) intent.getSerializableExtra("nurse");
+	    nurse = (StaffMember) intent.getSerializableExtra("nurse");
 		record = (Record) intent.getSerializableExtra("record");
 	}
 

@@ -38,7 +38,7 @@ public class CreatePatientActivity extends Activity {
 		
 		// Grabs nurse from the previous Activity.
         Intent intentNurse = getIntent();
-        Nurse nurse = (Nurse) intentNurse.getSerializableExtra("nurse");
+        StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
         
         // These grab the new patient's information from the user input fields.
 		EditText first_name = (EditText)findViewById(R.id.first_name);
@@ -69,7 +69,7 @@ public class CreatePatientActivity extends Activity {
 					this.getApplicationContext());
 			// Save to file
 			try {
-				Nurse.getRecords().saveToFile(openFileOutput("Records", Context.MODE_PRIVATE));
+				StaffMember.getRecords().saveToFile(openFileOutput("Records", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

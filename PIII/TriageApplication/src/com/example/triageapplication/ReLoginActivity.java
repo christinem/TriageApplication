@@ -64,7 +64,7 @@ public class ReLoginActivity extends Activity {
 					   passwdFile, username, pass);
 			   
 			   if(acceptLogIn){ // if login authenticated
-				    Nurse nurse = new Nurse(username);
+				    StaffMember nurse = new StaffMember(username);
 				    
 				    try {
 						nurse.createRecordManager(

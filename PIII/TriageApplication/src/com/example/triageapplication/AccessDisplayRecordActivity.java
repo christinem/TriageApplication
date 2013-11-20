@@ -28,7 +28,7 @@ public class AccessDisplayRecordActivity extends Activity {
 	
 	public void display(View view){
 		Intent intentNurse = getIntent();
-	    Nurse nurse = (Nurse) intentNurse.getSerializableExtra("nurse");
+	    StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber_display);
 	    String healthNum = healthCardNum.getText().toString();
