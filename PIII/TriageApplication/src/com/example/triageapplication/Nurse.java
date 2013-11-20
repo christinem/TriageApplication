@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 
@@ -14,27 +15,7 @@ public class Nurse implements Serializable {
 	
 	/** A manager of Records for this hospital. */
 	private static RecordManager records;
-	
-	/** Valid days for a date of birth.*/
-	public static final String[] VALID_DAYS = {"01", "02", "03", "04", "05",
-		"06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16",
-		"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27",
-		"28", "29", "30", "31"};
-	
-	/** Valid months for a date of birth.*/
-	public static final String[] VALID_MONTHS = {"01", "02", "03", "04", "05",
-		"06", "07", "08", "09", "10", "11", "12"};
-	
-	/** Valid years for a date of birth.*/
-	public static final String[] VALID_YEARS = {"1950", "1951", "1952", "1953",
-		"1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962",
-		"1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971",
-		"1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980",
-		"1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989",
-		"1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998",
-		"1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007",
-		"2008", "2009", "2010", "2011", "2012", "2013"};
-	
+		
 	/** This Nurse's username. */
 	private String username;
 
@@ -75,18 +56,17 @@ public class Nurse implements Serializable {
 			healthCardNumber, Context context) throws 
 			InvalidDayOfBirthException, InvalidMonthOfBirthException, 
 			InvalidYearOfBirthException, InvalidHealthCardNumberException {
-
-		if (!Arrays.asList(VALID_DAYS).contains(dob[0])) {
+		if (!Pattern.matches("0[1-9]|[12][0-9]|3[01]", dob[0])) {
 			throw new InvalidDayOfBirthException();
 		}
-		if (!Arrays.asList(VALID_MONTHS).contains(dob[1])) {
+		if (!Pattern.matches("0[1-9]|[1][012]", dob[1])) {
 			throw new InvalidMonthOfBirthException();
 		}
-		if (!Arrays.asList(VALID_YEARS).contains(dob[2])) {
+		if (!Pattern.matches("19|20)[0-9][0-9]", dob[2])) {
 			throw new InvalidYearOfBirthException();
 		}
-		if (!(healthCardNumber.length() == 11)) {
-			throw new InvalidHealthCardNumberException();
+		if (!Pattern.matches("[0-9]{11}", healthCardNumber)) {
+				throw new InvalidHealthCardNumberException();
 		}
 		else {
 			Record r = new Record(name, healthCardNumber, dob);
