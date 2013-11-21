@@ -28,7 +28,7 @@ public class AccessDisplayRecordActivity extends Activity {
 	
 	public void display(View view){
 		Intent intentNurse = getIntent();
-	    StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
+	    StaffMember staff = (StaffMember) intentNurse.getSerializableExtra("staff");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber_display);
 	    String healthNum = healthCardNum.getText().toString();
@@ -38,6 +38,7 @@ public class AccessDisplayRecordActivity extends Activity {
 			//record = nurse.getRecord(healthNum);
 			Intent intent = new Intent(this, DisplayInformationActivity.class);
 		    intent.putExtra("healthcardnumber", healthNum);
+		    intent.putExtra("staff", staff);
 		    //intent.putExtra("nurse", nurse);
 		    startActivity(intent);
 		//FIX THIS - Add something when record does not exist

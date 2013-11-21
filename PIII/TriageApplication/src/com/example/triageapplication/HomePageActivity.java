@@ -14,7 +14,7 @@ public class HomePageActivity extends Activity {
 private TextView tv;
 
 /**This nurse has logged in.*/
-private StaffMember nurse;
+private StaffMember staff;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ private StaffMember nurse;
         
         //String username = intent.getStringExtra("user");
         // Grabs the nurse object from the previous activity.
-        nurse = (StaffMember) intent.getSerializableExtra("nurse");
+        staff = (StaffMember) intent.getSerializableExtra("staff");
         
         //Provides a welcome message to the nurse that has logged in.
-        String message = "Welcome " + nurse.getUsername() + "!";
+        String message = "Welcome " + staff.getUsername() + "!";
         
         //Displays the message in textview.
         tv.setTextSize(20);
@@ -56,7 +56,7 @@ private StaffMember nurse;
      */
     public void addPatient(View view) {
     	Intent intent = new Intent(this, CreatePatientActivity.class);
-    	intent.putExtra("nurse", nurse);
+    	intent.putExtra("staff", staff);
     	startActivity(intent);		
 	}
     
@@ -66,7 +66,7 @@ private StaffMember nurse;
      */
     public void switchUpdate(View view) {
     	Intent intent = new Intent(this, UpdatePatientActivity.class);
-    	intent.putExtra("nurse", nurse);
+    	intent.putExtra("staff", staff);
     	startActivity(intent);
     }
     
@@ -76,7 +76,7 @@ private StaffMember nurse;
      */
     public void displayInfo(View view) {
     	Intent intent = new Intent(this, AccessDisplayRecordActivity.class);
-    	intent.putExtra("nurse", nurse);
+    	intent.putExtra("staff", staff);
     	startActivity(intent);
     }
 

@@ -22,24 +22,11 @@ public class DisplayInformationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_information);
 		
-		  Intent intent = getIntent();
-		    String healthNum = (String) intent.getStringExtra("healthcardnumber");
-		    
-		    File file = new File(this.getApplicationContext().getFilesDir(), healthNum);
-		    StringBuilder text = new StringBuilder();
-		    
-		    try {
-		    	Scanner scanner = new Scanner(new FileInputStream(file));
-		    	String line;
-		    	
-		    	while(scanner.hasNextLine()) {
-		    		line = scanner.nextLine();
-		    		text.append(line);
-		    		text.append("\n");
-		    	}
-		    } catch (Exception e) { // FIX THIS LATER
-		    	e.printStackTrace();
-		    }
+		     Intent intent = getIntent();
+	         String healthNum = (String) intent.getStringExtra("healthcardnumber");
+	         StaffMember staff = (StaffMember) intent.getSerializableExtra("staff");
+	         
+	         StringBuilder text = staff.getInfo(this.getApplicationContext(), healthNum);
 		    
 		    TextView recordHistory = (TextView) findViewById(R.id.display);
 		    recordHistory.setMovementMethod(new ScrollingMovementMethod());

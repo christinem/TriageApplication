@@ -49,6 +49,7 @@ public class ReLoginActivity extends Activity {
 		
 		Intent intent = new Intent(this, HomePageActivity.class);
 		
+		// This user's input, username and password.
 		EditText ID = (EditText) findViewById(R.id.username);
 		String username = ID.getText().toString();
 		
@@ -59,34 +60,41 @@ public class ReLoginActivity extends Activity {
 		File passwdFile = new File (this.getApplicationContext().getFilesDir(), 
 				"passwords.txt");
 		
+		StaffMember staff;
+		
 		try {
-			   boolean acceptLogIn = findUsernameAndPassword(
-					   passwdFile, username, pass);
+			   String[] acceptLogIn = findUsernameAndPassword(passwdFile, 
+					   username, pass);
 			   
-			   if(acceptLogIn){ // if login authenticated
-				    StaffMember nurse = new StaffMember(username);
-				    
+			   if(acceptLogIn[0] == "true"){ // if login authenticated
+				    if (acceptLogIn[1] == "Doctor") {
+				       staff = new Doctor(username);		
+				    } else {
+				       staff = new Nurse(username);
+				    }
+				
 				    try {
-						nurse.createRecordManager(
+						staff.createRecordManager(
 								this.getApplicationContext().getFilesDir(),
 								"PatientsAndRecords", 
 								this.getApplicationContext());
-						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				    intent.putExtra("nurse", nurse);
+				    intent.putExtra("staff", staff);
 					startActivity(intent);	
 					finish();
 			   } 
-			   
 			} catch (LogInNotAcceptedException e) { 
 				// re-prompt for new username and password
 				   Intent reenter = new Intent(this, ReLoginActivity.class);
 				   startActivity(reenter);
 				   finish();
-			}  
+			}
+		
+		
+		    
 	}
     /**
      * Reads through file of usernames and passwords, and returns true iff the 
@@ -97,44 +105,47 @@ public class ReLoginActivity extends Activity {
      * @return True iff username and password are correct, False otherwise.
      * @throws Exception If username and password don't exist/aren't correct.
      */
-    public boolean findUsernameAndPassword(File file, String username,
-    		String password) throws IOException, FileNotFoundException, LogInNotAcceptedException {
+    public String[] findUsernameAndPassword(File file, String username,
+    		String password) throws FileNotFoundException, 
+    		LogInNotAcceptedException {
+    	String staff = "";
     	
-    	Scanner scanner = new Scanner(new FileInputStream(file));
+		Scanner scanner = new Scanner(new FileInputStream(file));
 		boolean authentication = false;
-		// read first line
+
 		
 		while (scanner.hasNextLine()){
 			String line = scanner.nextLine();
-			if(!line.equals(username)){ // if you haven't found username in file
-				// read past password and blank line, to next username
+			if(!line.equals(username)){ //if you haven't found username in file
+				// read past password, type of user, and blank line
 				line = scanner.nextLine();
 				line = scanner.nextLine();
-			
-			} else { // if found username in file
+				line = scanner.nextLine();
+			}
+			else { // if found username in file
 				// read down to password
 				line = scanner.nextLine();
-				
 				if(line.equals(password)) { // if right password for username
-					//Re-used so that variable is not assigned to the boolean expression true.
-					authentication = line.equals(password);
+					authentication = true;
+					line = scanner.nextLine();
+					staff = line;
 					break;
-			
 				} else {
-					// read past blank line to next username
+					// read past type of user and blank line 
 					line = scanner.nextLine();
 				}
 			}
 		}
 		scanner.close();
+		// make a String Array of authentication, and type of staff
+		String[] values = {String.valueOf(authentication), staff};
 		
-		//This nurse is found in system. 
+		// If this staffmember is registered.
 		if(authentication){
-			return true;
+			return(values);
 		}
-		//This nurse is not found in system.
 		else {
 		    throw new LogInNotAcceptedException("Log-In not authenticated");	
-		}	
 		}
+    }
     }

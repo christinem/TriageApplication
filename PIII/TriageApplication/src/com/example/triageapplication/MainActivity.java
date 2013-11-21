@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		/*String string = "mathias\n1234\n\nchristine\n2345\n\n";
+		String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 	}
 		
@@ -82,15 +82,22 @@ public class MainActivity extends Activity {
 		File passwdFile = new File (this.getApplicationContext().getFilesDir(), 
 				"passwords.txt");
 		
+		StaffMember staff;
+		
 		try {
-			   boolean acceptLogIn = findUsernameAndPassword(passwdFile, 
+			   String[] acceptLogIn = findUsernameAndPassword(passwdFile, 
 					   username, pass);
 			   
-			   if(acceptLogIn){ // if login authenticated
-				    StaffMember nurse = new StaffMember(username);
+			   if(acceptLogIn[0] == "true"){ // if login authenticated
 				    
+				    if (acceptLogIn[1] == "Doctor") {
+				       staff = new Doctor(username);		
+				    } else {
+				       staff = new Nurse(username);
+				    }
+				
 				    try {
-						nurse.createRecordManager(
+						staff.createRecordManager(
 								this.getApplicationContext().getFilesDir(),
 								"PatientsAndRecords", 
 								this.getApplicationContext());
@@ -98,7 +105,7 @@ public class MainActivity extends Activity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				    intent.putExtra("nurse", nurse);
+				    intent.putExtra("staff", staff);
 					startActivity(intent);	
 					finish();
 			   } 
@@ -121,9 +128,10 @@ public class MainActivity extends Activity {
      * @return True iff username and password are correct, False otherwise.
      * @throws Exception If username and password don't exist/aren't correct.
      */
-    public boolean findUsernameAndPassword(File file, String username,
+    public String[] findUsernameAndPassword(File file, String username,
     		String password) throws FileNotFoundException, 
     		LogInNotAcceptedException {
+    	String staff = "";
     	
 		Scanner scanner = new Scanner(new FileInputStream(file));
 		boolean authentication = false;
@@ -132,7 +140,8 @@ public class MainActivity extends Activity {
 		while (scanner.hasNextLine()){
 			String line = scanner.nextLine();
 			if(!line.equals(username)){ //if you haven't found username in file
-				// read past password and blank line, to next username
+				// read past password, type of user, and blank line, to next username
+				line = scanner.nextLine();
 				line = scanner.nextLine();
 				line = scanner.nextLine();
 			}
@@ -141,6 +150,8 @@ public class MainActivity extends Activity {
 				line = scanner.nextLine();
 				if(line.equals(password)) { // if right password for username
 					authentication = true;
+					line = scanner.nextLine();
+					staff = line;
 					break;
 				} else {
 					// read past blank line to next username
@@ -149,10 +160,12 @@ public class MainActivity extends Activity {
 			}
 		}
 		scanner.close();
-        
-		// If this nurse is registered.
+		// make a String Array of authentication, and type of staff
+		String[] values = {String.valueOf(authentication), staff};
+		
+		// If this staffmember is registered.
 		if(authentication){
-			return authentication;
+			return(values);
 		}
 		else {
 		    throw new LogInNotAcceptedException("Log-In not authenticated");	
