@@ -209,6 +209,13 @@ public class StaffMember implements Serializable {
 		return records;
 	}
 	
+	/**
+	 * Returns a StringBuilder containing the Record information from a record filed with the name from parameter
+	 * "healthNum"
+	 * @param context Context from an Activity for Reading.
+	 * @param healthNum Name of Record File (a Patient's health card number).
+	 * @return a StringBuilder of all the information from the Record File.
+	 */
 	public StringBuilder getInfo(Context context, String healthNum) {
 	    
 	    File file = new File(context.getFilesDir(), healthNum);
