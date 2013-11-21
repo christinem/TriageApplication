@@ -20,12 +20,14 @@ public class UrgencyList {
 	//add patients by decreasing order
 	//
 	public void addPatient(Record patient){
-		if (patient){//if this paitent has not seen the doctor left
+		if (!patient.getSeenByDoctor()){
 			PriorityQueue tempListBefore = new PriorityQueue();
 			PriorityQueue tempListAfter = new PriorityQueue();
 			
 			while (this.urgencyList.peek()!= null){//run through all of the objects
-					if (this.urgencyList.peek().urgency == patient.urgency){
+					if (((Record) this.urgencyList.peek()).getUrgencyRating() 
+							== patient.getUrgencyRating()){
+						
 						while (this.urgencyList.peek()!= null){
 							tempListAfter.add(this.urgencyList.poll());//grabs remaining objects
 						
@@ -44,9 +46,9 @@ public class UrgencyList {
 					
 					
 					//Queue don't allow popping from the back this reorders 
-					Patient [] tempListAfterArray = tempListAfter.toArray();
+					Record [] tempListAfterArray = (Record[]) tempListAfter.toArray();
 					
-					for (int i = 0; tempListAfterArray.length()> i; i++){
+					for (int i = 0; tempListAfterArray.length> i; i++){
 						this.urgencyList.add(tempListAfterArray[tempListAfterArray.length-i]);
 						
 					}
@@ -62,18 +64,28 @@ public class UrgencyList {
 	 */
 	public Record nextPatient(){
 		if (this.urgencyList.size()>0){		
-			return this.urgencyList.poll();
+			return (Record) this.urgencyList.poll();
+		} else {
+			//I think I need to raise an exception here 
+			return;
 		}
 	}
 
-	//need to grab null pointer exception possibly
+	/** Grabs a particular patient for a given health card number
+	 * @param healthCardNum
+	 * @return
+	 */
 	public Record grabPatient(String healthCardNum){
-		if (this.urgencyList.contains(healthCardNum)){//need to modify once erin is done
-			Record [] iteratorArray = this.urgencyList.toArray();
+		if (this.urgencyList.contains(StaffMember.getRecord(healthCardNum))){//need to modify once erin is done
+			Record [] iteratorArray = (Record[]) this.urgencyList.toArray();
 			
 			for (int i=0; i< iteratorArray.length; i++){
-				//basically if the patient with this health card matches current objects
-				//return that object
+				if (iteratorArray[i] == StaffMember.getRecord(healthCardNum)){
+					return StaffMember.getRecord(healthCardNum);
+				} else {
+					
+				}
+				
 			}
 		}
 	}
@@ -87,25 +99,30 @@ public class UrgencyList {
 	}
 	
 	public void sort(){
-		Record [] sortingArray = this.urgencyList.toArray();
+		Record [] sortingArray = (Record[]) this.urgencyList.toArray() 
+				[this.urgencyList.size()];
 		
-		sortHelper(sortingArray);
+		
+		Record smallest = sortingArray[0];
+		Record temp;
+		
+		for (int z=0; sortingArray.length>z; z++){
+			for (int y=0; sortingArray.length-z>y; y++)
+			if (sortingArray[y].getUrgencyRating() <smallest){
+				temp = sortingArray[y];
+				
+				sortingArray[y] = smallest;
+				
+				smallest = temp;
+			}
+		}	
 		
 		
 		
 		//grab a pivot
 	}
 	
-	public void sortHelper(Record [] array){
-		Record smallest = array[0];
-		Record temp;
-		
-		for (int z=0; array.length>z; z++){
-			for (int y=0; array.length>
-			if array[i]<
-		}		
-	}
-		
+	
 	public void populate(String filePath, Context context) throws 
     FileNotFoundException {
         

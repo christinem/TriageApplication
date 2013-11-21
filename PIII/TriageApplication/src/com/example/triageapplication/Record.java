@@ -48,6 +48,9 @@ public class Record implements Serializable {
 
 	/** This Record's filename. */
 	private String recordFile;
+
+	/** This Record's urgency rating. */
+	private int urgencyRating;
 	
 	
 	/**
@@ -72,7 +75,8 @@ public class Record implements Serializable {
 		this.heartRate = 0;
 		this.symptoms = "";
 		this.seenByDoctor = false;
-		this.recordFile = new String(healthCardNum);			
+		this.recordFile = new String(healthCardNum);
+		this.urgencyRating = 0;
 	}
 
 	/**
@@ -292,6 +296,14 @@ public class Record implements Serializable {
 	public int getHeartRate() {
 		return heartRate;
 	}
+	
+	/**
+	 * Returns the urgency rating of this patient
+	 * @return The urgency rating.
+	 */
+	public int getUrgencyRating(){
+		return this.urgencyRating;
+	}
 
 	/** 
 	 * Sets the latest temperature measurement of the patient 
@@ -358,6 +370,16 @@ public class Record implements Serializable {
 	 */
 	public void setSymptoms(String symptoms) {
 		this.symptoms = symptoms;
+	}
+	
+	//This needs to be determined 
+	/**
+	 * Sets the urgency rating of the patient associated with this record
+	 */
+	public void seturgencyRating(){
+		int urgencyRating = 0;
+		
+		this.urgencyRating = urgencyRating;
 	}
 
 
