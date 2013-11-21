@@ -1,6 +1,8 @@
 package com.example.triageapplication;
 
-public class Nurse extends StaffMember{
+import java.io.Serializable;
+
+public class Nurse extends StaffMember implements Serializable{
 
 	/**
 	 * 
