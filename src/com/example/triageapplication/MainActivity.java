@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
+		/*String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 		
@@ -155,6 +155,7 @@ public class MainActivity extends Activity {
 					break;
 				} else {
 					// read past blank line to next username
+					line = scanner.nextLine();
 					line = scanner.nextLine();
 				}
 			}

@@ -133,6 +133,7 @@ public class ReLoginActivity extends Activity {
 				} else {
 					// read past type of user and blank line 
 					line = scanner.nextLine();
+					line = scanner.nextLine();
 				}
 			}
 		}

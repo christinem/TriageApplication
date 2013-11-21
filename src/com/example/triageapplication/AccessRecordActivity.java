@@ -34,24 +34,24 @@ public class AccessRecordActivity extends Activity {
 	 */
 	public void getRecord(View view){
 		Record record = null;
-		Intent intentNurse = getIntent();
-	    StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
+		Intent intentStaff = getIntent();
+	    StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber);
 	    String healthNum = healthCardNum.getText().toString();
 	    
 		try {
 			//If this record exists retrieve it.  
-			record = nurse.getRecord(healthNum);
+			record = staff.getRecord(healthNum);
 			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
 		    intent.putExtra("record", record);
-		    intent.putExtra("nurse", nurse);
+		    intent.putExtra("staff", staff);
 		    startActivity(intent);
 		} catch (NoRecordSpecifiedException e) {
 			// Record doesn't exist try to retrieve one that does.
 			   Intent reenter = new Intent(this, 
 					   ForceAccessRecordActivity.class);
-			   reenter.putExtra("nurse", nurse);
+			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
 	}

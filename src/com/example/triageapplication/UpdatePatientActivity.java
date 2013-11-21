@@ -18,7 +18,7 @@ public class UpdatePatientActivity extends Activity {
 	private Intent intent;
 	
 	/** This nurse is logged in. */
-	private StaffMember nurse;
+	private StaffMember staff;
 	
 	/** This record is being updated. */
 	private Record record;
@@ -30,7 +30,7 @@ public class UpdatePatientActivity extends Activity {
 		
 		// Get nurse and possibly record from last activity
 	    intent = getIntent();
-	    nurse = (StaffMember) intent.getSerializableExtra("nurse");
+	    staff = (StaffMember) intent.getSerializableExtra("staff");
 		record = (Record) intent.getSerializableExtra("record");
 	}
 
@@ -46,7 +46,7 @@ public class UpdatePatientActivity extends Activity {
 	 */
 	public void switchAccessRecord(View view) {
 		Intent intent = new Intent(this, AccessRecordActivity.class);
-		intent.putExtra("nurse", nurse);
+		intent.putExtra("staff", staff);
 		startActivity(intent);
 		
 	}
@@ -59,17 +59,17 @@ public class UpdatePatientActivity extends Activity {
 	public void saveData(View view) throws FileNotFoundException {
 		try {
 			// Saves patient information
-			nurse.updateVitals(record, this.getApplicationContext());
+			staff.updateVitals(record, this.getApplicationContext());
 			
             
             Intent intent = new Intent(this, HomePageActivity.class);
-    		intent.putExtra("nurse", nurse);
+    		intent.putExtra("staff", staff);
     		startActivity(intent);
 
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record
 			   Intent reenter = new Intent(this, ForceAccessRecordActivity.class);
-			   reenter.putExtra("nurse", nurse);
+			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}		
 	}
