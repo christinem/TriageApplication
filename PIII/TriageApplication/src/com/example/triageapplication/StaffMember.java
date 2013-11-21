@@ -223,7 +223,7 @@ public class StaffMember implements Serializable {
 	    		text.append(line);
 	    		text.append("\n");
 	    	}
-	    } catch (Exception e) { // FIX THIS LATER
+	    } catch (Exception e) { // FIX THIS LATER - If record does not exist
 	    	e.printStackTrace();
 	    }
 	    
