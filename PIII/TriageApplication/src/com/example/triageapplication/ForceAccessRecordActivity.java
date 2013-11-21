@@ -31,22 +31,22 @@ public class ForceAccessRecordActivity extends Activity {
 	public void getRecord(View view){
 		Record record = null;
 		Intent intentNurse = getIntent();
-	    StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
+	    StaffMember staff = (StaffMember) intentNurse.getSerializableExtra("staff");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber);
 	    String healthNum = healthCardNum.getText().toString();
 	    
 		try {
-			record = nurse.getRecord(healthNum);
+			record = staff.getRecord(healthNum);
 			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
 		    intent.putExtra("record", record);
-			intent.putExtra("nurse", nurse);
+			intent.putExtra("staff", staff);
 			startActivity(intent);
 			
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record
 			   Intent reenter = new Intent(this, ForceAccessRecordActivity.class);
-			   reenter.putExtra("nurse", nurse);
+			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
 	     
