@@ -1,10 +1,13 @@
 package com.example.triageapplication;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import android.content.Context;
+import android.content.Intent;
 
 /** A StaffMember. */
 public class StaffMember implements Serializable {
@@ -204,5 +207,26 @@ public class StaffMember implements Serializable {
 	 */
 	public static RecordManager getRecords() {
 		return records;
+	}
+	
+	public StringBuilder getInfo(Context context, String healthNum) {
+	    
+	    File file = new File(context.getFilesDir(), healthNum);
+	    StringBuilder text = new StringBuilder();
+	    
+	    try {
+	    	Scanner scanner = new Scanner(new FileInputStream(file));
+	    	String line;
+	    	
+	    	while(scanner.hasNextLine()) {
+	    		line = scanner.nextLine();
+	    		text.append(line);
+	    		text.append("\n");
+	    	}
+	    } catch (Exception e) { // FIX THIS LATER
+	    	e.printStackTrace();
+	    }
+	    
+	    return(text);
 	}
 }
