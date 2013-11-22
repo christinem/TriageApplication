@@ -376,7 +376,18 @@ public class Record implements Serializable {
 	/**
 	 * Sets the urgency rating of the patient associated with this record
 	 */
-	public void seturgencyRating(){
+	public void setUrgencyRating(){
+		/**
+    Newborn baby - 120 to 160
+    Baby aged from 1 to 12 months - 80 to 140
+    Baby/toddler aged from 1 to 2 years - 80 to 130
+    Toddler/young child aged 2 to 6 years - 75 to 120
+    Child aged 7 to 12 years - 75 to 110
+    Adult aged 18+ years - 60 to 100
+    Adult athlete - 40 to 60
+
+		 */
+		
 		int urgencyRating = 0;
 		
 		this.urgencyRating = urgencyRating;
