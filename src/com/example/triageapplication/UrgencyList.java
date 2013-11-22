@@ -60,7 +60,7 @@ public class UrgencyList {
 	
 	/** Grabs the lowest element
 	 * @return
-	 */
+	 
 	public Record nextPatient(){
 		if (this.urgencyList.size()>0){		
 			return (Record) this.urgencyList.poll();
@@ -73,7 +73,7 @@ public class UrgencyList {
 	/** Grabs a particular patient for a given health card number
 	 * @param healthCardNum
 	 * @return
-	 */
+	 
 	public Record grabPatient(String healthCardNum){
 		if (this.urgencyList.contains(StaffMember.getRecord(healthCardNum))){//need to modify once erin is done
 			Record [] iteratorArray = (Record[]) this.urgencyList.toArray();
