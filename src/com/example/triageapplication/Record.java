@@ -144,7 +144,7 @@ public class Record implements Serializable {
 	
 		catch (FileNotFoundException e) {
 			e.printStackTrace(); 
-		}
+		}Pressure
 		catch(IOException e){
 			e.printStackTrace();
 		}		
@@ -342,7 +342,7 @@ public class Record implements Serializable {
 	}
 	
 	/** 
-	 * Sets the arrival time of the patient associated with this Record.
+	 * Sets the arrival time of the patient associated with this Record.Pressure
 	 * @param arrivalTime The new arrival time.
 	 */
 	public void setArrivalTime(String arrivalTime) {
@@ -375,20 +375,63 @@ public class Record implements Serializable {
 	//This needs to be determined 
 	/**
 	 * Sets the urgency rating of the patient associated with this record
+	 * based upon their vital signs. All values used are based off of average 
+	 * readings of healthy patients. 
 	 */
 	public void setUrgencyRating(){
-		/**
-    Newborn baby - 120 to 160
-    Baby aged from 1 to 12 months - 80 to 140
-    Baby/toddler aged from 1 to 2 years - 80 to 130
-    Toddler/young child aged 2 to 6 years - 75 to 120
-    Child aged 7 to 12 years - 75 to 110
-    Adult aged 18+ years - 60 to 100
-    Adult athlete - 40 to 60
-
-		 */
-		
 		int urgencyRating = 0;
+		int age1 = this.age;
+
+
+		double temp = getTemperature();
+		double bp = getBloodPressure();
+		int hr = getHeartRate();
+		
+		//Converts age and associated blood pressure to urgency rating
+		if (age<2){
+			urgencyRating+=2;
+			
+			
+			
+			urgencyRating+=hr;
+			
+		} else if (age< 12){
+			urgencyRating+=1;
+			
+			
+		} else if (age< 17){
+			
+			
+		} else if (age< 55){
+			
+			
+		} else if (age<80){
+			urgencyRating+=2;
+			
+		} else{
+			urgencyRating+=5;
+		}
+			
+		//Blood pressure converted into urgency rating
+		//Blood pressure is a ratio of standard systolic over diastolic
+		bp-=1.525;
+		bp = bp*10;
+		
+		urgencyRating+=bp;
+		
+		//Temperature in celsius converted into urgency rating
+		temp-=98.5;
+		temp= temp/2;
+		
+		
+		urgencyRating+=temp;
+		
+		//Heart Rate in beats per minute converted into urgency rating
+		
+		hr-=80;
+		hr=hr/10;
+		
+		urgencyRating+=hr;		
 		
 		this.urgencyRating = urgencyRating;
 	}
