@@ -139,6 +139,7 @@ public class RecordManager implements Serializable {
     		r.setSymptoms(symptoms);
     		r.setTemperature(temperature);
     		r.setArrivalTime(arrivalTime);
+    		r.setUrgencyRating();
     		
         	records.put(healthCardNumber, r);
         }
