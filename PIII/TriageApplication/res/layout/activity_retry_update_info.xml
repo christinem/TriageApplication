@@ -14,11 +14,11 @@
         android:text="@string/retry_update" />
 
     <EditText
-        android:id="@+id/seen_by_doctor"
+        android:id="@+id/prescription_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/symptoms"
-        android:layout_alignTop="@+id/symptoms"
+        android:layout_alignLeft="@+id/prescription_instructions"
+        android:layout_alignTop="@+id/prescription_instructions"
         android:layout_marginTop="46dp"
         android:ems="10"
         android:hint="@string/seen_by_doctor" />
@@ -52,7 +52,7 @@
         android:hint="@string/heart_rate" />
 
     <EditText
-        android:id="@+id/symptoms"
+        android:id="@+id/prescription_instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/heart_rate"
@@ -67,7 +67,7 @@
         android:id="@+id/update_patient_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/seen_by_doctor"
+        android:layout_below="@+id/prescription_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
         android:onClick="updatePatient"

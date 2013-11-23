@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- * This activity also allows access to patient's record, but for displaying information, instead of updating.
- * @author Christine
+ * This activity also allows access to patient's record, but for displaying information, 
+ * instead of updating.
  */
 public class AccessDisplayRecordActivity extends Activity {
 
@@ -27,28 +27,26 @@ public class AccessDisplayRecordActivity extends Activity {
 	}
 	
 	public void display(View view){
-		Intent intentNurse = getIntent();
-	    StaffMember staff = (StaffMember) intentNurse.getSerializableExtra("staff");
+		Intent intentStaff = getIntent();
+	    StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber_display);
 	    String healthNum = healthCardNum.getText().toString();
 	    
 	//	try {
 			//If this record exists retrieve it.  
-			//record = nurse.getRecord(healthNum);
+			//record = staff.getRecord(healthNum);
 			Intent intent = new Intent(this, DisplayInformationActivity.class);
 		    intent.putExtra("healthcardnumber", healthNum);
 		    intent.putExtra("staff", staff);
-		    //intent.putExtra("nurse", nurse);
 		    startActivity(intent);
 		//FIX THIS - Add something when record does not exist
 		/*} catch (NoRecordSpecifiedException e) {
 			// Record doesn't exist try to retrieve one that does.
 			   Intent reenter = new Intent(this, 
 					   ForceAccessRecordActivity.class);
-			   reenter.putExtra("nurse", nurse);
+			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}*/
 	}
-
 }

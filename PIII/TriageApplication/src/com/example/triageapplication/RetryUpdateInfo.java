@@ -31,8 +31,8 @@ public class RetryUpdateInfo extends Activity {
 		
 		Intent intent = getIntent();
 
-		// Get nurse from AccessRecordActivity
-	    StaffMember nurse = (StaffMember) intent.getSerializableExtra("nurse");
+		// Gets the staff member from AccessRecordActivity
+	    StaffMember staff = (StaffMember) intent.getSerializableExtra("staff");
 	    
 	    // Get Record from AccessRecordActivity
 	    Record record = (Record) intent.getSerializableExtra("record");
@@ -48,21 +48,14 @@ public class RetryUpdateInfo extends Activity {
 	    int heartRate = Integer.parseInt(heartRateString);
 	    
 	    // Sets patient's new blood pressure measurement .
-	    EditText seenBy = (EditText) findViewById(R.id.seen_by_doctor);
+	    EditText seenBy = (EditText) findViewById(R.id.prescription_name);
 	    String seenByDoctorString = seenBy.getText().toString();
 	    
 	    //Sets in the record whether this patient has seen a doctor yet. 
 	    seenByDoctor = seenByDoctorString.equals("Yes");
 	    
-	    /** Were not supposed to see things to booleans 
-	    if (seenByDoctorString.equals("Yes")) {
-	    	seenByDoctor = true;
-	    } else {
-	    	seenByDoctor = false;
-	    }*/
-	    
 	    // Sets the new patient's symptoms.
-	    EditText symptom = (EditText) findViewById(R.id.symptoms);
+	    EditText symptom = (EditText) findViewById(R.id.prescription_instructions);
 	    String symptoms = symptom.getText().toString();
 	    
 	    // Sets the new patient's temperature. 
@@ -72,25 +65,24 @@ public class RetryUpdateInfo extends Activity {
 	     
 	    try {
 	    	//This patient's record exists add to it.
-	    	nurse.setTemperature(record, temperature);
-	    	nurse.setBloodPressure(record, bloodPressure);
-		    nurse.setHeartRate(record, heartRate);
-		    nurse.setSeenByDoctor(record, seenByDoctor, 
+	    	staff.setTemperature(record, temperature);
+	    	staff.setBloodPressure(record, bloodPressure);
+		    staff.setHeartRate(record, heartRate);
+		    staff.setSeenByDoctor(record, seenByDoctor, 
 		    		this.getApplicationContext());
-		    nurse.setSymptoms(record, symptoms);
+		    staff.setSymptoms(record, symptoms);
 		
 	    } catch (Exception e) {
 			// prompt for a record
 			   Intent reenter = new Intent(this, RetryUpdateInfo.class);
-			   reenter.putExtra("nurse", nurse);
+			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
 	    
 	    //With this patient dealt with the previous activity is returned too.
 	    Intent intent1 = new Intent(this, UpdatePatientActivity.class);
-	    intent1.putExtra("nurse", nurse);
+	    intent1.putExtra("staff", staff);
 	    intent1.putExtra("record", record);
 	    startActivity(intent1);	     
 	}
-
 }

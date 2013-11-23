@@ -30,8 +30,8 @@ public class ForceAccessRecordActivity extends Activity {
 	 */
 	public void getRecord(View view){
 		Record record = null;
-		Intent intentNurse = getIntent();
-	    StaffMember staff = (StaffMember) intentNurse.getSerializableExtra("staff");
+		Intent intentStaff = getIntent();
+	    StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
 	    
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber);
 	    String healthNum = healthCardNum.getText().toString();
@@ -49,10 +49,5 @@ public class ForceAccessRecordActivity extends Activity {
 			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
-	     
-	   
 	}	
-	
-	
-
 }

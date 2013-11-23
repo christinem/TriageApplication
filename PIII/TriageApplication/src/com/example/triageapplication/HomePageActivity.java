@@ -7,13 +7,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
-/** This is the home page the appears once a nurse has logged in. */
+/** This is the home page the appears once a staff member has logged in. */
 public class HomePageActivity extends Activity {
 	
 /** This is a text field in this activity. */
 private TextView tv;
 
-/**This nurse has logged in.*/
+/**This staff member has logged in.*/
 private StaffMember staff;
 
 	@Override
@@ -30,10 +30,10 @@ private StaffMember staff;
         Intent intent = getIntent();
         
         //String username = intent.getStringExtra("user");
-        // Grabs the nurse object from the previous activity.
-        staff = (StaffMember) intent.getSerializableExtra("staff");
+        // Grabs the StaffMember object from the previous activity.
+        StaffMember staff = (StaffMember) intent.getSerializableExtra("staff");
         
-        //Provides a welcome message to the nurse that has logged in.
+        //Provides a welcome message to the staff member that has logged in.
         String message = "Welcome " + staff.getUsername() + "!";
         
         //Displays the message in textview.
@@ -79,6 +79,4 @@ private StaffMember staff;
     	intent.putExtra("staff", staff);
     	startActivity(intent);
     }
-
-
 }

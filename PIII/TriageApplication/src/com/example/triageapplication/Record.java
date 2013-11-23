@@ -52,6 +52,11 @@ public class Record implements Serializable {
 	/** This Record's urgency rating. */
 	private int urgencyRating;
 	
+	/** This Record's name of a prescription. */
+	private String prescriptionName;
+	
+	/** This Record's instructions for a prescription. */
+	private String prescriptionInstructions;
 	
 	/**
 	 * Constructs a Record object for a patient who has a name, a health card
@@ -77,6 +82,8 @@ public class Record implements Serializable {
 		this.seenByDoctor = false;
 		this.recordFile = new String(healthCardNum);
 		this.urgencyRating = 0;
+		this.prescriptionName = "";
+		this.prescriptionInstructions = "";		
 	}
 
 	/**
@@ -144,7 +151,7 @@ public class Record implements Serializable {
 	
 		catch (FileNotFoundException e) {
 			e.printStackTrace(); 
-		}Pressure
+		}
 		catch(IOException e){
 			e.printStackTrace();
 		}		
@@ -167,8 +174,7 @@ public class Record implements Serializable {
 				"Blood Pressure: " + this.bloodPressure + "\n" +
 				"Heart Rate: " + this.heartRate + "\n" +
 				"Symptoms: " + this.symptoms + "\n\n");
-	
-				   
+	   
 			OutputStreamWriter outputStreamWriter = 
 					new OutputStreamWriter(context.openFileOutput(recordFile, 
 					Context.MODE_APPEND));
@@ -210,6 +216,36 @@ public class Record implements Serializable {
 		catch(IOException e){
 			e.printStackTrace();
 		}			
+	}
+	
+	/**
+	 * Updates this Record's text file record to include the name of their
+	 * prescription and the instructions for their prescription.
+	 */
+	protected void updateRecordPrescription(Context context) {
+		try {
+			String update = new String (
+				"************************************************" +
+				"******\n" +
+				"Date: " + currentTime() +
+				"\n" +
+				"Medication: "+ this.prescriptionName + 
+				"\n" +
+				"Instructions: " + this.prescriptionInstructions + "\n\n");
+	   
+			OutputStreamWriter outputStreamWriter = 
+					new OutputStreamWriter(context.openFileOutput(recordFile, 
+					Context.MODE_APPEND));
+			outputStreamWriter.write(update);
+			outputStreamWriter.close();
+		}	
+	
+		catch (FileNotFoundException e) {
+			e.printStackTrace(); 
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}		
 	}
 		
 	/**
@@ -254,8 +290,8 @@ public class Record implements Serializable {
 	}
 	
 	/**
-	 * Returns this Person's birthdate.
-	 * @return This Person's birthdate.
+	 * Returns this Person's birth date.
+	 * @return This Person's birth date.
 	 */
 	public String[] getDob() {
 		return this.dob;
@@ -434,6 +470,22 @@ public class Record implements Serializable {
 		urgencyRating+=hr;		
 		
 		this.urgencyRating = urgencyRating;
+	}
+
+	public String getPrescriptionName() {
+		return prescriptionName;
+	}
+
+	public void setPrescriptionName(String prescriptionName) {
+		this.prescriptionName = prescriptionName;
+	}
+
+	public String getPrescriptionInstructions() {
+		return prescriptionInstructions;
+	}
+
+	public void setPrescriptionInstructions(String prescriptionInstructions) {
+		this.prescriptionInstructions = prescriptionInstructions;
 	}
 
 
