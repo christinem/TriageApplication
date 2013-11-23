@@ -416,8 +416,6 @@ public class Record implements Serializable {
 	 */
 	public void setUrgencyRating(){
 		int urgencyRating = 0;
-		int age1 = this.age;
-
 
 		double temp = getTemperature();
 		double bp = getBloodPressure();
