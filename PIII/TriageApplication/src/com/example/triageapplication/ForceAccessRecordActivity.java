@@ -38,10 +38,19 @@ public class ForceAccessRecordActivity extends Activity {
 	    
 		try {
 			record = staff.getRecord(healthNum);
-			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
-		    intent.putExtra("record", record);
-			intent.putExtra("staff", staff);
+            if (staff instanceof Nurse) {
+    			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
+    		    intent.putExtra("record", record);
+    		    intent.putExtra("staff", staff);
+    		    startActivity(intent);
+            }
+            else {
+            	Intent intent = new Intent(this, EnterPrescriptionInfoActivity.class);
+    		    intent.putExtra("record", record);
+    			intent.putExtra("staff", staff);
+        		startActivity(intent);
 			startActivity(intent);
+            }
 			
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record

@@ -55,14 +55,15 @@ public class UpdatePatientActivity extends Activity {
 	public void saveData(View view) throws FileNotFoundException {
 		try {
 			// Saves patient information
-			staff.updateVitals(record, this.getApplicationContext());
 			
             if (staff instanceof Nurse) {
+            	staff.updateVitals(record, this.getApplicationContext());
                 Intent intent = new Intent(this, NurseHomePageActivity.class);
     			intent.putExtra("staff", staff);
         		startActivity(intent);
             }
             else {
+            	staff.updatePrescription(record, this.getApplicationContext());
             	Intent intent = new Intent(this, DoctorHomePageActivity.class);
     			intent.putExtra("staff", staff);
         		startActivity(intent);
