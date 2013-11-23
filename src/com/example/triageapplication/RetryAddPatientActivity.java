@@ -75,8 +75,9 @@ public class RetryAddPatientActivity extends Activity {
 			}
 			
 			// With the new patient dealt with the application
-			// passes back to the home page activity.
-			Intent intent = new Intent(this, HomePageActivity.class);
+			// passes back to the nurse home page activity (staff member is known
+			// to be a nurse because only they have access to this activity).
+			Intent intent = new Intent(this, NurseHomePageActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
 		
