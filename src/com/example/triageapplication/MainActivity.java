@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 import android.app.ActionBar;
 
 /** This is the very first activity, and 
- * the nurse log-in screen for the application. 
+ *  the staff member log-in screen for the application. 
  */
 public class MainActivity extends Activity {
 	
@@ -61,15 +61,13 @@ public class MainActivity extends Activity {
 	/** Reads data from the UI, checks if username and password exist,
 	 * information onto the next activity, HomePageActivity.
 	 * @param view A user interface component.
-	 * @throws FileNotFoundException If this nurse is not found in the login 
-	 * 								  registry.  
+	 * @throws FileNotFoundException If this staff member is not found in the 
+	 * 								  login registry.  
 	 * @throws IOException  If this file is not found. 
 	 */
 	public void logIn(View view) throws FileNotFoundException, IOException {
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar1);
 		progressBar.setVisibility(View.VISIBLE);
-		
-		Intent intent = new Intent(this, HomePageActivity.class);
 		
 		// This user's input, username and password.
 		EditText ID = (EditText) findViewById(R.id.username);
@@ -83,6 +81,7 @@ public class MainActivity extends Activity {
 				"passwords.txt");
 		
 		StaffMember staff;
+		Intent intent;
 		
 		try {
 			   String[] acceptLogIn = findUsernameAndPassword(passwdFile, 
@@ -90,10 +89,12 @@ public class MainActivity extends Activity {
 			   
 			   if(acceptLogIn[0] == "true"){ // if login authenticated
 				    
-				    if (acceptLogIn[1] == "Doctor") {
-				       staff = new Doctor(username);		
+				    if (acceptLogIn[1].equalsIgnoreCase("doctor")) {
+				       staff = new Doctor(username);
+				       intent = new Intent(this, DoctorHomePageActivity.class);
 				    } else {
 				       staff = new Nurse(username);
+				       intent = new Intent(this, NurseHomePageActivity.class);
 				    }
 				
 				    try {
@@ -105,7 +106,8 @@ public class MainActivity extends Activity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				    intent.putExtra("staff", staff);
+				    
+					intent.putExtra("staff", staff);
 					startActivity(intent);	
 					finish();
 			   } 
@@ -114,11 +116,9 @@ public class MainActivity extends Activity {
 				   Intent reenter = new Intent(this, ReLoginActivity.class);
 				   startActivity(reenter);
 				   finish();
-			}
-		
-		
-		    
+			}	    
 	}
+	
     /**
      * Reads through file of usernames and passwords, and returns true iff the 
      * username and password exist and are correct.
@@ -164,7 +164,7 @@ public class MainActivity extends Activity {
 		// make a String Array of authentication, and type of staff
 		String[] values = {String.valueOf(authentication), staff};
 		
-		// If this staffmember is registered.
+		// If this staff member is registered.
 		if(authentication){
 			return(values);
 		}

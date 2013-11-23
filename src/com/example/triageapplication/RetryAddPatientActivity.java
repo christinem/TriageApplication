@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 
 /** If the input was invalid for creating a patient this allows
- *  the nurse to input valid information.
+ *  the staff member to input valid information.
  */
 public class RetryAddPatientActivity extends Activity {
 
@@ -36,9 +36,9 @@ public class RetryAddPatientActivity extends Activity {
 	 */
 	public void createNewPatient(View view) {
 		
-		// Get nurse from previous Activity
-        Intent intentNurse = getIntent();
-        StaffMember nurse = (StaffMember) intentNurse.getSerializableExtra("nurse");
+		// Get the staff member from previous Activity
+        Intent intentStaff = getIntent();
+        StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
         
 		EditText first_name = (EditText)findViewById(R.id.first_name);
 		String first = first_name.getText().toString();
@@ -63,12 +63,13 @@ public class RetryAddPatientActivity extends Activity {
 		
 		try {
 			// All user input is valid, so let's create this patient.
-			nurse.addPatient(name, dob, healthCardNumber,
+			staff.addPatient(name, dob, healthCardNumber,
 					this.getApplicationContext());
 			
 			// Save to file
 			try {
-				StaffMember.getRecords().saveToFile(openFileOutput("Records", Context.MODE_PRIVATE));
+				StaffMember.getRecords().saveToFile(openFileOutput(
+						"PatientsAndRecords", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -76,30 +77,27 @@ public class RetryAddPatientActivity extends Activity {
 			// With the new patient dealt with the application
 			// passes back to the home page activity.
 			Intent intent = new Intent(this, HomePageActivity.class);
-			intent.putExtra("nurse", nurse);
+			intent.putExtra("staff", staff);
 			startActivity(intent);
 		
 		} catch (InvalidDayOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
-			intent.putExtra("nurse", nurse);
+			intent.putExtra("staff", staff);
 			startActivity(intent);
 		
 		} catch (InvalidMonthOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
-			intent.putExtra("nurse", nurse);
+			intent.putExtra("staff", staff);
 			startActivity(intent);
 		} catch (InvalidYearOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
-			intent.putExtra("nurse", nurse);
+			intent.putExtra("staff", staff);
 			startActivity(intent);
 		
 		} catch (InvalidHealthCardNumberException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
-			intent.putExtra("nurse", nurse);
+			intent.putExtra("staff", staff);
 			startActivity(intent);
-		}
-	
-		
+		}	
 	}
-
 }

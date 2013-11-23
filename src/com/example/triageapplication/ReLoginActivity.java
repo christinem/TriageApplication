@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-/** This activity allows a nurse to reenter their login information if
+/** This activity allows a staff member to reenter their login information if
  *  it was not found in the system.
  */
 public class ReLoginActivity extends Activity {
@@ -67,7 +67,7 @@ public class ReLoginActivity extends Activity {
 					   username, pass);
 			   
 			   if(acceptLogIn[0] == "true"){ // if login authenticated
-				    if (acceptLogIn[1] == "Doctor") {
+				    if (acceptLogIn[1].equalsIgnoreCase("doctor")) {
 				       staff = new Doctor(username);		
 				    } else {
 				       staff = new Nurse(username);

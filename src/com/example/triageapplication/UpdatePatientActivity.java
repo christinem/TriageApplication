@@ -13,11 +13,8 @@ import android.view.View;
  *  this to the disc.  
  */
 public class UpdatePatientActivity extends Activity {
-
-	/** This contains the laset activity's information. */
-	private Intent intent;
 	
-	/** This nurse is logged in. */
+	/** This staff member is logged in. */
 	private StaffMember staff;
 	
 	/** This record is being updated. */
@@ -28,8 +25,8 @@ public class UpdatePatientActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_update_patient);
 		
-		// Get nurse and possibly record from last activity
-	    intent = getIntent();
+		// Gets the staff member and possibly the record from the last activity
+	    Intent intent = getIntent();
 	    staff = (StaffMember) intent.getSerializableExtra("staff");
 		record = (Record) intent.getSerializableExtra("record");
 	}
@@ -51,8 +48,8 @@ public class UpdatePatientActivity extends Activity {
 		
 	}
 	
-	/** Saves the record this nurse has inputed,
-	 *  and then passes back to the Home Page Activity.  
+	/** Saves the record active in this activity,
+	 * and then passes back to the Home Page Activity.  
 	 * @param view A User interface type. 
 	 * @throws FileNotFoundException 
 	 */
@@ -61,10 +58,16 @@ public class UpdatePatientActivity extends Activity {
 			// Saves patient information
 			staff.updateVitals(record, this.getApplicationContext());
 			
-            
-            Intent intent = new Intent(this, HomePageActivity.class);
-    		intent.putExtra("staff", staff);
-    		startActivity(intent);
+            if (staff instanceof Nurse) {
+                Intent intent = new Intent(this, NurseHomePageActivity.class);
+    			intent.putExtra("staff", staff);
+        		startActivity(intent);
+            }
+            else {
+            	Intent intent = new Intent(this, DoctorHomePageActivity.class);
+    			intent.putExtra("staff", staff);
+        		startActivity(intent);
+            }
 
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record
@@ -73,5 +76,4 @@ public class UpdatePatientActivity extends Activity {
 			   startActivity(reenter);
 		}		
 	}
-
 }

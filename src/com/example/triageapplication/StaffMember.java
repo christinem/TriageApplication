@@ -22,7 +22,7 @@ public class StaffMember implements Serializable {
 	private String username;
 
 	/** Constructs a StaffMember with a username.
-	 * @param username This Nurse's username.
+	 * @param username This StaffMember's username.
 	 */
 	public StaffMember(String username){
 		this.username = username;
@@ -86,8 +86,8 @@ public class StaffMember implements Serializable {
 	} 
 
 	/**
-	 * Gets the username of this Nurse.
-	 * @return Username of this Nurse.
+	 * Gets the username of this StaffMember.
+	 * @return Username of this StaffMember.
 	 */
 	public String getUsername() {
 		return username;
@@ -184,6 +184,21 @@ public class StaffMember implements Serializable {
 		record.updateRecordVitalsSymptoms(context);
 	}
 	
+	/** Save the information about vitals in a Record to disk.
+	 * @param The Record in question.
+	 * @throws NoRecordSpecifiedException 
+	 */
+	public void updatePrescription(Record record, Context context) throws
+	NoRecordSpecifiedException {
+		
+		if (record == null) {
+			throw new NoRecordSpecifiedException(
+					"No record has been specified.");
+		}
+		
+		record.updateRecordPrescription(context);
+	}
+	
 	/**
 	 * Returns a Record whose patient has a given health card number.
 	 * @param healthcardNum A patient's health card number.
@@ -236,4 +251,22 @@ public class StaffMember implements Serializable {
 	    
 	    return(text);
 	}
+
+
+/** Updates a Record's latest recording. 
+ * @param The Record in question.
+ * @param heartRate The new symptoms.
+ * @throws NoRecordSpecifiedException 
+ */
+public void setPrescription(Record record, String prescriptionName, String
+		prescriptionInstructions) throws NoRecordSpecifiedException {
+	
+	if (record == null) {
+		throw new NoRecordSpecifiedException("No record has been specified.");
+	}
+	
+	record.setPrescriptionName(prescriptionName);
+	record.setPrescriptionInstructions(prescriptionInstructions);
+	}
 }
+
