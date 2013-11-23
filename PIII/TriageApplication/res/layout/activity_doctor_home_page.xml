@@ -34,6 +34,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="154dp"
         android:onClick="switchUpdate"
-        android:text="@string/update_record" />
+        android:text="@string/prescription_update" />
 
 </RelativeLayout>

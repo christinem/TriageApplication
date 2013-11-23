@@ -46,7 +46,9 @@ public class ReLoginActivity extends Activity {
 	public void logIn(View view) throws FileNotFoundException, IOException {
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
 		progressBar.setVisibility(View.VISIBLE);
-				
+		
+		Intent intent;
+		
 		// This user's input, username and password.
 		EditText ID = (EditText) findViewById(R.id.username);
 		String username = ID.getText().toString();
@@ -68,11 +70,12 @@ public class ReLoginActivity extends Activity {
 			   if(acceptLogIn[0] == "true"){ // if login authenticated
 				    
 				    if (acceptLogIn[1].equalsIgnoreCase("doctor")) {
-				       staff = new Nurse(username);
-				       intent = new Intent(this, NurseHomePageActivity.class);
+				       staff = new Doctor(username);
+				       intent = new Intent(this, DoctorHomePageActivity.class);
 				    } else {
 				       staff = new Doctor(username);
 				       intent = new Intent(this, DoctorHomePageActivity.class);
+				       intent = new Intent(this, NurseHomePageActivity.class);
 				    }
 				
 				    try {

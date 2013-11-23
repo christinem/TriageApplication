@@ -15,6 +15,8 @@
     <string name="find_patient">Access a Patient\'s Record</string>
     <string name="add_patient">Check-In a New Patient</string>
     <string name="display_info">Display a Patient\'s Record History</string>
+    <string name="title_activity_doctor_home_page">Doctor\'s Home Paege</string>
+    <string name="title_activity_nurse_home_page">Nurse\'s Home Page</string>
 
     <!-- Re Log In -->
     <string name="title_activity_re_login">Re-Try Log In</string>
@@ -69,6 +71,8 @@
     <string name="enter_update">Enter updated information</string>
     <string name="title_activity_retry_update_info">Update a Patient</string>
     <string name="retry_update">Invalid Input. Re-enter information:</string>
+    <string name="title_activity_update_prescription">Update Prescription</string>
+    <string name="prescription_update">Update Prescription</string>
 
     <!-- Access and Re-Acess Record (FOR DISPLAYING) -->
     <string name="title_activity_access_display_record">Access Record</string>
@@ -79,10 +83,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_information">Record History</string>
-    <string name="title_activity_doctor_home_page">DoctorHomePageActivity</string>
-    <string name="title_activity_nurse_home_page">NurseHomePageActivity</string>
-    <string name="title_activity_update_prescription">UpdatePrescriptionActivity</string>
-    <string name="title_activity_enter_prescription_info">EnterPrescriptionInfoActivity</string>
+  
+
+    <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>
     <string name="prescription_name">Prescription Name</string>
     <string name="prescription_instructions">Prescription Instructions</string>
 

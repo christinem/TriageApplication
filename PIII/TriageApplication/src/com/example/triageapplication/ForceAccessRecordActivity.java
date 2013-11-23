@@ -37,7 +37,10 @@ public class ForceAccessRecordActivity extends Activity {
 	    String healthNum = healthCardNum.getText().toString();
 	    
 		try {
+			//If this record exists retrieve it.  
 			record = staff.getRecord(healthNum);
+            }
+			
             if (staff instanceof Nurse) {
     			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
     		    intent.putExtra("record", record);
@@ -49,9 +52,8 @@ public class ForceAccessRecordActivity extends Activity {
     		    intent.putExtra("record", record);
     			intent.putExtra("staff", staff);
         		startActivity(intent);
-			startActivity(intent);
             }
-			
+
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record
 			   Intent reenter = new Intent(this, ForceAccessRecordActivity.class);

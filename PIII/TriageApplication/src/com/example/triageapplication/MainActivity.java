@@ -89,8 +89,8 @@ public class MainActivity extends Activity {
 				       staff = new Doctor(username);
 				       intent = new Intent(this, DoctorHomePageActivity.class);
 				    } else {
-				       staff = new Doctor(username);
-				       intent = new Intent(this, DoctorHomePageActivity.class);
+				       staff = new Nurse(username);
+				       intent = new Intent(this, NurseHomePageActivity.class);
 				    }
 				
 				    try {
