@@ -18,14 +18,14 @@ public class EnterPrescriptionInfoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		//Sets the layout resource for this activity.
-		setContentView(R.layout.activity_enter_update_info);
+		setContentView(R.layout.activity_enter_prescription_info);
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to
 		// the action bar if it is present.
-		getMenuInflater().inflate(R.menu.enter_update_info, menu);
+		getMenuInflater().inflate(R.menu.enter_prescription_info, menu);
 		return true;
 	}
 	

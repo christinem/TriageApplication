@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+
 import android.content.Context;
-import android.content.Intent;
 
 /** A StaffMember. */
 public class StaffMember implements Serializable {

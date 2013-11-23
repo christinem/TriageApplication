@@ -1,15 +1,10 @@
 package com.example.triageapplication;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Scanner;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
-import android.view.View;
 import android.widget.TextView;
 
 /**

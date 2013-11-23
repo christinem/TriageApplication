@@ -3,20 +3,16 @@ package com.example.triageapplication;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.app.ActionBar;
 
 /** This is the very first activity, and 
  *  the staff member log-in screen for the application. 
@@ -93,8 +89,8 @@ public class MainActivity extends Activity {
 				       staff = new Doctor(username);
 				       intent = new Intent(this, DoctorHomePageActivity.class);
 				    } else {
-				       staff = new Nurse(username);
-				       intent = new Intent(this, NurseHomePageActivity.class);
+				       staff = new Doctor(username);
+				       intent = new Intent(this, DoctorHomePageActivity.class);
 				    }
 				
 				    try {

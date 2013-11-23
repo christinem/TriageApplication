@@ -21,7 +21,7 @@ private StaffMember staff;
 		super.onCreate(savedInstanceState);
 		
 		// Sets the layout resource for this activity.
-		setContentView(R.layout.activity_home_page);
+		setContentView(R.layout.activity_doctor_home_page);
 		
 		// Creates the text area for the welcome message to be displayed in.
 		tv = (TextView) findViewById(R.id.textView2);
@@ -46,7 +46,7 @@ private StaffMember staff;
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to
 		// the action bar if it is present.
-		getMenuInflater().inflate(R.menu.home_page, menu);
+		getMenuInflater().inflate(R.menu.doctor_home_page, menu);
 		return true;
 	}
 	    
