@@ -63,9 +63,9 @@ public class EnterPrescriptionInfoActivity extends Activity {
 		try {
 			StaffMember.getRecords().remove(record.getHealthCardNum());
 			StaffMember.getRecords().add(record);
-			StaffMember.getRecords().saveToFile(openFileOutput(
-					"PatientsAndRecords", Context.MODE_PRIVATE));
-		} catch (FileNotFoundException e) {
+			staff.getRecord(record.getHealthCardNum()).updateRecordPrescription(this.getApplicationContext());
+		} catch (NoRecordSpecifiedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
