@@ -63,34 +63,38 @@ public class RecordManager implements Serializable {
         if (recordsByUrgency.size() == 1) {
         		recordsByUrgency.add(record);
         }
-        
-        while (position < recordsByUrgency.size() + 1) {
-	        	
-        		// Does this record have the same urgency as the next one?
-        		Record nextRecord = (Record) recordsByUrgency.get(position+1);
-	        	if (nextRecord.getUrgencyRating() == record.getUrgencyRating()) {
-        		int[] nextArraivalTime = (int[]) nextRecord.getDobAsIntArray();
-        		int[] thisArrivalTime = (int[]) record.getDobAsIntArray();
-        		
-        		// Which patient arrived first?	
-        		boolean newOneComesfirst = true;
-        		for (int i = 0; i < thisArrivalTime.length; i++) {
-        			if (nextArraivalTime[i] < thisArrivalTime[i]) {
-        				newOneComesfirst = false;
-        				break;
-        			}
-        		}
-        		// The record should be added before the next one	
-        		if (newOneComesfirst) {
-        			break;
-        		}
-    		}
-        			 
-    		else {
-    			position =  position + 1;
-    			}
-        	}
-		recordsByUrgency.add(position + 1, record);
+        else {
+	        
+	        while (position + 1 < recordsByUrgency.size()) {
+		        	
+	        		// Does the new record have the same urgency as this one?
+	        		Record thisRecord = (Record) recordsByUrgency.get(position);
+		        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
+		        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
+		        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
+		        		
+		        		// Which patient arrived first?	
+		        		boolean newOneComesfirst = true;
+		        		for (int i = 0; i < newArrivalTime.length; i++) {
+		        			if (thisArraivalTime[i] < newArrivalTime[i]) {
+		        				newOneComesfirst = false;
+		        				break;
+		        			}
+		        		}
+		        		// The record should be added before the next one	
+		        		if (newOneComesfirst) {
+		        			break;
+		        		}
+	        		
+	    		}
+	        			 
+		    		else {
+		    			position =  position + 1;
+		    			}
+	        }
+        	
+	        recordsByUrgency.add(position, record);
+        }
     }
     
     /**
