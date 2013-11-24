@@ -268,5 +268,10 @@ public void setPrescription(Record record, String prescriptionName, String
 	record.setPrescriptionName(prescriptionName);
 	record.setPrescriptionInstructions(prescriptionInstructions);
 	}
+
+public void updateUrgency(Record record) {
+	record.updateUrgencyRating();
+	
+}
 }
 

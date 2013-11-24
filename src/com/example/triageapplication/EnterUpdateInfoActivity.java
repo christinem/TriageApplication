@@ -74,6 +74,7 @@ public class EnterUpdateInfoActivity extends Activity {
 		    staff.setSeenByDoctor(record, seenByDoctor, 
 		    		this.getApplicationContext());
 		    staff.setSymptoms(record, symptoms);
+		    staff.updateUrgency(record);
 		    
 		} catch (Exception e) {
 			// prompt for a record

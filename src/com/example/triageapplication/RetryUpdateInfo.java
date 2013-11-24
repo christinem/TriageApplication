@@ -1,7 +1,10 @@
 package com.example.triageapplication;
 
+import java.io.FileNotFoundException;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -71,12 +74,24 @@ public class RetryUpdateInfo extends Activity {
 		    staff.setSeenByDoctor(record, seenByDoctor, 
 		    		this.getApplicationContext());
 		    staff.setSymptoms(record, symptoms);
-		
-	    } catch (Exception e) {
+		    staff.updateUrgency(record);
+		    
+		} catch (Exception e) {
 			// prompt for a record
 			   Intent reenter = new Intent(this, RetryUpdateInfo.class);
 			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
+		}
+	    
+	    // Mathias Added this to match the EnterUpdateInfoAct
+	    
+		try {
+			StaffMember.getRecords().remove(record.getHealthCardNum());
+			StaffMember.getRecords().add(record);
+			StaffMember.getRecords().saveToFile(openFileOutput(
+					"PatientsAndRecords", Context.MODE_PRIVATE));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	    
 	    //With this patient dealt with the previous activity is returned too.

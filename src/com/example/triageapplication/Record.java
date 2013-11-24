@@ -6,7 +6,10 @@ import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import android.content.Context;
 
@@ -259,6 +262,7 @@ public class Record implements Serializable {
 		return dateFormat.format(date); 
 	}
 	
+	
 	/**
 	 * Returns a String representation of this Record.
 	 * @return A String representation of this Record.
@@ -290,12 +294,37 @@ public class Record implements Serializable {
 	}
 	
 	/**
-	 * Returns this Person's birth date.
-	 * @return This Person's birth date.
+	 * Returns this Person's birth date as a string array.
+	 * @return This Person's birth date as a string array.
 	 */
 	public String[] getDob() {
 		return this.dob;
 	} 
+	
+	/**
+	 * Returns this Person's birth date as an int array.
+	 * @return this Person's birth date as an int array.
+	 */
+	public int[] getDobAsIntArray() {
+		String[] first = this.getArrivalTime().substring(0, 10).split("/");
+		String[] second = this.getArrivalTime().substring(11).split(":");
+		
+		    List<String> both = new ArrayList<String>(first.length + second.length);
+		    Collections.addAll(both, first);
+		    Collections.addAll(both, second);
+		String[] stringArray = both.toArray(new String[both.size()]);
+
+		int[] intArray = new int[stringArray.length];
+		for(int i=0; i < stringArray.length; i++)
+		{
+		    try{
+		    	intArray[i] = Integer.parseInt(stringArray[i]);
+		    }
+		    catch(NumberFormatException nfe){
+		    }
+		}
+		return intArray;
+	}
 	
 	/** 
 	 * Returns the latest recorded symptoms of the patient 
@@ -407,67 +436,38 @@ public class Record implements Serializable {
 	public void setSymptoms(String symptoms) {
 		this.symptoms = symptoms;
 	}
+	/**
+	 * Return this patient's age.
+	 * @return this patient's age.
+	 */
+	private int getAge() {
+		return this.age;	
+	}
 	
-	//This needs to be determined 
+		
 	/**
 	 * Sets the urgency rating of the patient associated with this record
 	 * based upon their vital signs. All values used are based off of average 
 	 * readings of healthy patients. 
 	 */
-	public void setUrgencyRating(){
-		int urgencyRating = 0;
-
-		double temp = getTemperature();
-		double bp = getBloodPressure();
-		int hr = getHeartRate();
+	public void updateUrgencyRating(){
+		Integer urgencyRating = 0;
 		
-		//Converts age and associated blood pressure to urgency rating
-		if (age<2){
-			urgencyRating+=2;
-			
-			
-			
-			urgencyRating+=hr;
-			
-		} else if (age< 12){
-			urgencyRating+=1;
-			
-			
-		} else if (age< 17){
-			
-			
-		} else if (age< 55){
-			
-			
-		} else if (age<80){
-			urgencyRating+=2;
-			
-		} else{
-			urgencyRating+=5;
+		if (this.getAge() < 2) {
+			urgencyRating = urgencyRating + 1;
 		}
+		if (this.getTemperature() >= 39.0) {
+			urgencyRating = urgencyRating + 1;
+		}			
+		if(this.getBloodPressure() >= 140 || this.getBloodPressure() <= 90) {
+			urgencyRating = urgencyRating + 1;
+		}		
+		if (this.getHeartRate() >= 100 || this.getHeartRate() <= 50) {
+			urgencyRating = urgencyRating + 1;
+		}			
 			
-		//Blood pressure converted into urgency rating
-		//Blood pressure is a ratio of standard systolic over diastolic
-		bp-=1.525;
-		bp = bp*10;
-		
-		urgencyRating+=bp;
-		
-		//Temperature in celsius converted into urgency rating
-		temp-=98.5;
-		temp= temp/2;
-		
-		
-		urgencyRating+=temp;
-		
-		//Heart Rate in beats per minute converted into urgency rating
-		
-		hr-=80;
-		hr=hr/10;
-		
-		urgencyRating+=hr;		
-		
 		this.urgencyRating = urgencyRating;
+
 	}
 
 	public String getPrescriptionName() {

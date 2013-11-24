@@ -39,7 +39,7 @@ public class ForceAccessRecordActivity extends Activity {
 		try {
 			//If this record exists retrieve it.  
 			record = staff.getRecord(healthNum);
-            }
+            
 			
             if (staff instanceof Nurse) {
     			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import android.content.Context;
@@ -25,6 +26,9 @@ public class RecordManager implements Serializable {
 	/** A mapping of health card numbers to Records. */
 	private Map<String, Record> records;
 	
+	/** A linked list of patients in order of most to least urgent. */
+	private LinkedList<Record> recordsByUrgency;	
+	
     /**
      * Constructs a new RecordManager that manages a collection of 
      * Records stored in directory dir in a file named fileName.
@@ -37,6 +41,7 @@ public class RecordManager implements Serializable {
     		throws IOException {
     	
     	records = new HashMap<String, Record>();
+    	recordsByUrgency = new LinkedList<Record>();
     	
     	// Populates the Record list using stored data, if it exists.
         File file = new File(dir, fileName);
@@ -54,12 +59,46 @@ public class RecordManager implements Serializable {
      */
     public void add(Record record) {
         records.put(record.getHealthCardNum(), record);
+        int position = 0;
+        if (recordsByUrgency.size() == 1) {
+        		recordsByUrgency.add(record);
+        }
+        
+        while (position < recordsByUrgency.size() + 1) {
+	        	
+        		// Does this record have the same urgency as the next one?
+        		Record nextRecord = (Record) recordsByUrgency.get(position+1);
+	        	if (nextRecord.getUrgencyRating() == record.getUrgencyRating()) {
+        		int[] nextArraivalTime = (int[]) nextRecord.getDobAsIntArray();
+        		int[] thisArrivalTime = (int[]) record.getDobAsIntArray();
+        		
+        		// Which patient arrived first?	
+        		boolean newOneComesfirst = true;
+        		for (int i = 0; i < thisArrivalTime.length; i++) {
+        			if (nextArraivalTime[i] < thisArrivalTime[i]) {
+        				newOneComesfirst = false;
+        				break;
+        			}
+        		}
+        		// The record should be added before the next one	
+        		if (newOneComesfirst) {
+        			break;
+        		}
+    		}
+        			 
+    		else {
+    			position =  position + 1;
+    			}
+        	}
+		recordsByUrgency.add(position + 1, record);
     }
+    
     /**
      * Removes the given health card number from the RecordManager
      * @param healthcardnum the health card number of a patient
      */
     public void remove(String healthcardnum) {
+        recordsByUrgency.remove(records.get(healthcardnum));
         records.remove(healthcardnum);
     }
 
@@ -139,9 +178,9 @@ public class RecordManager implements Serializable {
     		r.setSymptoms(symptoms);
     		r.setTemperature(temperature);
     		r.setArrivalTime(arrivalTime);
-    		r.setUrgencyRating();
+    		r.updateUrgencyRating();
     		
-        	records.put(healthCardNumber, r);
+        	add(r);
         }
         scanner.close();
     }   
