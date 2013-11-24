@@ -47,7 +47,6 @@ public class ReLoginActivity extends Activity {
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
 		progressBar.setVisibility(View.VISIBLE);
 		
-		Intent intent;
 		
 		// This user's input, username and password.
 		EditText ID = (EditText) findViewById(R.id.username);
