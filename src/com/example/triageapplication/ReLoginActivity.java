@@ -60,7 +60,7 @@ public class ReLoginActivity extends Activity {
 				"passwords.txt");
 		
 		StaffMember staff;
-	
+		Intent intent;
 		
 		try {
 			   String[] acceptLogIn = findUsernameAndPassword(passwdFile, 
