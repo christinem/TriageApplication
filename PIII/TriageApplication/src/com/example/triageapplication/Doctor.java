@@ -13,4 +13,8 @@ public class Doctor extends StaffMember implements Serializable{
 		super(username);
 	}
 
+	@Override
+	public String toString() {
+		return "Doctor";
+	}
 }

@@ -101,7 +101,7 @@ public class RecordManager implements Serializable {
      * Removes the given health card number from the RecordManager
      * @param healthcardnum the health card number of a patient
      */
-    public void remove(String healthcardnum) {
+    public void removePatient(String healthcardnum) {
         recordsByUrgency.remove(records.get(healthcardnum));
         records.remove(healthcardnum);
     }

@@ -60,7 +60,7 @@ public class EnterPrescriptionInfoActivity extends Activity {
 			   startActivity(reenter);
 		}
 	    
-		StaffMember.getRecords().remove(record.getHealthCardNum());
+		StaffMember.getRecords().removePatient(record.getHealthCardNum());
 		StaffMember.getRecords().add(record);
 
 		
