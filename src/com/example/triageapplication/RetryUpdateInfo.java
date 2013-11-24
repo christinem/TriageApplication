@@ -86,7 +86,7 @@ public class RetryUpdateInfo extends Activity {
 	    // Mathias Added this to match the EnterUpdateInfoAct
 	    
 		try {
-			StaffMember.getRecords().remove(record.getHealthCardNum());
+			StaffMember.getRecords().removePatient(record.getHealthCardNum());
 			StaffMember.getRecords().add(record);
 			StaffMember.getRecords().saveToFile(openFileOutput(
 					"PatientsAndRecords", Context.MODE_PRIVATE));
