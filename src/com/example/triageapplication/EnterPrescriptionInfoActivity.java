@@ -60,14 +60,9 @@ public class EnterPrescriptionInfoActivity extends Activity {
 			   startActivity(reenter);
 		}
 	    
-		try {
-			StaffMember.getRecords().remove(record.getHealthCardNum());
-			StaffMember.getRecords().add(record);
-			staff.getRecord(record.getHealthCardNum()).updateRecordPrescription(this.getApplicationContext());
-		} catch (NoRecordSpecifiedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		StaffMember.getRecords().remove(record.getHealthCardNum());
+		StaffMember.getRecords().add(record);
+
 		
 	    //With this patient dealt with the previous activity is returned too.
 	    Intent intent1 = new Intent(this, UpdatePatientActivity.class);
