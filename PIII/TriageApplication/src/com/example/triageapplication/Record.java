@@ -250,6 +250,30 @@ public class Record implements Serializable {
 			e.printStackTrace();
 		}		
 	}
+	
+	public void discharge(Context context) {
+		try {
+			String update = new String (
+				"************************************************" +
+				"******\n" +
+				"Date: " + currentTime() +
+				"\n" +
+				"Patient Discharged\n\n");
+	   
+			OutputStreamWriter outputStreamWriter = 
+					new OutputStreamWriter(context.openFileOutput(recordFile, 
+					Context.MODE_APPEND));
+			outputStreamWriter.write(update);
+			outputStreamWriter.close();
+		}	
+	
+		catch (FileNotFoundException e) {
+			e.printStackTrace(); 
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}	
+	}
 		
 	/**
 	 * Returns the current time and date as a String in the format 
@@ -485,6 +509,8 @@ public class Record implements Serializable {
 	public void setPrescriptionInstructions(String prescriptionInstructions) {
 		this.prescriptionInstructions = prescriptionInstructions;
 	}
+
+
 
 
 }
