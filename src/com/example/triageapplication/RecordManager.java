@@ -78,13 +78,14 @@ public class RecordManager implements Serializable {
 		        		for (int i = 0; i < newArrivalTime.length; i++) {
 		        			
 		        		
-		        			// This one goes at least one space after this one.
+		        			// 
 		        			if (thisArraivalTime[i] < newArrivalTime[i]) {
 		        				position = position + 1;
+		        				break;
 		        			}
-
+		        			
 			        		// The record should be added before the next one	
-		        			else {
+			        		if (thisArraivalTime[i] > newArrivalTime[i])
 		        				recordsByUrgency.add(position, record);		        			
 			        			break;
 			        		}
