@@ -60,7 +60,7 @@ public class RecordManager implements Serializable {
     public void add(Record record) {
         records.put(record.getHealthCardNum(), record);
         int position = 0;
-        if (recordsByUrgency.size() == 1) {
+        if (recordsByUrgency.size() == 0) {
         		recordsByUrgency.add(record);
         }
         else {
@@ -104,13 +104,13 @@ public class RecordManager implements Serializable {
 		    		else {
 		    			position =  position + 1;
 		    			}
+	        }
 		        	
             
 		        //Add if the patient has a lower priority and was came after all the other patients
 		        //LinkedList
 	        	if (position == recordsByUrgency.size() - 1) {
 		        recordsByUrgency.add(position, record);
-	        	}
         	}
         }
 
