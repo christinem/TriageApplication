@@ -66,7 +66,7 @@ public class RecordManager implements Serializable {
 
         else {
 	        
-	        while (position <= recordsByUrgency.size() - 1) {
+	        while (position < recordsByUrgency.size() - 1) {
 	    		Record thisRecord = (Record) recordsByUrgency.get(position);
 	    		
 	        	// If the new patient has a higher urgency rating than this one, add it here.
