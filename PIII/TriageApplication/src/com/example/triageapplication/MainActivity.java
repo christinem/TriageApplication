@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +28,7 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		/*String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
+		String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
@@ -37,8 +39,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		
+		}
 	}
 		
 	/** Adds a menu title to this activity 

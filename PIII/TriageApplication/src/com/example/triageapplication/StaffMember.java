@@ -264,8 +264,9 @@ public StringBuilder getUrgencyInfo() {
 	for(Record record: urgencyRecord) {
 		String[] name = record.getName();
 		urgency.append(name[0] + " " + name[1] + "\n");
-		urgency.append("\n");
 		urgency.append("Urgency: " + record.getUrgencyRating() + "\n");
+		urgency.append("Health Card Number: " + record.getHealthCardNum() + "\n");
+		urgency.append("\n");
 	}
 	
 	return(urgency);	
