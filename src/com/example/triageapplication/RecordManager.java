@@ -65,7 +65,7 @@ public class RecordManager implements Serializable {
         }
         else {
 	        
-	        while (position + 1 < recordsByUrgency.size()) {
+	        while (position < recordsByUrgency.size() - 1) {
 		        	
 	        		// Does the new record have the same urgency as this one?
 	        		Record thisRecord = (Record) recordsByUrgency.get(position);
@@ -76,8 +76,10 @@ public class RecordManager implements Serializable {
 		        		// Which patient arrived first?	
 		        		boolean newOneComesfirst = true;
 		        		for (int i = 0; i < newArrivalTime.length; i++) {
+		        			// This one goes at least one space after this one.
 		        			if (thisArraivalTime[i] < newArrivalTime[i]) {
 		        				newOneComesfirst = false;
+		        				position =  position + 1;
 		        				break;
 		        			}
 		        		}
