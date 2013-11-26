@@ -74,36 +74,32 @@ public class RecordManager implements Serializable {
 		        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
 		        		
 		        		// Which patient arrived first?	
-		        		boolean newOneComesfirst = true;
+		        		
 		        		for (int i = 0; i < newArrivalTime.length; i++) {
+		        			
+		        		
 		        			// This one goes at least one space after this one.
 		        			if (thisArraivalTime[i] < newArrivalTime[i]) {
-		        				newOneComesfirst = false;
 		        				position = position + 1;
-		        				break;
 		        			}
-		        			// The new patient came sooner than this one so add them.
-		        			if ((thisArraivalTime[i] > newArrivalTime[i])) {
-		        				recordsByUrgency.add(position, record);
-		        				break;
-		        			}
-		        		}
-		        		// The record should be added before the next one	
-		        		if (newOneComesfirst) {
-		        			break;
-		        		}
-		        	}
-		        	// If the new patient has a higher urgency rating than this one, add it here.
-		        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
-		        		recordsByUrgency.add(position, record);
-		        		break;
+
+			        		// The record should be added before the next one	
+		        			else {
+		        				recordsByUrgency.add(position, record);		        			
+			        			break;
+			        		}
 		        	}
 		        	
-		        		
-		        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
-		    		else {
-		    			position =  position + 1;
-		    			}
+	        	// If the new patient has a higher urgency rating than this one, add it here.
+	        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
+	        		recordsByUrgency.add(position, record);
+	        		break;
+	        	}
+		        			        		
+	        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
+	    		else {
+	    			position =  position + 1;
+	    			}
 	        }
 		        	
             
