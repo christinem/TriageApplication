@@ -63,45 +63,48 @@ public class RecordManager implements Serializable {
         if (recordsByUrgency.size() == 0) {
         		recordsByUrgency.add(record);
         }
+
         else {
 	        
-	        while (position < recordsByUrgency.size() - 1) {
-		        	
-	        		// Does the new record have the same urgency as this one?
-	        		Record thisRecord = (Record) recordsByUrgency.get(position);
-		        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
-		        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
-		        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
-		        		
-		        		// Which patient arrived first?	
-		        		
-		        		for (int i = 0; i < newArrivalTime.length; i++) {
-		        			
-		        		
-		        			// 
-		        			if (thisArraivalTime[i] < newArrivalTime[i]) {
-		        				position = position + 1;
-		        				break;
-		        			}
-		        			
-			        		// The record should be added before the next one	
-			        		if (thisArraivalTime[i] > newArrivalTime[i])
-		        				recordsByUrgency.add(position, record);		        			
-			        			break;
-			        		}
-		        	}
-		        	
+	        while (position <= recordsByUrgency.size() - 1) {
+	    		Record thisRecord = (Record) recordsByUrgency.get(position);
+	    		
 	        	// If the new patient has a higher urgency rating than this one, add it here.
 	        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
 	        		recordsByUrgency.add(position, record);
 	        		break;
 	        	}
-		        			        		
-	        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
-	    		else {
-	    			position =  position + 1;
-	    			}
-	        }
+	    		
+	    																// Does the new record have the same urgency as this one?
+															        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
+															        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
+															        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
+															        		
+															        		// Which patient arrived first?	
+															        		
+															        		for (int i = 0; i < newArrivalTime.length; i++) {
+															        			
+															        		
+															        			// 
+															        			if (thisArraivalTime[i] < newArrivalTime[i]) {
+															        				position = position + 1;
+															        				break;
+															        			}
+															        			
+																        		// The record should be added before the next one	
+																        		if (thisArraivalTime[i] > newArrivalTime[i])
+															        				recordsByUrgency.add(position, record);		        			
+																        			break;
+																        		}
+															        	}
+			        	
+
+			        			        		
+		        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
+		    		else {
+		    			position =  position + 1;
+		    			}
+		        }
 		        	
             
 		        //Add if the patient has a lower priority and was came after all the other patients
