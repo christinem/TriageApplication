@@ -79,17 +79,20 @@
     <string name="title_activity_access_display_record">Access Record</string>
     <string name="idnumber_display">Health Card Number</string>
     <string name="display">Display Record History</string>
-
-    <!-- Others -->
-
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_display_information">Record History</string>
-    <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>
+    
+    <!-- Prescription Stuff -->
+     <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>
     <string name="prescription_name">Prescription Name</string>
     <string name="prescription_instructions">Prescription Instructions</string>
-   
     
     <!-- Urgency Info -->
-     <string name="title_activity_urgency_list_view">UrgencyListViewActivity</string>
+     <string name="title_activity_urgency_list_view">Urgency List</string>
+    
+    
+    <!-- Others -->
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_display_information">Record History</string>
 
+   
+    
 </resources>
