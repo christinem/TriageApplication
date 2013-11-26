@@ -119,10 +119,17 @@ public class RecordManager implements Serializable {
      * Returns the Patient with the highest priority.
      * @return the Patient with the highest priority.
      */
-    public Record getRecord() {
+    public Record getSingleRecord() {
 		return this.recordsByUrgency.removeFirst();    	
     }
     
+    /**
+     * Returns the list of Patients sorted by Urgency.
+     * @return the list of Patients sorted by Urgency
+     */
+    public LinkedList<Record> getUrgencyRecord() {
+		return this.recordsByUrgency;    	
+    }
     /**
      * Return the patient Record which corresponds to a given health card
      * number.

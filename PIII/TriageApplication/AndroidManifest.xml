@@ -89,6 +89,10 @@
             android:name="com.example.triageapplication.EnterPrescriptionInfoActivity"
             android:label="@string/title_activity_enter_prescription_info" >
         </activity>
+        <activity
+            android:name="com.example.triageapplication.UrgencyListViewActivity"
+            android:label="@string/title_activity_urgency_list_view" >
+        </activity>
     </application>
 
 </manifest>

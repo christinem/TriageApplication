@@ -61,8 +61,7 @@ private StaffMember staff;
 	}
     
     /** Passes the current activity into the UpdatePatientActiviy.
-     * @param view This will the new window that the addPatient activity
-     *              will be created in.
+     * @param view A User Interface type.
      */
     public void switchUpdate(View view) {
     	Intent intent = new Intent(this, UpdatePatientActivity.class);
@@ -71,7 +70,7 @@ private StaffMember staff;
     }
     
     /**
-     * Passes the current activity into the AccessDisplayRecordActivity
+     * Passes the current activity into the AccessDisplayRecordActivity.
      * @param view A User Interface type
      */
     public void displayInfo(View view) {
@@ -79,4 +78,15 @@ private StaffMember staff;
     	intent.putExtra("staff", staff);
     	startActivity(intent);
     }
+    
+    /**
+     * Passes the currenct activity into the UrgencyListViewActivity.
+     * @param view A User Interface Type
+     */
+    public void urgencyInfo(View view) {
+    	Intent intent = new Intent(this, UrgencyListViewActivity.class);
+    	intent.putExtra("staff", staff);
+    	startActivity(intent);
+    }
+    
 }
