@@ -79,8 +79,12 @@ public class RecordManager implements Serializable {
 		        			// This one goes at least one space after this one.
 		        			if (thisArraivalTime[i] < newArrivalTime[i]) {
 		        				newOneComesfirst = false;
-		        				position =  position + 1;
+		        				position = position + 1;
 		        				break;
+		        			}
+		        			// The new patient came sooner than this one so add them.
+		        			if ((thisArraivalTime[i] > newArrivalTime[i])) {
+		        				recordsByUrgency.add(position, record);
 		        			}
 		        		}
 		        		// The record should be added before the next one	
@@ -94,8 +98,11 @@ public class RecordManager implements Serializable {
 		    			position =  position + 1;
 		    			}
 	        }
-        	
+	        //Add if the patient has a lower priority and was came after all the other patients
+	        //LinkedList
+        	if (position ==recordsByUrgency.size() - 1) {
 	        recordsByUrgency.add(position, record);
+        	}
         }
     }
     
