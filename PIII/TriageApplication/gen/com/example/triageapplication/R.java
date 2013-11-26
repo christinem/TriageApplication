@@ -143,15 +143,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int heart_rate=0x7f060030;
         /**  Others 
          */
-        public static final int hello_world=0x7f06003d;
+        public static final int hello_world=0x7f060041;
         public static final int idnumber=0x7f060029;
         public static final int idnumber_display=0x7f06003b;
         public static final int invalid_record=0x7f06002d;
         public static final int last_name=0x7f060013;
         public static final int month=0x7f060015;
         public static final int password=0x7f060004;
-        public static final int prescription_instructions=0x7f060041;
-        public static final int prescription_name=0x7f060040;
+        public static final int prescription_instructions=0x7f06003f;
+        public static final int prescription_name=0x7f06003e;
         public static final int prescription_update=0x7f060039;
         public static final int re_login=0x7f06000f;
         /**  Registering a new nurse 
@@ -174,9 +174,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  For adding a new patient and retrying adding a patient 
          */
         public static final int title_activity_create_patient=0x7f060010;
-        public static final int title_activity_display_information=0x7f06003e;
+        public static final int title_activity_display_information=0x7f060042;
         public static final int title_activity_doctor_home_page=0x7f06000b;
-        public static final int title_activity_enter_prescription_info=0x7f06003f;
+        /**  Prescription Stuff 
+         */
+        public static final int title_activity_enter_prescription_info=0x7f06003d;
         /**  Enter Update Info and Retry Updating 
          */
         public static final int title_activity_enter_update_info=0x7f06002e;
@@ -197,7 +199,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int title_activity_update_prescription=0x7f060038;
         /**  Urgency Info 
          */
-        public static final int title_activity_urgency_list_view=0x7f060042;
+        public static final int title_activity_urgency_list_view=0x7f060040;
         public static final int update=0x7f060021;
         public static final int update_patient_info=0x7f060034;
         public static final int update_record=0x7f060007;
