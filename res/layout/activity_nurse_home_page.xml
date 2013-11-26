@@ -18,16 +18,6 @@
         android:text="@string/update_record" />
 
     <Button
-        android:id="@+id/add_patient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/update_record"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:onClick="addPatient"
-        android:text="@string/add_patient" />
-
-    <Button
         android:id="@+id/display_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,5 +34,25 @@
         android:layout_above="@+id/add_patient"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp" />
+
+    <Button
+        android:id="@+id/urgency_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/update_record"
+        android:layout_alignRight="@+id/update_record"
+        android:layout_marginBottom="17dp"
+        android:onClick="urgencyInfo"
+        android:text="@string/urgency_info" />
+
+    <Button
+        android:id="@+id/add_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/urgency_info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:onClick="addPatient"
+        android:text="@string/add_patient" />
 
 </RelativeLayout>

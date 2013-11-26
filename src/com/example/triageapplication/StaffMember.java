@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -252,6 +253,24 @@ public class StaffMember implements Serializable {
 	    return(text);
 	}
 
+/**
+ * Returns a StringBuilder consisting of all patients sorted by Urgency.
+ * @return a StringBuilder consisting of all patients sorted by Urgency.
+ */
+public StringBuilder getUrgencyInfo() {
+	LinkedList<Record> urgencyRecord = records.getUrgencyRecord();
+	StringBuilder urgency = new StringBuilder();
+		
+	for(Record record: urgencyRecord) {
+		String[] name = record.getName();
+		urgency.append(name[0] + " " + name[1] + "\n");
+		urgency.append("\n");
+		urgency.append("Urgency: " + record.getUrgencyRating() + "\n");
+	}
+	
+	return(urgency);	
+			
+	}
 
 /** Updates a Record's latest recording. 
  * @param The Record in question.
@@ -273,5 +292,5 @@ public void updateUrgency(Record record) {
 	record.updateUrgencyRating();
 	
 }
-}
 
+}
