@@ -85,25 +85,35 @@ public class RecordManager implements Serializable {
 		        			// The new patient came sooner than this one so add them.
 		        			if ((thisArraivalTime[i] > newArrivalTime[i])) {
 		        				recordsByUrgency.add(position, record);
+		        				break;
 		        			}
 		        		}
 		        		// The record should be added before the next one	
 		        		if (newOneComesfirst) {
 		        			break;
 		        		}
-	        		
-	    		}
-	        			 
+		        	}
+		        	// If the new patient has a higher urgency rating than this one, add it here.
+		        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
+		        		recordsByUrgency.add(position, record);
+		        		break;
+		        	}
+		        	
+		        		
+		        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
 		    		else {
 		    			position =  position + 1;
 		    			}
-	        }
-	        //Add if the patient has a lower priority and was came after all the other patients
-	        //LinkedList
-        	if (position ==recordsByUrgency.size() - 1) {
-	        recordsByUrgency.add(position, record);
+		        	
+            
+		        //Add if the patient has a lower priority and was came after all the other patients
+		        //LinkedList
+	        	if (position == recordsByUrgency.size() - 1) {
+		        recordsByUrgency.add(position, record);
+	        	}
         	}
         }
+
     }
     
     /**
