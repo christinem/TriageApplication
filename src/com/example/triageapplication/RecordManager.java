@@ -106,7 +106,7 @@ public class RecordManager implements Serializable {
             
 		        //Add if the patient has a lower priority and was came after all the other patients
 		        //LinkedList
-	        	if (position == recordsByUrgency.size() - 1) {
+	        	if (position >= recordsByUrgency.size() - 1) {
 		        recordsByUrgency.add(position, record);
         	}
         }
