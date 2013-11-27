@@ -61,6 +61,9 @@ public class Record implements Serializable {
 	/** This Record's instructions for a prescription. */
 	private String prescriptionInstructions;
 	
+	/** Whether the Patient of this Record is checked out or not */
+	private boolean checkedOut;
+	
 	/**
 	 * Constructs a Record object for a patient who has a name, a health card
 	 * number and a date of birth. The Record also contains the patient's age,
@@ -86,7 +89,24 @@ public class Record implements Serializable {
 		this.recordFile = new String(healthCardNum);
 		this.urgencyRating = 0;
 		this.prescriptionName = "";
-		this.prescriptionInstructions = "";		
+		this.prescriptionInstructions = "";	
+		this.checkedOut = true;
+	}
+    
+	/**
+	 * Return whether the Patient of this Record is checked out or not.
+	 * @return whether the Patient of this Record is checked out or not.
+	 */
+	public boolean isCheckedOut() {
+		return checkedOut;
+	}
+    
+	/**
+	 * Set whether the Patient of this Record is checked out or not.
+	 * @param checkedOut whether the Patient of this Record is checked out or not.
+	 */
+	public void setCheckedOut(boolean checkedOut) {
+		this.checkedOut = checkedOut;
 	}
 
 	/**
@@ -298,7 +318,7 @@ public class Record implements Serializable {
 	this.getDob()[1] + "," + this.getDob()[2]	+ "," + 
 	this.getTemperature() + "," + 	this.getBloodPressure() + 
 	"," + this.getHeartRate() + "," + 	this.getSymptoms() + "," 
-	+ this.getSeenByDoctor() + "," + this.getArrivalTime());
+	+ this.getSeenByDoctor() + "," + this.getArrivalTime() + "," + String.valueOf(this.isCheckedOut()));
 	}
 
 	/**

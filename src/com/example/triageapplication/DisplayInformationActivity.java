@@ -5,27 +5,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
  * This activity displays a Patient's Record History
  */
 public class DisplayInformationActivity extends Activity {
-
+         
+	Intent intent;
+	Record record;
+	StaffMember staff;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display_information);
 		
-		     Intent intent = getIntent();
-	         String healthNum = (String) intent.getStringExtra("healthcardnumber");
-	         StaffMember staff = (StaffMember) intent.getSerializableExtra("staff");
-	         
-	         StringBuilder text = staff.getInfo(this.getApplicationContext(), healthNum);
+		 intent = getIntent();
+	     record = (Record) intent.getSerializableExtra("record");
+	     staff = (StaffMember) intent.getSerializableExtra("staff");
+
+		
+	      StringBuilder text = staff.getInfo(this.getApplicationContext(), record);
 		    
-		    TextView recordHistory = (TextView) findViewById(R.id.display);
-		    recordHistory.setMovementMethod(new ScrollingMovementMethod());
-		    recordHistory.setText(text);
+		  TextView recordHistory = (TextView) findViewById(R.id.display);
+		  recordHistory.setMovementMethod(new ScrollingMovementMethod());
+		  recordHistory.setText(text);
 	}
 
 	@Override
@@ -33,6 +40,21 @@ public class DisplayInformationActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.display_information, menu);
 		return true;
+	}
+	
+	public void dischargePatient(View view) {
+		
+		
+		try {
+			staff.dischargePatient(record.getHealthCardNum(), this.getApplicationContext());
+			Intent backIntent = new Intent(this, NurseHomePageActivity.class);
+			backIntent.putExtra("staff", staff);
+			startActivity(backIntent);
+		} catch (NotCheckedInException e) {
+		    TextView text = (TextView) findViewById(R.id.not_checked_in);
+		    text.setVisibility(View.VISIBLE);
+		}
+		
 	}
 	  
 }

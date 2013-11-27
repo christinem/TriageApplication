@@ -18,6 +18,7 @@
     <string name="title_activity_doctor_home_page">Doctor\'s Home Paege</string>
     <string name="title_activity_nurse_home_page">Nurse\'s Home Page</string>
     <string name="urgency_info">View Patients by Urgency</string>
+    <string name="discharge">Discharge Patient</string>
 
     <!-- Re Log In -->
     <string name="title_activity_re_login">Re-Try Log In</string>
@@ -79,20 +80,21 @@
     <string name="title_activity_access_display_record">Access Record</string>
     <string name="idnumber_display">Health Card Number</string>
     <string name="display">Display Record History</string>
-    
-    <!-- Prescription Stuff -->
-     <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>
-    <string name="prescription_name">Prescription Name</string>
-    <string name="prescription_instructions">Prescription Instructions</string>
-    
-    <!-- Urgency Info -->
-     <string name="title_activity_urgency_list_view">Urgency List</string>
-    
-    
-    <!-- Others -->
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_force_access_display">Re-Enter Record Information</string>
     <string name="title_activity_display_information">Record History</string>
 
-   
-    
+    <!-- Prescription Stuff -->
+    <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>
+    <string name="prescription_name">Prescription Name</string>
+    <string name="prescription_instructions">Prescription Instructions</string>
+
+    <!-- Urgency Info -->
+    <string name="title_activity_urgency_list_view">Urgency List</string>
+
+    <!-- Others -->
+    <string name="hello_world">Hello world!</string>
+
+    <string name="title_activity_discharge_patient">DischargePatientActivity</string>
+ 
+
 </resources>

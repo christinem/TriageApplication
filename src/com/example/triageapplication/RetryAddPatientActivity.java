@@ -30,16 +30,16 @@ public class RetryAddPatientActivity extends Activity {
 		return true;
 	}
 	
-	/**
-	 * Creates a new Record for a patient.
+	/** Creates a new Record for a patient.
 	 * @param view A user interface type.
 	 */
 	public void createNewPatient(View view) {
 		
-		// Get the staff member from previous Activity
+		// Grabs the staff from the previous Activity.
         Intent intentStaff = getIntent();
         StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
         
+        // These grab the new patient's information from the user input fields.
 		EditText first_name = (EditText)findViewById(R.id.first_name);
 		String first = first_name.getText().toString();
 		
@@ -63,29 +63,29 @@ public class RetryAddPatientActivity extends Activity {
 		
 		try {
 			// All user input is valid, so let's create this patient.
-			staff.addPatient(name, dob, healthCardNumber,
-					this.getApplicationContext());
+			staff.addPatient(name, dob, healthCardNumber, this.getApplicationContext());
 			
 			// Save to file
 			try {
 				StaffMember.getRecords().saveToFile(openFileOutput(
-						"PatientsAndRecords", Context.MODE_PRIVATE));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+						"PatientsAndRecords",Context.MODE_PRIVATE));
+
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+
 			}
 			
 			// With the new patient dealt with the application
-			// passes back to the nurse home page activity (staff member is known
-			// to be a nurse because only they have access to this activity).
+			// passes back to the home page activity.
 			Intent intent = new Intent(this, NurseHomePageActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
-		
+			
+	    // These catch any invalid input given by the user.
 		} catch (InvalidDayOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
-		
 		} catch (InvalidMonthOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
@@ -94,7 +94,6 @@ public class RetryAddPatientActivity extends Activity {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
-		
 		} catch (InvalidHealthCardNumberException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);

@@ -56,8 +56,7 @@ public class CreatePatientActivity extends Activity {
 		EditText year_num = (EditText)findViewById(R.id.year);
 		String year = year_num.getText().toString();
 		
-		EditText healthNum = (EditText)findViewById(
-				R.id.healthcard_number);
+		EditText healthNum = (EditText)findViewById(R.id.healthcard_number);
 		String healthCardNumber = healthNum.getText().toString();
 		
 		String[] name = {first, last};
@@ -65,8 +64,8 @@ public class CreatePatientActivity extends Activity {
 		
 		try {
 			// All user input is valid, so let's create this patient.
-			staff.addPatient(name, dob, healthCardNumber, 
-					this.getApplicationContext());
+			staff.addPatient(name, dob, healthCardNumber, this.getApplicationContext());
+			
 			// Save to file
 			try {
 				StaffMember.getRecords().saveToFile(openFileOutput(

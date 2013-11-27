@@ -28,6 +28,10 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
+		/* File dir = this.getApplicationContext().getFilesDir();
+		File file = new File(dir, "PatientsAndRecords");
+		boolean deleted = file.delete();
+		
 		String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
         
 		OutputStreamWriter outputStreamWriter;
@@ -39,7 +43,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 		
 	/** Adds a menu title to this activity 
@@ -95,12 +99,13 @@ public class MainActivity extends Activity {
 				    }
 				
 				    try {
-						staff.createRecordManager(
-								this.getApplicationContext().getFilesDir(),
-								"PatientsAndRecords", 
+				    	File file = new File(this.getApplicationContext().getFilesDir(), "PatientsAndRecords");
+						if (!file.exists()) {
+							file.createNewFile();
+						}
+				    	staff.createRecordManager(this.getApplicationContext().getFilesDir(), "PatientsAndRecords", 
 								this.getApplicationContext());
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				    

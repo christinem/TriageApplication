@@ -7,11 +7,29 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DisplayInformationActivity" >
+    
+    <Button
+         android:id="@+id/discharge_patient"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="18dp"
+         android:onClick="dischargePatient"
+         android:text="@string/discharge" />
 
     <TextView
         android:id="@+id/display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_below="@+id/discharge_patient"
+        android:layout_marginTop="38dp"/>
+    
+    
+    <TextView
+        android:id="@+id/not_checked_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:visibility = "invisible"/>
 
 </RelativeLayout>
