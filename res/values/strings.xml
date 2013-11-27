@@ -82,6 +82,7 @@
     <string name="display">Display Record History</string>
     <string name="title_activity_force_access_display">Re-Enter Record Information</string>
     <string name="title_activity_display_information">Record History</string>
+    <string name="checked_out">Cannot Discharge: This Patient is not Checked In.</string>
 
     <!-- Prescription Stuff -->
     <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>

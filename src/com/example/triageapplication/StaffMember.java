@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -74,7 +76,13 @@ public class StaffMember implements Serializable {
 
 		else {
 			Record r = new Record(name, healthCardNumber, dob);
-			r.setupFile(context);
+			
+			// check if file exists, only if it doesn't does it create a new file for it
+			File file = new File(context.getFilesDir(), healthCardNumber);
+			if(!file.exists()) {
+			    r.setupFile(context);
+			}
+			
 			r.updateRecordAdmitted(context);
 			r.setCheckedOut(false);
 			records.add(r);
@@ -143,7 +151,8 @@ public class StaffMember implements Serializable {
 	 * @param seenByDoctor True if the patient has been seen by a doctor.
 	 * @throws NoRecordSpecifiedException 
 	 */
-	public void setSeenByDoctor(Record record, boolean seenByDoctor, Context context) throws 	NoRecordSpecifiedException {			
+	public void setSeenByDoctor(Record record, boolean seenByDoctor, Context context) throws 
+	NoRecordSpecifiedException {			
 		if (record == null) {
 			throw new NoRecordSpecifiedException("No record has been specified.");
 		}
@@ -151,21 +160,34 @@ public class StaffMember implements Serializable {
 		if (seenByDoctor == true){
 		    record.setSeenByDoctor(seenByDoctor);		
 		    record.updateRecordSeenByDoctor(context);
-            records.removePatientFromUrgency(record.getHealthCardNum());
+            records.removePatientFromUrgency(record);
 		}
 	}
 	
 	public void dischargePatient(String healthCardNum, Context context) throws NotCheckedInException {
 		Record record = records.getRecord(healthCardNum);
 		
-		if (record == null) {
+		if (record.isCheckedOut()) {
 		    throw new NotCheckedInException();
 		}
 		
 		record.discharge(context);
 		record.setCheckedOut(true);
+		Map<String, Record> master = records.getRecords();
+		
+		//Remove old record and add new record
+		master.remove(record.getHealthCardNum());
+		master.put(record.getHealthCardNum(), record);
+		
 		// This is incase a patient is not seen by a Doctor before they leave
-		records.removePatientFromUrgency(healthCardNum);
+		if (records.getUrgencyRecord().contains(record)){
+		    records.removePatientFromUrgency(record);
+		}
+		try {
+		    records.saveToFile(context.openFileOutput("PatientsAndRecords", Context.MODE_PRIVATE));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/** Updates a Record's latest recording. 

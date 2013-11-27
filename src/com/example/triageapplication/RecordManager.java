@@ -127,8 +127,8 @@ public class RecordManager implements Serializable {
         records.remove(healthcardnum);
     }
     
-    public void removePatientFromUrgency(String healthCardNum) {
-    	recordsByUrgency.remove(recordsByUrgency.indexOf(healthCardNum));
+    public void removePatientFromUrgency(Record record) {
+    	recordsByUrgency.remove(recordsByUrgency.indexOf(record));
     }
 
     

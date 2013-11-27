@@ -28,11 +28,11 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		/* File dir = this.getApplicationContext().getFilesDir();
+		/*File dir = this.getApplicationContext().getFilesDir();
 		File file = new File(dir, "PatientsAndRecords");
 		boolean deleted = file.delete();
 		
-		String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
+		/* String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
