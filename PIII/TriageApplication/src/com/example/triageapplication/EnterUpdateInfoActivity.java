@@ -84,6 +84,7 @@ public class EnterUpdateInfoActivity extends Activity {
 	    
 		try {
 			StaffMember.getRecords().removePatient(record.getHealthCardNum());
+			StaffMember.getRecords().removePatientFromUrgency(record);
 			StaffMember.getRecords().add(record);
 			StaffMember.getRecords().saveToFile(openFileOutput(
 					"PatientsAndRecords", Context.MODE_PRIVATE));

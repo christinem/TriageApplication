@@ -46,8 +46,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int choose_password=0x7f090022;
         public static final int choose_username=0x7f090021;
         public static final int day=0x7f090007;
-        public static final int discharge_patient=0x7f09000d;
-        public static final int display=0x7f09000e;
+        public static final int discharge_patient=0x7f09000e;
+        public static final int display=0x7f09000d;
         public static final int display_info=0x7f090010;
         public static final int find_record=0x7f090003;
         public static final int first_name=0x7f090006;
@@ -131,6 +131,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int app_name=0x7f060000;
         public static final int birthdate_name=0x7f06001d;
         public static final int blood_pressure=0x7f060030;
+        public static final int checked_out=0x7f060040;
         public static final int checkin_time=0x7f06001a;
         public static final int choose_password=0x7f060028;
         public static final int choose_username=0x7f060027;
@@ -149,15 +150,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int heart_rate=0x7f060031;
         /**  Others 
          */
-        public static final int hello_world=0x7f060044;
+        public static final int hello_world=0x7f060045;
         public static final int idnumber=0x7f06002a;
         public static final int idnumber_display=0x7f06003c;
         public static final int invalid_record=0x7f06002e;
         public static final int last_name=0x7f060014;
         public static final int month=0x7f060016;
         public static final int password=0x7f060004;
-        public static final int prescription_instructions=0x7f060042;
-        public static final int prescription_name=0x7f060041;
+        public static final int prescription_instructions=0x7f060043;
+        public static final int prescription_name=0x7f060042;
         public static final int prescription_update=0x7f06003a;
         public static final int re_login=0x7f060010;
         /**  Registering a new nurse 
@@ -180,12 +181,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  For adding a new patient and retrying adding a patient 
          */
         public static final int title_activity_create_patient=0x7f060011;
-        public static final int title_activity_discharge_patient=0x7f060045;
+        public static final int title_activity_discharge_patient=0x7f060046;
         public static final int title_activity_display_information=0x7f06003f;
         public static final int title_activity_doctor_home_page=0x7f06000b;
         /**  Prescription Stuff 
          */
-        public static final int title_activity_enter_prescription_info=0x7f060040;
+        public static final int title_activity_enter_prescription_info=0x7f060041;
         /**  Enter Update Info and Retry Updating 
          */
         public static final int title_activity_enter_update_info=0x7f06002f;
@@ -207,7 +208,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int title_activity_update_prescription=0x7f060039;
         /**  Urgency Info 
          */
-        public static final int title_activity_urgency_list_view=0x7f060043;
+        public static final int title_activity_urgency_list_view=0x7f060044;
         public static final int update=0x7f060022;
         public static final int update_patient_info=0x7f060035;
         public static final int update_record=0x7f060007;

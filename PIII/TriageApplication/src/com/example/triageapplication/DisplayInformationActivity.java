@@ -44,9 +44,10 @@ public class DisplayInformationActivity extends Activity {
 	
 	public void dischargePatient(View view) {
 		
-		
 		try {
 			staff.dischargePatient(record.getHealthCardNum(), this.getApplicationContext());
+			//StaffMember.getRecords().removePatient(record.getHealthCardNum());
+			//StaffMember.getRecords().add(record);
 			Intent backIntent = new Intent(this, NurseHomePageActivity.class);
 			backIntent.putExtra("staff", staff);
 			startActivity(backIntent);
