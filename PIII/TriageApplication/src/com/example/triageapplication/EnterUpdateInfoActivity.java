@@ -71,8 +71,7 @@ public class EnterUpdateInfoActivity extends Activity {
 	    	staff.setTemperature(record, temperature);
 	    	staff.setBloodPressure(record, bloodPressure);
 		    staff.setHeartRate(record, heartRate);
-		    staff.setSeenByDoctor(record, seenByDoctor, 
-		    		this.getApplicationContext());
+		    staff.setSeenByDoctor(record, seenByDoctor, this.getApplicationContext());
 		    staff.setSymptoms(record, symptoms);
 		    staff.updateUrgency(record);
 		    

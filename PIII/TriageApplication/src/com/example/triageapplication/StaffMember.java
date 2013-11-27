@@ -76,6 +76,7 @@ public class StaffMember implements Serializable {
 			Record r = new Record(name, healthCardNumber, dob);
 			r.setupFile(context);
 			r.updateRecordAdmitted(context);
+			r.setCheckedOut(false);
 			records.add(r);
 			try {
 				records.saveToFile(context.openFileOutput(
@@ -142,17 +143,29 @@ public class StaffMember implements Serializable {
 	 * @param seenByDoctor True if the patient has been seen by a doctor.
 	 * @throws NoRecordSpecifiedException 
 	 */
-	public void setSeenByDoctor(Record record, boolean seenByDoctor, 
-			Context context) throws 	NoRecordSpecifiedException {			
+	public void setSeenByDoctor(Record record, boolean seenByDoctor, Context context) throws 	NoRecordSpecifiedException {			
 		if (record == null) {
-			throw new NoRecordSpecifiedException(
-					"No record has been specified.");
+			throw new NoRecordSpecifiedException("No record has been specified.");
 		}
 		
 		if (seenByDoctor == true){
-		record.setSeenByDoctor(seenByDoctor);		
-		record.updateRecordSeenByDoctor(context);
+		    record.setSeenByDoctor(seenByDoctor);		
+		    record.updateRecordSeenByDoctor(context);
+            records.removePatientFromUrgency(record.getHealthCardNum());
 		}
+	}
+	
+	public void dischargePatient(String healthCardNum, Context context) throws NotCheckedInException {
+		Record record = records.getRecord(healthCardNum);
+		
+		if (record == null) {
+		    throw new NotCheckedInException();
+		}
+		
+		record.discharge(context);
+		record.setCheckedOut(true);
+		// This is incase a patient is not seen by a Doctor before they leave
+		records.removePatientFromUrgency(healthCardNum);
 	}
 	
 	/** Updates a Record's latest recording. 
@@ -232,8 +245,9 @@ public class StaffMember implements Serializable {
 	 * @param healthNum Name of Record File (a Patient's health card number).
 	 * @return a StringBuilder of all the information from the Record File.
 	 */
-	public StringBuilder getInfo(Context context, String healthNum) {
+	public StringBuilder getInfo(Context context, Record record) {
 	    
+		String healthNum = record.getHealthCardNum();
 	    File file = new File(context.getFilesDir(), healthNum);
 	    StringBuilder text = new StringBuilder();
 	    
@@ -266,6 +280,7 @@ public StringBuilder getUrgencyInfo() {
 		urgency.append(name[0] + " " + name[1] + "\n");
 		urgency.append("Urgency: " + record.getUrgencyRating() + "\n");
 		urgency.append("Health Card Number: " + record.getHealthCardNum() + "\n");
+		urgency.append("Arrival Time: " + record.getArrivalTime() + "\n");
 		urgency.append("\n");
 	}
 	

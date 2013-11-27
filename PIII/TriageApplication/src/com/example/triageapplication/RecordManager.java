@@ -61,7 +61,9 @@ public class RecordManager implements Serializable {
         records.put(record.getHealthCardNum(), record);
         int position = 0;
         if (recordsByUrgency.size() == 0) {
+        	if(!record.isCheckedOut()){
         		recordsByUrgency.add(record);
+        	}
         }
 
         else {
@@ -114,7 +116,6 @@ public class RecordManager implements Serializable {
 		        recordsByUrgency.add(position, record);
         	}
         }
-
     }
     
     /**
@@ -122,8 +123,12 @@ public class RecordManager implements Serializable {
      * @param healthcardnum the health card number of a patient
      */
     public void removePatient(String healthcardnum) {
-        recordsByUrgency.remove(records.get(healthcardnum));
+        //recordsByUrgency.remove(records.get(healthcardnum));
         records.remove(healthcardnum);
+    }
+    
+    public void removePatientFromUrgency(String healthCardNum) {
+    	recordsByUrgency.remove(recordsByUrgency.indexOf(healthCardNum));
     }
 
     
@@ -136,11 +141,20 @@ public class RecordManager implements Serializable {
     }
     
     /**
+     * Returns the Patient from the Urgency List with health card number "healthCardNum".
+     * @param healthCardNum Health Card Number of a Patient.
+     * @return the Patient from the Urgency List with health card number "healthCardNum".
+     */
+    public Record getUrgencyRecord(String healthCardNum) {
+		return this.recordsByUrgency.get(recordsByUrgency.indexOf(healthCardNum));    	
+    }
+    
+    /**
      * Returns the Patient with the highest priority.
      * @return the Patient with the highest priority.
      */
-    public Record getSingleRecord() {
-		return this.recordsByUrgency.removeFirst();    	
+    public Record getFirst() {
+    	return this.recordsByUrgency.removeFirst();
     }
     
     /**
@@ -209,6 +223,7 @@ public class RecordManager implements Serializable {
         	String symptoms = record[9];
         	Boolean seenByDoctor = Boolean.getBoolean(record[10]);
         	String arrivalTime  = record[11];
+        	boolean checkedOut = Boolean.getBoolean(record[12]);
         	
     		Record r = new Record(name, healthCardNumber, dob);
     		r.setBloodPressure(bloodPressure);
@@ -218,6 +233,7 @@ public class RecordManager implements Serializable {
     		r.setTemperature(temperature);
     		r.setArrivalTime(arrivalTime);
     		r.updateUrgencyRating();
+    		r.setCheckedOut(checkedOut);
     		
         	add(r);
         }

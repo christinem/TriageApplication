@@ -7,22 +7,18 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
-/**
- * This activity also allows access to patient's record, but for displaying information, 
- * instead of updating.
- */
-public class AccessDisplayRecordActivity extends Activity {
+public class ForceAccessDisplayActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_access_display_record);
+		setContentView(R.layout.activity_force_access_display);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.access_display_record, menu);
+		getMenuInflater().inflate(R.menu.force_access_display, menu);
 		return true;
 	}
 	
@@ -41,13 +37,11 @@ public class AccessDisplayRecordActivity extends Activity {
 		    intent.putExtra("record", record);
 			intent.putExtra("staff", staff);
 		    startActivity(intent);
-		//FIX THIS - Add something when record does not exist
 		} catch (NoRecordSpecifiedException e) {
-			// Record doesn't exist try to retrieve one that does.
-			   Intent reenter = new Intent(this, 
-					   ForceAccessDisplayActivity.class);
+			   Intent reenter = new Intent(this, ForceAccessDisplayActivity.class);
 			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
 	}
+
 }
