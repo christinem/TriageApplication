@@ -60,54 +60,54 @@ public class RecordManager implements Serializable {
     public void add(Record record) {
         records.put(record.getHealthCardNum(), record);
         int position = 0;
-        if (recordsByUrgency.size() == 0) {
-        	if(!record.isCheckedOut()){
-        		recordsByUrgency.add(record.getHealthCardNum());
-        	}
-        }
-
-        else {
-	        
-	        while (position < recordsByUrgency.size()) {
-	    		Record thisRecord = records.get((String) recordsByUrgency.get(position));
-	    		
-	        	// If the new patient has a higher urgency rating than this one, add it here.
-	        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
-	        		recordsByUrgency.add(position, record.getHealthCardNum());
-	        		break;
+        if (!record.isCheckedOut()) {
+        	
+	        	if(recordsByUrgency.size() == 0){
+	        		recordsByUrgency.add(record.getHealthCardNum());
 	        	}
-	    		
-	        	
-				// Does the new record have the same urgency as this one?
-	        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
-	        		recordsByUrgency.add(position, record.getHealthCardNum());	  
-	        		break;
-//	        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
-//	        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
-//	        		
-//	        		// Which patient arrived first?	
-//	        		
-//	        		for (int i = 0; i < 6; i++) {
-//	        			if (thisArraivalTime[i] < newArrivalTime[i]) {
-//	        				position = position + 1;
-//	        				break;
-//	        			}
-//	        			
-//		        		// The record should be added before the next one	
-//		        		if (thisArraivalTime[i] > newArrivalTime[i]){
-//	        				recordsByUrgency.add(position, record);		        			
-//		        			break;
-//		        		}
-//	        		}
-	        	}
-			        	
-
-			        			        		
-	        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
-	    		else {
-	    			position =  position + 1;
-	    			}
-		        }
+		        	else {
+		        
+		        while (position < recordsByUrgency.size()) {
+		    		Record thisRecord = records.get((String) recordsByUrgency.get(position));
+		    		
+		        	// If the new patient has a higher urgency rating than this one, add it here.
+		        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
+		        		recordsByUrgency.add(position, record.getHealthCardNum());
+		        		break;
+		        	}
+		    		
+		        	
+					// Does the new record have the same urgency as this one?
+		        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
+		        		recordsByUrgency.add(position, record.getHealthCardNum());	  
+		        		break;
+	//	        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
+	//	        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
+	//	        		
+	//	        		// Which patient arrived first?	
+	//	        		
+	//	        		for (int i = 0; i < 6; i++) {
+	//	        			if (thisArraivalTime[i] < newArrivalTime[i]) {
+	//	        				position = position + 1;
+	//	        				break;
+	//	        			}
+	//	        			
+	//		        		// The record should be added before the next one	
+	//		        		if (thisArraivalTime[i] > newArrivalTime[i]){
+	//	        				recordsByUrgency.add(position, record);		        			
+	//		        			break;
+	//		        		}
+	//	        		}
+		        	}
+				        	
+	
+				        			        		
+		        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
+		    		else {
+		    			position =  position + 1;
+		    			}
+			        }
+		        	}
 		        	
             
 		        //Add if the patient has a lower priority and was came after all the other patients
@@ -226,7 +226,7 @@ public class RecordManager implements Serializable {
     		r.updateUrgencyRating();
     		r.setCheckedOut(checkedOut);
     		
-        	add(r);
+        	add(r); 
         }
         scanner.close();
     }   
