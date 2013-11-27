@@ -27,7 +27,7 @@ public class RecordManager implements Serializable {
 	private Map<String, Record> records;
 	
 	/** A linked list of patients in order of most to least urgent. */
-	private LinkedList<Record> recordsByUrgency;	
+	private LinkedList<String> recordsByUrgency;	
 	
     /**
      * Constructs a new RecordManager that manages a collection of 
@@ -41,7 +41,7 @@ public class RecordManager implements Serializable {
     		throws IOException {
     	
     	records = new HashMap<String, Record>();
-    	recordsByUrgency = new LinkedList<Record>();
+    	recordsByUrgency = new LinkedList<String>();
     	
     	// Populates the Record list using stored data, if it exists.
         File file = new File(dir, fileName);
@@ -62,25 +62,25 @@ public class RecordManager implements Serializable {
         int position = 0;
         if (recordsByUrgency.size() == 0) {
         	if(!record.isCheckedOut()){
-        		recordsByUrgency.add(record);
+        		recordsByUrgency.add(record.getHealthCardNum());
         	}
         }
 
         else {
 	        
 	        while (position < recordsByUrgency.size()) {
-	    		Record thisRecord = (Record) recordsByUrgency.get(position);
+	    		Record thisRecord = records.get((String) recordsByUrgency.get(position));
 	    		
 	        	// If the new patient has a higher urgency rating than this one, add it here.
 	        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
-	        		recordsByUrgency.add(position, record);
+	        		recordsByUrgency.add(position, record.getHealthCardNum());
 	        		break;
 	        	}
 	    		
 	        	
 				// Does the new record have the same urgency as this one?
 	        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
-	        		recordsByUrgency.add(position, record);	  
+	        		recordsByUrgency.add(position, record.getHealthCardNum());	  
 	        		break;
 //	        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
 //	        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
@@ -113,7 +113,7 @@ public class RecordManager implements Serializable {
 		        //Add if the patient has a lower priority and was came after all the other patients
 		        //LinkedList
 	        	if (position >= recordsByUrgency.size() - 1) {
-		        recordsByUrgency.add(position, record);
+	        		recordsByUrgency.add(position, record.getHealthCardNum());
         	}
         }
     }
@@ -128,7 +128,7 @@ public class RecordManager implements Serializable {
     }
     
     public void removePatientFromUrgency(Record record) {
-    	recordsByUrgency.remove(recordsByUrgency.indexOf(record));
+    	recordsByUrgency.remove(recordsByUrgency.indexOf(record.getHealthCardNum()));
     }
 
     
@@ -139,21 +139,12 @@ public class RecordManager implements Serializable {
     public Map<String, Record> getRecords() {
         return records;
     }
-    
-    /**
-     * Returns the Patient from the Urgency List with health card number "healthCardNum".
-     * @param healthCardNum Health Card Number of a Patient.
-     * @return the Patient from the Urgency List with health card number "healthCardNum".
-     */
-    public Record getUrgencyRecord(String healthCardNum) {
-		return this.recordsByUrgency.get(recordsByUrgency.indexOf(healthCardNum));    	
-    }
-    
+        
     /**
      * Returns the Patient with the highest priority.
      * @return the Patient with the highest priority.
      */
-    public Record getFirst() {
+    public String getFirst() {
     	return this.recordsByUrgency.removeFirst();
     }
     
@@ -161,7 +152,7 @@ public class RecordManager implements Serializable {
      * Returns the list of Patients sorted by Urgency.
      * @return the list of Patients sorted by Urgency
      */
-    public LinkedList<Record> getUrgencyRecord() {
+    public LinkedList<String> getUrgencyRecords() {
 		return this.recordsByUrgency;    	
     }
     /**

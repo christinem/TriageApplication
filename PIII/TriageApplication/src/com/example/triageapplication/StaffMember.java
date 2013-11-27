@@ -180,7 +180,7 @@ public class StaffMember implements Serializable {
 		master.put(record.getHealthCardNum(), record);
 		
 		// This is incase a patient is not seen by a Doctor before they leave
-		if (records.getUrgencyRecord().contains(record)){
+		if (records.getUrgencyRecords().contains(record.getHealthCardNum())){
 		    records.removePatientFromUrgency(record);
 		}
 		try {
@@ -294,10 +294,11 @@ public class StaffMember implements Serializable {
  * @return a StringBuilder consisting of all patients sorted by Urgency.
  */
 public StringBuilder getUrgencyInfo() {
-	LinkedList<Record> urgencyRecord = records.getUrgencyRecord();
+	LinkedList<String> urgencyRecord = records.getUrgencyRecords();
 	StringBuilder urgency = new StringBuilder();
 		
-	for(Record record: urgencyRecord) {
+	for(String healthCardNumber: urgencyRecord) {
+		Record record = records.getRecord(healthCardNumber);
 		String[] name = record.getName();
 		urgency.append(name[0] + " " + name[1] + "\n");
 		urgency.append("Urgency: " + record.getUrgencyRating() + "\n");
