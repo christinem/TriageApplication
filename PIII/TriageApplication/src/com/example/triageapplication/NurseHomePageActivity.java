@@ -80,7 +80,7 @@ private StaffMember staff;
     }
     
     /**
-     * Passes the currenct activity into the UrgencyListViewActivity.
+     * Passes the current activity into the UrgencyListViewActivity.
      * @param view A User Interface Type
      */
     public void urgencyInfo(View view) {
