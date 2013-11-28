@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 		/*File dir = this.getApplicationContext().getFilesDir();
 		File file = new File(dir, "PatientsAndRecords");
 		boolean deleted = file.delete(); */
-		
+		/*
 		 String string = "Mathias\n1234\nDoctor\n\nChristine\n2345\nNurse\n\nNathan\n4567\nPharmacist\n\n";
         
 		OutputStreamWriter outputStreamWriter;
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 		
 	/** Adds a menu title to this activity 

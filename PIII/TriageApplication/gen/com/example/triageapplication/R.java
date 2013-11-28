@@ -57,7 +57,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int idnumber_display=0x7f090002;
         public static final int last_name=0x7f090005;
         public static final int month=0x7f090009;
-        public static final int next_prescription=0x7f090021;
+        public static final int next_prescription=0x7f090020;
         public static final int not_checked_in=0x7f09000f;
         public static final int pass=0x7f09001c;
         public static final int prescription=0x7f090019;
@@ -71,7 +71,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int temperature=0x7f090016;
         public static final int textView1=0x7f090001;
         public static final int textView2=0x7f090012;
-        public static final int textView3=0x7f090020;
+        public static final int textView3=0x7f090021;
         public static final int update_patient_info=0x7f090014;
         public static final int update_record=0x7f090011;
         public static final int urgency_info=0x7f09001f;

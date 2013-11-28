@@ -8,30 +8,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".PharmacistHomePageActivity" >
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/display_info"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:id="@+id/display_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/next_prescription"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="102dp"
+        android:layout_below="@+id/next_prescription"
         android:onClick="displayInfo"
         android:text="@string/display_info" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp" />
 
     <Button
         android:id="@+id/next_prescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_below="@+id/textView3"
         android:onClick="showPrescription"
         android:text="@string/next_prescription" />
 
