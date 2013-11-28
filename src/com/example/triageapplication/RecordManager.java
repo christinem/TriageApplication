@@ -83,54 +83,51 @@ public class RecordManager implements Serializable {
         	// or if the List is of size 0.
         	if (position >= recordsByUrgency.size() - 1) {
         		recordsByUrgency.add(position, record.getHealthCardNum());
+        		return;
 	        	}
 		        
 	        	else {		        
 			        while (position < recordsByUrgency.size()) {
-			    		Record thisRecord = records.get((String) recordsByUrgency.get(position));
-			    		
-			        	// If the new patient has a higher urgency rating than this one, add it here.
-			        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
-			        		recordsByUrgency.add(position, record.getHealthCardNum());
-			        		break;
-			        	}
-			    		
-			        	
-						// Does the new record have the same urgency as this one?
-			        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
-			        		recordsByUrgency.add(position, record.getHealthCardNum());	  
-			        		break;
-		//	        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
-		//	        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
-		//	        		
-		//	        		// Which patient arrived first?	
-		//	        		
-		//	        		for (int i = 0; i < 6; i++) {
-		//	        			if (thisArraivalTime[i] < newArrivalTime[i]) {
-		//	        				position = position + 1;
-		//	        				break;
-		//	        			}
-		//	        			
-		//		        		// The record should be added before the next one	
-		//		        		if (thisArraivalTime[i] > newArrivalTime[i]){
-		//	        				recordsByUrgency.add(position, record);		        			
-		//		        			break;
-		//		        		}
-		//	        		}
-			        	}
-					        	
-		
-					        			        		
-			        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
-			    		else {
-			    			position =  position + 1;
-			    			}
-				        }
+				    		Record thisRecord = records.get((String) recordsByUrgency.get(position));
+				    		
+				        	// If the new patient has a higher urgency rating than this one, add it here.
+				        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
+				        		recordsByUrgency.add(position, record.getHealthCardNum());
+				        		return;
+				        	}
+				    		
+				        	
+							// Does the new record have the same urgency as this one?
+				        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
+				        		recordsByUrgency.add(position, record.getHealthCardNum());	
+				        		break;
+//				        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
+//				        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
+//				        		
+//				        		// Which patient arrived first?	
+//				        		for (int i = 0; i < 6; i++) {
+//				        			if (thisArraivalTime[i] < newArrivalTime[i]) {
+//				        				position = position + 1;
+//				        				break;
+//				        			}
+//				        			
+//					        		// The record should be added before the next one	
+//					        		if (thisArraivalTime[i] > newArrivalTime[i]){
+//				        				recordsByUrgency.add(position, record.getHealthCardNum());		        			
+//					        			return;
+//					        			}
+//					        		}	
+				        		}
+				    			        		
+				        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
+				    		else {
+				    			position =  position + 1;
+				    			}
+				        	}
 			        }
-		      
         }
-    }
-    
+        }
+		    
     /**
      * Removes the given health card number from the RecordManager
      * @param healthcardnum the health card number of a patient

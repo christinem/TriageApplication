@@ -61,7 +61,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int not_checked_in=0x7f09000f;
         public static final int pass=0x7f09001c;
         public static final int prescription=0x7f090019;
-        public static final int prescription_instructions=0x7f090014;
+        public static final int prescription_instructions=0x7f090015;
         public static final int prescription_name=0x7f090013;
         public static final int progressBar1=0x7f09001e;
         public static final int progressBar2=0x7f090023;
@@ -72,7 +72,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView1=0x7f090001;
         public static final int textView2=0x7f090012;
         public static final int textView3=0x7f090021;
-        public static final int update_patient_info=0x7f090015;
+        public static final int update_patient_info=0x7f090014;
         public static final int update_record=0x7f090011;
         public static final int urgency_info=0x7f09001f;
         public static final int urgency_list=0x7f090029;
