@@ -10,9 +10,9 @@
 
     <Button
         android:id="@+id/display_info"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/next_prescription"
         android:onClick="displayInfo"
         android:text="@string/display_info" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp" />
+        android:layout_marginTop="70dp" />
 
     <Button
         android:id="@+id/next_prescription"
@@ -32,6 +32,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textView3"
         android:onClick="showPrescription"
+        android:layout_marginTop="40dp"
         android:text="@string/next_prescription" />
 
 </RelativeLayout>
