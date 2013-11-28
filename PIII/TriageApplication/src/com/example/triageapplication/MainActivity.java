@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		// Sets the layout resource for this activity.
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main); }
 		
 		/*File dir = this.getApplicationContext().getFilesDir();
 		File file = new File(dir, "PatientsAndRecords");
@@ -36,14 +36,16 @@ public class MainActivity extends Activity {
         
 		OutputStreamWriter outputStreamWriter;
 		try {
-			outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput("passwords.txt", 
-			Context.MODE_PRIVATE));
+			this.getApplicationContext();
+			outputStreamWriter = new OutputStreamWriter(
+					this.getApplicationContext().openFileOutput("passwords.txt", 
+							Context.MODE_PRIVATE));
 			outputStreamWriter.write(string);
 			outputStreamWriter.close();	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 	}
 		
 	/** Adds a menu title to this activity 
