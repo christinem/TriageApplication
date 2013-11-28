@@ -50,8 +50,8 @@ public class EnterPrescriptionInfoActivity extends Activity {
 	     
 	    try {
 	    	//This patient's record exists add to it.
-	    	staff.setPrescription(record, prescriptionNameString,
-	    			prescriptionInstructionsString);
+	    	staff.setPrescription(record, prescriptionNameString, prescriptionInstructionsString,
+	    			this.getApplicationContext());
 		    
 		} catch (Exception e) {
 			// prompt for a record

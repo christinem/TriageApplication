@@ -90,7 +90,7 @@ public class Record implements Serializable {
 		this.urgencyRating = 0;
 		this.prescriptionName = "";
 		this.prescriptionInstructions = "";	
-		this.checkedOut = true;
+		this.checkedOut = false;
 	}
     
 	/**

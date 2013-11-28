@@ -49,6 +49,10 @@
             android:name="com.example.triageapplication.AccessRecordActivity"
             android:label="@string/title_activity_access_record" >
         </activity>
+         <activity
+            android:name="com.example.triageapplication.PharmacistHomePageActivity"
+            android:label="@string/title_pharmacist_homepage" >
+        </activity>
         <activity
             android:name="com.example.triageapplication.EnterUpdateInfoActivity"
             android:label="@string/title_activity_enter_update_info" >
@@ -100,6 +104,10 @@
         <activity
             android:name="com.example.triageapplication.ForceAccessDisplayActivity"
             android:label="@string/title_activity_force_access_display" >
+        </activity>
+        <activity
+            android:name="com.example.triageapplication.FillPrescriptionActivity"
+            android:label="@string/title_activity_fill_prescription" >
         </activity>
     </application>
 

@@ -65,11 +65,6 @@ public class EnterUpdateInfoActivity extends Activity {
 	    EditText temp = (EditText) findViewById(R.id.temperature);
 	    String temperatureString = temp.getText().toString();
 	    double temperature = Double.parseDouble(temperatureString);
-	   
-	    // Crashes cause it can't find record, finds index -1 and tries to remove that, which doesn't exist
-	    if (seenByDoctor) {
-	    	StaffMember.getRecords().removePatientFromUrgency(record);		
-	    }
 	     
 	    try {
 	    	//This patient's record exists add to it.
@@ -89,8 +84,9 @@ public class EnterUpdateInfoActivity extends Activity {
 	    
 		try {
 			StaffMember.getRecords().removePatient(record.getHealthCardNum());
+			StaffMember.getRecords().removePatientFromUrgency(record);
 			StaffMember.getRecords().add(record);
-			StaffMember.getRecords().saveToFile(openFileOutput(
+			StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
 					"PatientsAndRecords", Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

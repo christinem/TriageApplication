@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -33,6 +34,12 @@ public class DisplayInformationActivity extends Activity {
 		  TextView recordHistory = (TextView) findViewById(R.id.display);
 		  recordHistory.setMovementMethod(new ScrollingMovementMethod());
 		  recordHistory.setText(text);
+		  
+		  // Hide the discharge patient button if staff is a Doctor or Nurse
+		  if (staff instanceof Doctor || staff instanceof Pharmacist) {
+			  Button button = (Button) findViewById(R.id.discharge_patient);
+			  button.setVisibility(View.INVISIBLE);
+		  }
 	}
 
 	@Override

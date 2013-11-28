@@ -18,8 +18,8 @@
         android:id="@+id/prescription_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/prescription_instructions"
         android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
         android:ems="10"
         android:hint="@string/prescription_name" >
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/prescription_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/prescription_instructions" />
 

@@ -26,20 +26,18 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		// Sets the layout resource for this activity.
-		setContentView(R.layout.activity_main); }
+		setContentView(R.layout.activity_main);
 		
 		/*File dir = this.getApplicationContext().getFilesDir();
 		File file = new File(dir, "PatientsAndRecords");
-		boolean deleted = file.delete();
+		boolean deleted = file.delete(); */
 		
-		/* String string = "mathias\n1234\nDoctor\n\nchristine\n2345\nNurse\n\n";
+		 String string = "Mathias\n1234\nDoctor\n\nChristine\n2345\nNurse\n\nNathan\n4567\nPharmacist\n\n";
         
 		OutputStreamWriter outputStreamWriter;
 		try {
-			this.getApplicationContext();
-			outputStreamWriter = new OutputStreamWriter(
-					this.getApplicationContext().openFileOutput("passwords.txt", 
-							Context.MODE_PRIVATE));
+			outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput("passwords.txt", 
+			Context.MODE_PRIVATE));
 			outputStreamWriter.write(string);
 			outputStreamWriter.close();	
 		} catch (Exception e) {
@@ -95,18 +93,32 @@ public class MainActivity extends Activity {
 				    if (acceptLogIn[1].equalsIgnoreCase("doctor")) {
 				       staff = new Doctor(username);
 				       intent = new Intent(this, DoctorHomePageActivity.class);
-				    } else {
+				    }
+				    
+				    else if (acceptLogIn[1].equalsIgnoreCase("pharmacist")) {
+				       staff = new Pharmacist(username);
+				       intent = new Intent(this, PharmacistHomePageActivity.class);
+				    }
+				    
+					else {
 				       staff = new Nurse(username);
 				       intent = new Intent(this, NurseHomePageActivity.class);
 				    }
 				
 				    try {
-				    	File file = new File(this.getApplicationContext().getFilesDir(), "PatientsAndRecords");
-						if (!file.exists()) {
-							file.createNewFile();
+				    	File file1 = new File(this.getApplicationContext().getFilesDir(), "PatientsAndRecords");
+				    	File file2 = new File(this.getApplicationContext().getFilesDir(), "Prescriptions");
+				    	
+						if (!file1.exists()) {
+							file1.createNewFile();
 						}
-				    	staff.createRecordManager(this.getApplicationContext().getFilesDir(), "PatientsAndRecords", 
+						if (!file2.exists()) {
+							file2.createNewFile();
+						}
+						
+				    	staff.createRecordManager(this.getApplicationContext().getFilesDir(), "PatientsAndRecords", "Prescriptions", 
 								this.getApplicationContext());
+				    	
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

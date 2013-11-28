@@ -88,7 +88,7 @@ public class RetryUpdateInfo extends Activity {
 		try {
 			StaffMember.getRecords().removePatient(record.getHealthCardNum());
 			StaffMember.getRecords().add(record);
-			StaffMember.getRecords().saveToFile(openFileOutput(
+			StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
 					"PatientsAndRecords", Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

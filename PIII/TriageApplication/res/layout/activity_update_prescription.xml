@@ -17,21 +17,22 @@
         android:text="@string/update" />
 
     <Button
-        android:id="@+id/access_record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:onClick="switchAccessRecord"
-        android:text="@string/access_record" />
-
-    <Button
         android:id="@+id/save_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/access_record"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:onClick="saveData"
         android:text="@string/save_data" />
+
+    <Button
+        android:id="@+id/access_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/save_data"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:onClick="switchAccessRecord"
+        android:text="@string/access_record" />
 
 </RelativeLayout>

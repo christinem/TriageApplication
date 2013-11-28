@@ -39,9 +39,9 @@ public class StaffMember implements Serializable {
 	 * @param context The context of this Android application.
 	 * @throws IOException 
 	 */
-	public void createRecordManager(File dir, String fileName, Context context)
+	public void createRecordManager(File dir, String fileName1, String fileName2, Context context)
 	throws IOException {
-		records = new RecordManager(dir, fileName, context);
+		records = new RecordManager(dir, fileName1, fileName2, context);
 	}
 
 	/** Creates a Record for a patient with with a name, a date of birth and a
@@ -87,7 +87,7 @@ public class StaffMember implements Serializable {
 			r.setCheckedOut(false);
 			records.add(r);
 			try {
-				records.saveToFile(context.openFileOutput(
+				records.saveRecordsToFile("PatientsAndRecords", context.openFileOutput(
 						"PatientsAndRecords", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -173,18 +173,19 @@ public class StaffMember implements Serializable {
 		
 		record.discharge(context);
 		record.setCheckedOut(true);
-		Map<String, Record> master = records.getRecords();
 		
 		//Remove old record and add new record
-		master.remove(record.getHealthCardNum());
-		master.put(record.getHealthCardNum(), record);
+		records.removePatient(record.getHealthCardNum());
 		
 		// This is incase a patient is not seen by a Doctor before they leave
 		if (records.getUrgencyRecords().contains(record.getHealthCardNum())){
 		    records.removePatientFromUrgency(record);
 		}
+		
+		records.add(record);
+		
 		try {
-		    records.saveToFile(context.openFileOutput("PatientsAndRecords", Context.MODE_PRIVATE));
+		    records.saveRecordsToFile("PatientsAndRecords", context.openFileOutput("PatientsAndRecords", Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -315,9 +316,10 @@ public StringBuilder getUrgencyInfo() {
  * @param The Record in question.
  * @param heartRate The new symptoms.
  * @throws NoRecordSpecifiedException 
+ * @throws FileNotFoundException 
  */
 public void setPrescription(Record record, String prescriptionName, String
-		prescriptionInstructions) throws NoRecordSpecifiedException {
+		prescriptionInstructions, Context context) throws NoRecordSpecifiedException, FileNotFoundException {
 	
 	if (record == null) {
 		throw new NoRecordSpecifiedException("No record has been specified.");
@@ -325,11 +327,17 @@ public void setPrescription(Record record, String prescriptionName, String
 	
 	record.setPrescriptionName(prescriptionName);
 	record.setPrescriptionInstructions(prescriptionInstructions);
+	
+	records.addPrescription("Patient: " + record.getHealthCardNum() + "\n" + prescriptionName + ":\n\t" + prescriptionInstructions, context);
+	
 	}
 
 public void updateUrgency(Record record) {
 	record.updateUrgencyRating();
-	
+	}
+
+public String getPrescription(Context context) throws FileNotFoundException {
+	return this.records.getPrescription(context);
 }
 
 }
