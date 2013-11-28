@@ -71,16 +71,30 @@ public class ReLoginActivity extends Activity {
 				    if (acceptLogIn[1].equalsIgnoreCase("doctor")) {
 				       staff = new Doctor(username);
 				       intent = new Intent(this, DoctorHomePageActivity.class);
-				    } else {
+				    }
+				    
+				     else if (acceptLogIn[1].equalsIgnoreCase("pharmacist")) {
+					       staff = new Pharmacist(username);
+					       intent = new Intent(this, PharmacistHomePageActivity.class);
+					}
+				       
+				     else {
 				       staff = new Doctor(username);
 				       intent = new Intent(this, DoctorHomePageActivity.class);
 				       intent = new Intent(this, NurseHomePageActivity.class);
 				    }
 				
 				    try {
-						staff.createRecordManager(
-								this.getApplicationContext().getFilesDir(),
-								"PatientsAndRecords", 
+				    	File file1 = new File(this.getApplicationContext().getFilesDir(), "PatientsAndRecords");
+				    	File file2 = new File(this.getApplicationContext().getFilesDir(), "Prescriptions");
+						if (!file1.exists()) {
+							file1.createNewFile();
+						}
+						if (!file2.exists()) {
+							file2.createNewFile();
+						}
+						
+				    	staff.createRecordManager(this.getApplicationContext().getFilesDir(), "PatientsAndRecords", "Prescriptions", 
 								this.getApplicationContext());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block

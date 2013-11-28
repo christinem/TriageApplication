@@ -67,7 +67,7 @@ public class RetryAddPatientActivity extends Activity {
 			
 			// Save to file
 			try {
-				StaffMember.getRecords().saveToFile(openFileOutput(
+				StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
 						"PatientsAndRecords",Context.MODE_PRIVATE));
 
 				} catch (FileNotFoundException e) {

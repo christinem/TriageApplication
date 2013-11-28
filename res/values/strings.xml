@@ -15,10 +15,13 @@
     <string name="find_patient">Access a Patient\'s Record</string>
     <string name="add_patient">Check-In a New Patient</string>
     <string name="display_info">Display a Patient\'s Record History</string>
+    <string name="next_prescription">Display the next prescription in the queue</string>
     <string name="title_activity_doctor_home_page">Doctor\'s Home Paege</string>
     <string name="title_activity_nurse_home_page">Nurse\'s Home Page</string>
+    <string name="title_activity_pharmacist_home_page">Pharmacist\'s Home Page</string>
     <string name="urgency_info">View Patients by Urgency</string>
     <string name="discharge">Discharge Patient</string>
+    <string name="title_pharmacist_homepage">Pharmacist\'s Home Page</string>
 
     <!-- Re Log In -->
     <string name="title_activity_re_login">Re-Try Log In</string>
@@ -96,6 +99,9 @@
     <string name="hello_world">Hello world!</string>
 
     <string name="title_activity_discharge_patient">DischargePatientActivity</string>
+    <string name="title_activity_fill_prescription">FillPrescriptionActivity</string>
+    <string name="display2">Display Prescription</string>
+    
  
 
 </resources>
