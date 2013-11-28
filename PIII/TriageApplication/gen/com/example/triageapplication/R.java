@@ -127,106 +127,105 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int urgency_list_view=0x7f080015;
     }
     public static final class string {
-        public static final int access_record=0x7f060024;
+        public static final int access_record=0x7f060023;
         public static final int action_settings=0x7f060001;
-        public static final int add=0x7f06001f;
-        public static final int add_new_patient=0x7f06001b;
+        public static final int add=0x7f06001e;
+        public static final int add_new_patient=0x7f06001a;
         public static final int add_patient=0x7f060009;
-        public static final int age=0x7f06001e;
+        public static final int age=0x7f06001d;
         /**  Main Log In Page 
          */
         public static final int app_name=0x7f060000;
-        public static final int birthdate_name=0x7f060020;
-        public static final int blood_pressure=0x7f060033;
-        public static final int checked_out=0x7f060043;
-        public static final int checkin_time=0x7f06001d;
-        public static final int choose_password=0x7f06002b;
-        public static final int choose_username=0x7f06002a;
-        public static final int day=0x7f060018;
-        public static final int discharge=0x7f060010;
-        public static final int display=0x7f060040;
-        public static final int display2=0x7f06004b;
+        public static final int birthdate_name=0x7f06001f;
+        public static final int blood_pressure=0x7f060032;
+        public static final int checked_out=0x7f060042;
+        public static final int checkin_time=0x7f06001c;
+        public static final int choose_password=0x7f06002a;
+        public static final int choose_username=0x7f060029;
+        public static final int day=0x7f060017;
+        public static final int discharge=0x7f06000f;
+        public static final int display=0x7f06003f;
+        public static final int display2=0x7f060048;
         public static final int display_info=0x7f06000a;
-        public static final int enter_healthnumber=0x7f06002e;
-        public static final int enter_update=0x7f060039;
+        public static final int enter_healthnumber=0x7f06002d;
+        public static final int enter_update=0x7f060038;
         public static final int find_patient=0x7f060008;
-        public static final int find_record=0x7f06002f;
-        public static final int first_name=0x7f060016;
+        public static final int find_record=0x7f06002e;
+        public static final int first_name=0x7f060015;
         public static final int header=0x7f060002;
-        public static final int header_register=0x7f060028;
-        public static final int healthcard_number=0x7f06001c;
-        public static final int heart_rate=0x7f060034;
+        public static final int header_register=0x7f060027;
+        public static final int healthcard_number=0x7f06001b;
+        public static final int heart_rate=0x7f060033;
         /**  Others 
          */
-        public static final int hello_world=0x7f060048;
-        public static final int idnumber=0x7f06002d;
-        public static final int idnumber_display=0x7f06003f;
-        public static final int invalid_record=0x7f060031;
-        public static final int last_name=0x7f060017;
-        public static final int month=0x7f060019;
-        public static final int next_prescription=0x7f06000b;
+        public static final int hello_world=0x7f06004a;
+        public static final int idnumber=0x7f06002c;
+        public static final int idnumber_display=0x7f06003e;
+        public static final int invalid_record=0x7f060030;
+        public static final int last_name=0x7f060016;
+        public static final int month=0x7f060018;
+        public static final int next_prescription=0x7f060046;
         public static final int password=0x7f060004;
-        public static final int prescription_instructions=0x7f060046;
-        public static final int prescription_name=0x7f060045;
-        public static final int prescription_update=0x7f06003d;
-        public static final int re_login=0x7f060013;
+        public static final int prescription_instructions=0x7f060045;
+        public static final int prescription_name=0x7f060044;
+        public static final int prescription_update=0x7f06003c;
+        public static final int re_login=0x7f060012;
         /**  Registering a new nurse 
          */
-        public static final int register_button=0x7f060026;
-        public static final int register_nurse_button=0x7f060029;
-        public static final int retry_add=0x7f060021;
-        public static final int retry_update=0x7f06003b;
-        public static final int save_data=0x7f060023;
-        public static final int seen_by_doctor=0x7f060036;
+        public static final int register_button=0x7f060025;
+        public static final int register_nurse_button=0x7f060028;
+        public static final int retry_add=0x7f060020;
+        public static final int retry_update=0x7f06003a;
+        public static final int save_data=0x7f060022;
+        public static final int seen_by_doctor=0x7f060035;
         public static final int submit_button=0x7f060003;
-        public static final int symptoms=0x7f060037;
-        public static final int temperature=0x7f060035;
+        public static final int symptoms=0x7f060036;
+        public static final int temperature=0x7f060034;
         /**  Access and Re-Acess Record (FOR DISPLAYING) 
          */
-        public static final int title_activity_access_display_record=0x7f06003e;
+        public static final int title_activity_access_display_record=0x7f06003d;
         /**  Access and Re-Access Record 
          */
-        public static final int title_activity_access_record=0x7f06002c;
+        public static final int title_activity_access_record=0x7f06002b;
         /**  For adding a new patient and retrying adding a patient 
          */
-        public static final int title_activity_create_patient=0x7f060014;
-        public static final int title_activity_discharge_patient=0x7f060049;
-        public static final int title_activity_display_information=0x7f060042;
-        public static final int title_activity_doctor_home_page=0x7f06000c;
+        public static final int title_activity_create_patient=0x7f060013;
+        public static final int title_activity_display_information=0x7f060041;
+        public static final int title_activity_doctor_home_page=0x7f06000b;
         /**  Prescription Stuff 
          */
-        public static final int title_activity_enter_prescription_info=0x7f060044;
+        public static final int title_activity_enter_prescription_info=0x7f060043;
         /**  Enter Update Info and Retry Updating 
          */
-        public static final int title_activity_enter_update_info=0x7f060032;
-        public static final int title_activity_fill_prescription=0x7f06004a;
-        public static final int title_activity_force_access_display=0x7f060041;
-        public static final int title_activity_force_access_record=0x7f060030;
+        public static final int title_activity_enter_update_info=0x7f060031;
+        public static final int title_activity_fill_prescription=0x7f060047;
+        public static final int title_activity_force_access_display=0x7f060040;
+        public static final int title_activity_force_access_record=0x7f06002f;
         /**  Home Page 
          */
         public static final int title_activity_home_page=0x7f060006;
-        public static final int title_activity_nurse_home_page=0x7f06000d;
-        public static final int title_activity_pharmacist_home_page=0x7f06000e;
+        public static final int title_activity_nurse_home_page=0x7f06000c;
+        public static final int title_activity_pharmacist_home_page=0x7f06000d;
         /**  Re Log In 
          */
-        public static final int title_activity_re_login=0x7f060012;
-        public static final int title_activity_register_nurse=0x7f060027;
-        public static final int title_activity_retry_add_patient=0x7f060015;
-        public static final int title_activity_retry_update_info=0x7f06003a;
+        public static final int title_activity_re_login=0x7f060011;
+        public static final int title_activity_register_nurse=0x7f060026;
+        public static final int title_activity_retry_add_patient=0x7f060014;
+        public static final int title_activity_retry_update_info=0x7f060039;
         /**  Updating a Patient Record 
          */
-        public static final int title_activity_update_patient=0x7f060022;
-        public static final int title_activity_update_prescription=0x7f06003c;
+        public static final int title_activity_update_patient=0x7f060021;
+        public static final int title_activity_update_prescription=0x7f06003b;
         /**  Urgency Info 
          */
-        public static final int title_activity_urgency_list_view=0x7f060047;
-        public static final int title_pharmacist_homepage=0x7f060011;
-        public static final int update=0x7f060025;
-        public static final int update_patient_info=0x7f060038;
+        public static final int title_activity_urgency_list_view=0x7f060049;
+        public static final int title_pharmacist_homepage=0x7f060010;
+        public static final int update=0x7f060024;
+        public static final int update_patient_info=0x7f060037;
         public static final int update_record=0x7f060007;
-        public static final int urgency_info=0x7f06000f;
+        public static final int urgency_info=0x7f06000e;
         public static final int username=0x7f060005;
-        public static final int year=0x7f06001a;
+        public static final int year=0x7f060019;
     }
     public static final class style {
         /** 

@@ -98,10 +98,6 @@
             android:label="@string/title_activity_urgency_list_view" >
         </activity>
         <activity
-            android:name="com.example.triageapplication.DischargePatientActivity"
-            android:label="@string/title_activity_discharge_patient" >
-        </activity>
-        <activity
             android:name="com.example.triageapplication.ForceAccessDisplayActivity"
             android:label="@string/title_activity_force_access_display" >
         </activity>

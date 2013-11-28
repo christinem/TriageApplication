@@ -15,7 +15,6 @@
     <string name="find_patient">Access a Patient\'s Record</string>
     <string name="add_patient">Check-In a New Patient</string>
     <string name="display_info">Display a Patient\'s Record History</string>
-    <string name="next_prescription">Display the next prescription in the queue</string>
     <string name="title_activity_doctor_home_page">Doctor\'s Home Paege</string>
     <string name="title_activity_nurse_home_page">Nurse\'s Home Page</string>
     <string name="title_activity_pharmacist_home_page">Pharmacist\'s Home Page</string>
@@ -91,6 +90,9 @@
     <string name="title_activity_enter_prescription_info">Enter Prescription Information</string>
     <string name="prescription_name">Prescription Name</string>
     <string name="prescription_instructions">Prescription Instructions</string>
+    <string name="next_prescription">Fill Next Prescription</string>
+    <string name="title_activity_fill_prescription">Fill Prescription</string>
+    <string name="display2">Display Prescription</string>
 
     <!-- Urgency Info -->
     <string name="title_activity_urgency_list_view">Urgency List</string>
@@ -98,9 +100,8 @@
     <!-- Others -->
     <string name="hello_world">Hello world!</string>
 
-    <string name="title_activity_discharge_patient">Discharge PatientActivity</string>
-    <string name="title_activity_fill_prescription">Fill Prescription</string>
-    <string name="display2">Display Prescription</string>
+    
+   
     
  
 
