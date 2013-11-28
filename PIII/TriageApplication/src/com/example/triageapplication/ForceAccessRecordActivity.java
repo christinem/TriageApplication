@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ForceAccessRecordActivity extends Activity {
 
@@ -36,23 +37,33 @@ public class ForceAccessRecordActivity extends Activity {
 	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber);
 	    String healthNum = healthCardNum.getText().toString();
 	    
-		try {
+	    try {
 			//If this record exists retrieve it.  
 			record = staff.getRecord(healthNum);
-            
 			
             if (staff instanceof Nurse) {
-    			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
-    		    intent.putExtra("record", record);
-    		    intent.putExtra("staff", staff);
-    		    startActivity(intent);
+            	if (!record.isCheckedOut()){
+	    			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
+	    		    intent.putExtra("record", record);
+	    		    intent.putExtra("staff", staff);
+	    		    startActivity(intent);
+            	} else {
+            		TextView text = (TextView) findViewById(R.id.not_checked_in);
+         		    text.setVisibility(View.VISIBLE);
+            	}
             }
             else {
-            	Intent intent = new Intent(this, EnterPrescriptionInfoActivity.class);
-    		    intent.putExtra("record", record);
-    			intent.putExtra("staff", staff);
-        		startActivity(intent);
+            	if (!record.isCheckedOut()) {
+	            	Intent intent = new Intent(this, EnterPrescriptionInfoActivity.class);
+	    		    intent.putExtra("record", record);
+	    			intent.putExtra("staff", staff);
+	        		startActivity(intent);
+            	} else {
+            		TextView text = (TextView) findViewById(R.id.not_checked_in);
+         		    text.setVisibility(View.VISIBLE);
+            	}
             }
+
 
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record
