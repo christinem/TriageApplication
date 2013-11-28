@@ -472,6 +472,7 @@ public class Record implements Serializable {
 	 */
 	public void setSeenByDoctor(boolean seenByDoctor) {
 		this.seenByDoctor = seenByDoctor;
+		
 	}
 		
 	/** Sets the latest symptoms of the patient associated with this Record.

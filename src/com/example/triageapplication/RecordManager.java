@@ -77,7 +77,7 @@ public class RecordManager implements Serializable {
         records.put(record.getHealthCardNum(), record);
         int position = 0;
         
-        if (record.isCheckedOut() == false) {
+        if (!record.isCheckedOut() && !record.getSeenByDoctor()) {
         	
 	        //Add if the patient has a lower priority and was came after all the other patients 
         	// or if the List is of size 0.
