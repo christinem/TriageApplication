@@ -53,7 +53,7 @@ public class AccessRecordActivity extends Activity {
 	    		    intent.putExtra("staff", staff);
 	    		    startActivity(intent);
             	} else {
-            		TextView text = (TextView) findViewById(R.id.not_checked_in);
+            		TextView text = (TextView) findViewById(R.id.textView4);
          		    text.setVisibility(View.VISIBLE);
             	}
             }
@@ -64,7 +64,7 @@ public class AccessRecordActivity extends Activity {
 	    			intent.putExtra("staff", staff);
 	        		startActivity(intent);
             	} else {
-            		TextView text = (TextView) findViewById(R.id.not_checked_in);
+            		TextView text = (TextView) findViewById(R.id.textView4);
          		    text.setVisibility(View.VISIBLE);
             	}
             }
