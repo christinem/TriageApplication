@@ -140,7 +140,7 @@ public class RecordManager implements Serializable {
     public void removePatientFromUrgency(Record record) {
     	int location = recordsByUrgency.indexOf(record.getHealthCardNum());
     	if (location != -1){
-    		recordsByUrgency.remove();
+    		recordsByUrgency.remove(location);
     	}
     }
 
