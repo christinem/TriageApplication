@@ -36,7 +36,7 @@
     <string name="month">mm</string>
     <string name="year">yyyy</string>
     <string name="add_new_patient">Add a New Patient</string>
-    <string name="healthcard_number">Health Card Number</string>
+    <string name="healthcard_number">Health Card Number (ddddddddddd)</string>
     <string name="checkin_time">Check-In Time</string>
     <string name="age">Age</string>
     <string name="add">Add Patient</string>
@@ -98,8 +98,8 @@
     <!-- Others -->
     <string name="hello_world">Hello world!</string>
 
-    <string name="title_activity_discharge_patient">DischargePatientActivity</string>
-    <string name="title_activity_fill_prescription">FillPrescriptionActivity</string>
+    <string name="title_activity_discharge_patient">Discharge PatientActivity</string>
+    <string name="title_activity_fill_prescription">Fill Prescription</string>
     <string name="display2">Display Prescription</string>
     
  
