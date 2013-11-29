@@ -44,7 +44,8 @@ public class ReLoginActivity extends Activity {
 	 * @throws Exception If FileNotFound or 
 	 */
 	public void logIn(View view) throws FileNotFoundException, IOException {
-		ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+		ProgressBar progressBar = 
+				(ProgressBar) findViewById(R.id.progressBar2);
 		progressBar.setVisibility(View.VISIBLE);
 		
 		
@@ -75,7 +76,8 @@ public class ReLoginActivity extends Activity {
 				    
 				     else if (acceptLogIn[1].equalsIgnoreCase("pharmacist")) {
 					       staff = new Pharmacist(username);
-					       intent = new Intent(this, PharmacistHomePageActivity.class);
+					       intent = new Intent(this,
+					    		   PharmacistHomePageActivity.class);
 					}
 				       
 				     else {
@@ -85,17 +87,25 @@ public class ReLoginActivity extends Activity {
 				    }
 				
 				    try {
-				    	File file1 = new File(this.getApplicationContext().getFilesDir(), "PatientsAndRecords");
-				    	File file2 = new File(this.getApplicationContext().getFilesDir(), "Prescriptions");
+				    	File file1 = new File(
+				    			this.getApplicationContext().getFilesDir(), 
+				    			"PatientsAndRecords");
+				    	
+				    	File file2 = new File(
+				    			this.getApplicationContext().getFilesDir(), 
+				    			"Prescriptions");
+				    	
 						if (!file1.exists()) {
 							file1.createNewFile();
 						}
+						
 						if (!file2.exists()) {
 							file2.createNewFile();
 						}
 						
 				    	staff.createRecordManager(this.getApplicationContext().getFilesDir(), "PatientsAndRecords", "Prescriptions", 
 								this.getApplicationContext());
+				    	
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -109,9 +119,7 @@ public class ReLoginActivity extends Activity {
 				   Intent reenter = new Intent(this, ReLoginActivity.class);
 				   startActivity(reenter);
 				   finish();
-			}
-		
-		
+			}	
 		    
 	}
     /**
