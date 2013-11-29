@@ -4,15 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import android.content.Context;
 
-/** A StaffMember. */
+/** A staff member. */
 public class StaffMember implements Serializable {
 	
 	/** A unique ID used for serialization. */
