@@ -15,8 +15,13 @@ import android.widget.TextView;
  */
 public class DisplayInformationActivity extends Activity {
          
+	/** This activities' Intent object.  */
 	Intent intent;
+	
+	/** This activities' Record object. */
 	Record record;
+	
+	/** This activities' Staff Member object. */
 	StaffMember staff;
 	
 	@Override
@@ -29,7 +34,8 @@ public class DisplayInformationActivity extends Activity {
 	     staff = (StaffMember) intent.getSerializableExtra("staff");
 
 		
-	      StringBuilder text = staff.getInfo(this.getApplicationContext(), record);
+	      StringBuilder text = staff.getInfo(this.getApplicationContext(), 
+	    		  record);
 		    
 		  TextView recordHistory = (TextView) findViewById(R.id.display);
 		  recordHistory.setMovementMethod(new ScrollingMovementMethod());
@@ -44,20 +50,29 @@ public class DisplayInformationActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds items to the 
+		// action bar if it is present.
 		getMenuInflater().inflate(R.menu.display_information, menu);
 		return true;
 	}
 	
+	/**	This removes a patient from the application. 
+	 * @param view This activities display window.
+	 */
 	public void dischargePatient(View view) {
 		
 		try {
-			staff.dischargePatient(record.getHealthCardNum(), this.getApplicationContext());
+			staff.dischargePatient(record.getHealthCardNum(), 
+					this.getApplicationContext());
+			
 			//StaffMember.getRecords().removePatient(record.getHealthCardNum());
 			//StaffMember.getRecords().add(record);
-			Intent backIntent = new Intent(this, NurseHomePageActivity.class);
+			Intent backIntent = new Intent(this, 
+					NurseHomePageActivity.class);
+			
 			backIntent.putExtra("staff", staff);
 			startActivity(backIntent);
+			
 		} catch (NotCheckedInException e) {
 		    TextView text = (TextView) findViewById(R.id.not_checked_in);
 		    text.setVisibility(View.VISIBLE);
