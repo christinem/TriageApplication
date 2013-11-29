@@ -27,7 +27,8 @@ public class AccessDisplayRecordActivity extends Activity {
 		return true;
 	}
 	
-	/** This generates this activities display. Allowing records to be viewed. 
+	/** This generates this activities display.
+	 *  Allowing records to be viewed. 
 	 * @param view This activities screen.
 	 */
 	public void display(View view){
@@ -43,7 +44,8 @@ public class AccessDisplayRecordActivity extends Activity {
 	     try {
 			//If this record exists retrieve it.  
 			Record record = staff.getRecord(healthNum);
-			Intent intent = new Intent(this, DisplayInformationActivity.class);
+			Intent intent = new Intent(this,
+					DisplayInformationActivity.class);
 		    
 			//intent.putExtra("healthcardnumber", healthNum);
 		    intent.putExtra("record", record);
