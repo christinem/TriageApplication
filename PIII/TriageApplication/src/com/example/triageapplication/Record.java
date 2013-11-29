@@ -496,7 +496,6 @@ public class Record implements Serializable {
 		return this.age;	
 	}
 	
-		
 	/**
 	 * Sets the urgency rating of the patient associated with this record
 	 * based upon their vital signs. All values used are based off of average 
@@ -519,21 +518,40 @@ public class Record implements Serializable {
 		}			
 			
 		this.urgencyRating = urgencyRating;
-
 	}
 
+	/** 
+	 * Returns the name of the prescription of the patient associated with this
+	 * Record.
+	 * @return The name of the prescription.
+	 */
 	public String getPrescriptionName() {
 		return prescriptionName;
 	}
 
+	/** 
+	 * Sets the name of the prescription of the patient associated with this
+	 * Record.
+	 * @param prescriptionName The name of the prescription.
+	 */
 	public void setPrescriptionName(String prescriptionName) {
 		this.prescriptionName = prescriptionName;
 	}
 
+	/** 
+	 * Sets the instructions of the prescription of the patient associated with
+	 * this Record.
+	 * @return The instructions for the prescription.
+	 */
 	public String getPrescriptionInstructions() {
 		return prescriptionInstructions;
 	}
 
+	/** 
+	 * Sets the instructions for the prescription of the patient associated
+	 * with this Record.
+	 * @param prescriptionName The instructions for the prescription.
+	 */
 	public void setPrescriptionInstructions(String prescriptionInstructions) {
 		this.prescriptionInstructions = prescriptionInstructions;
 	}
