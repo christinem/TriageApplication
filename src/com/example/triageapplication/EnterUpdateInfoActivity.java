@@ -55,7 +55,7 @@ public class EnterUpdateInfoActivity extends Activity {
 	    String seenByDoctorString = seenBy.getText().toString();
 	    
 	    //Sets in the record whether this patient has seen a doctor yet. 
-	    seenByDoctor = seenByDoctorString.equalsIgnoreCase("Yes");
+	    seenByDoctor = Boolean.valueOf(seenByDoctorString);
 	    
 	    // Sets the new patient's symptoms.
 	    EditText symptom = (EditText) findViewById(R.id.prescription_instructions);
