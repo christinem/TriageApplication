@@ -48,10 +48,12 @@ public class AccessRecordActivity extends Activity {
 			
             if (staff instanceof Nurse) {
             	if (!record.isCheckedOut()){
-	    			Intent intent = new Intent(this, EnterUpdateInfoActivity.class);
+	    			Intent intent = new Intent(this, 
+	    					EnterUpdateInfoActivity.class);
 	    		    intent.putExtra("record", record);
 	    		    intent.putExtra("staff", staff);
 	    		    startActivity(intent);
+	    		    
             	} else {
             		TextView text = (TextView) findViewById(R.id.textView4);
          		    text.setVisibility(View.VISIBLE);
@@ -59,10 +61,12 @@ public class AccessRecordActivity extends Activity {
             }
             else {
             	if (!record.isCheckedOut()) {
-	            	Intent intent = new Intent(this, EnterPrescriptionInfoActivity.class);
+	            	Intent intent = new Intent(this,
+	            			EnterPrescriptionInfoActivity.class);
 	    		    intent.putExtra("record", record);
 	    			intent.putExtra("staff", staff);
 	        		startActivity(intent);
+	        		
             	} else {
             		TextView text = (TextView) findViewById(R.id.textView4);
          		    text.setVisibility(View.VISIBLE);
