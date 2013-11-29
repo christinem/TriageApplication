@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
+/** Allows the user to try to access an existing record for viewing
+ * after failing to enter a valid health card number.
+ */
 public class ForceAccessDisplayActivity extends Activity {
 
 	@Override
@@ -22,8 +25,9 @@ public class ForceAccessDisplayActivity extends Activity {
 		getMenuInflater().inflate(R.menu.force_access_display, menu);
 		return true;
 	}
-	
-	/** 
+	 
+	/** Accessing a patient's record. If it exists passes into 
+	 *  DisplayInformationActivity. 
 	 * @param view This activities display window.
 	 */
 	public void display(View view){
