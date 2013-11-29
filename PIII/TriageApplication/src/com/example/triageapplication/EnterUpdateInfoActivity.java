@@ -29,6 +29,10 @@ public class EnterUpdateInfoActivity extends Activity {
 		return true;
 	}
 	
+	/** Updates a patients vital signs and whether 
+	 * or not they've seen a doctor.
+	 * @param view This activities window.
+	 */
 	public void updatePatient(View view) {
 		boolean seenByDoctor;
 		
@@ -58,7 +62,8 @@ public class EnterUpdateInfoActivity extends Activity {
 	    seenByDoctor = seenByDoctorString.equalsIgnoreCase("Yes");
 	    
 	    // Sets the new patient's symptoms.
-	    EditText symptom = (EditText) findViewById(R.id.prescription_instructions);
+	    EditText symptom = 
+	    		(EditText) findViewById(R.id.prescription_instructions);
 	    String symptoms = symptom.getText().toString();
 	    
 	    // Sets the new patient's temperature. 
@@ -71,7 +76,8 @@ public class EnterUpdateInfoActivity extends Activity {
 	    	staff.setTemperature(record, temperature);
 	    	staff.setBloodPressure(record, bloodPressure);
 		    staff.setHeartRate(record, heartRate);
-		    staff.setSeenByDoctor(record, seenByDoctor, this.getApplicationContext());
+		    staff.setSeenByDoctor(record, seenByDoctor,
+		    		this.getApplicationContext());
 		    staff.setSymptoms(record, symptoms);
 		    staff.updateUrgency(record);
 		    
@@ -83,13 +89,17 @@ public class EnterUpdateInfoActivity extends Activity {
 		}
 	    
 		try {
-			if (StaffMember.getRecords().getUrgencyRecords().contains(record.getHealthCardNum())){
+			if (StaffMember.getRecords().getUrgencyRecords().
+					contains(record.getHealthCardNum())){
 			    StaffMember.getRecords().removePatientFromUrgency(record);
 			}
+			
 			StaffMember.getRecords().removePatient(record.getHealthCardNum());
 			StaffMember.getRecords().add(record);
-			StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
-					"PatientsAndRecords", Context.MODE_PRIVATE));
+			StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", 
+					openFileOutput("PatientsAndRecords",
+							Context.MODE_PRIVATE));
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
