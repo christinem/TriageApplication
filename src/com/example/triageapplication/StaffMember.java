@@ -30,30 +30,31 @@ public class StaffMember implements Serializable {
 	}
 	
 	/**
-	 * Creates a new RecordManager that all StaffMembers have access to that manages
-	 * a collection of Records stored in directory dir in a file named fileName.
+	 * Creates a new RecordManager that all StaffMembers have access to that
+	 * manages a collection of Records stored in directory dir in a file named
+	 * fileName.
 	 * @param dir The directory in which the data file is stored.
 	 * @param fileName The data file containing Record information
 	 * @param context The context of this Android application.
 	 * @throws IOException 
 	 */
-	public void createRecordManager(File dir, String fileName1, String fileName2, Context context)
+	public void createRecordManager(File dir, String fileName1, 
+			String fileName2, Context context)
 	throws IOException {
 		records = new RecordManager(dir, fileName1, fileName2, context);
 	}
 
-	/** Creates a Record for a patient with with a name, a date of birth and a
+	/** Creates a Record for a patient with a name, a date of birth and a
 	 * health card number.
 	 * @param name The Patient's name.
 	 * @param dob The Patient's date of birth.
 	 * @param healthCardNumber The Patient's health card number.
 	 * @param context The context of the Android application.				
-	 * @throws InvalidDayOfBirthException 
-	 * @throws InvalidDayOfBirthException, InvalidMonthOfBirthException,
-	 * InvalidYearOfBirthException, InvalidHealthCardNumberException 
-	 * @throws InvalidMonthOfBirthException 
-	 * @throws InvalidYearOfBirthException 
-	 * @throws InvalidHealthCardNumberException 
+	 * @throws InvalidDayOfBirthException If the day of birth is invalid.
+	 * @throws InvalidMonthOfBirthException If the  month of birth is invalid. 
+	 * @throws InvalidYearOfBirthException If the year of birth is invalid.
+	 * @throws InvalidHealthCardNumberException If the health card number is
+	 * invalid.
 	 */	
 	public void addPatient(String[] name, String[] dob, String 
 			healthCardNumber, Context context) throws 
@@ -75,7 +76,8 @@ public class StaffMember implements Serializable {
 		else {
 			Record r = new Record(name, healthCardNumber, dob);
 			
-			// check if file exists, only if it doesn't does it create a new file for it
+			// check if file exists, only if it doesn't does it create a new
+			// file for it
 			File file = new File(context.getFilesDir(), healthCardNumber);
 			if(!file.exists()) {
 			    r.setupFile(context);
@@ -85,7 +87,8 @@ public class StaffMember implements Serializable {
 			r.setCheckedOut(false);
 			records.add(r);
 			try {
-				records.saveRecordsToFile("PatientsAndRecords", context.openFileOutput(
+				records.saveRecordsToFile("PatientsAndRecords",
+						context.openFileOutput(
 						"PatientsAndRecords", Context.MODE_PRIVATE));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -104,12 +107,13 @@ public class StaffMember implements Serializable {
 	/** Updates a Record's latest temperature measurement. 
 	 * @param The Record in question.
 	 * @param temperature The new temperature.
-	 * @throws NoRecordSpecifiedException 
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
 	public void setTemperature(Record record, double temperature) throws
 	NoRecordSpecifiedException {
 		if (record == null) {
-			throw new NoRecordSpecifiedException("No record has been specified.");
+			throw new NoRecordSpecifiedException("No record has been " +
+					"specified.");
 		}
 		record.setTemperature(temperature);
 	}
@@ -117,7 +121,7 @@ public class StaffMember implements Serializable {
 	/** Updates a Record's latest blood pressure measurement. 
 	 * @param The Record in question.
 	 * @param bloodPressure The new blood pressure.
-	 * @throws NoRecordSpecifiedException 
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
 	public void setBloodPressure(Record record, int bloodPressure) throws
 	NoRecordSpecifiedException {
@@ -125,14 +129,13 @@ public class StaffMember implements Serializable {
 			throw new NoRecordSpecifiedException(
 					"No record has been specified.");
 		}
-		
 		record.setBloodPressure(bloodPressure);
 	}
 	
 	/** Updates a Record's latest heart rate measurement. 
 	 * @param The Record in question.
 	 * @param heartRate The new heart rate.
-	 * @throws NoRecordSpecifiedException 
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
 	public void setHeartRate(Record record, int heartRate)throws
 	NoRecordSpecifiedException{
@@ -140,19 +143,19 @@ public class StaffMember implements Serializable {
 			throw new NoRecordSpecifiedException(
 					"No record has been specified.");
 		}
-		
 		record.setHeartRate(heartRate);
 	}
 	
 	/** Updates a Record to mark whether a patient has been seen by a doctor.
 	 * @param The Record in question.
 	 * @param seenByDoctor True if the patient has been seen by a doctor.
-	 * @throws NoRecordSpecifiedException 
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
-	public void setSeenByDoctor(Record record, boolean seenByDoctor, Context context) throws 
-	NoRecordSpecifiedException {			
+	public void setSeenByDoctor(Record record, boolean seenByDoctor, 
+			Context context) throws NoRecordSpecifiedException {			
 		if (record == null) {
-			throw new NoRecordSpecifiedException("No record has been specified.");
+			throw new NoRecordSpecifiedException("No record has been " +
+					"specified.");
 		}
 		
 		if (seenByDoctor == true){
@@ -162,7 +165,14 @@ public class StaffMember implements Serializable {
 		}
 	}
 	
-	public void dischargePatient(String healthCardNum, Context context) throws NotCheckedInException {
+	/** Discharges a patient by removing their Record from the urgency list,
+	 * but retaining them in the master patient list.
+	 * @param The health card number of the patient in question.
+	 * @param context The context of the Android application.
+	 * @throws NotCheckedInException If this patient is not checked in.
+	 */
+	public void dischargePatient(String healthCardNum, Context context) throws
+	NotCheckedInException {
 		Record record = records.getRecord(healthCardNum);
 		
 		if (record.isCheckedOut()) {
@@ -175,38 +185,41 @@ public class StaffMember implements Serializable {
 		//Remove old record and add new record
 		records.removePatient(record.getHealthCardNum());
 		
-		// This is incase a patient is not seen by a Doctor before they leave
-		if (records.getUrgencyRecords().contains(record.getHealthCardNum())){
+		// This is in case a patient is not seen by a Doctor before they leave
+		if (records.getUrgencyRecords().contains(record.getHealthCardNum())) {
 		    records.removePatientFromUrgency(record);
 		}
 		
 		records.add(record);
 		
 		try {
-		    records.saveRecordsToFile("PatientsAndRecords", context.openFileOutput("PatientsAndRecords", Context.MODE_PRIVATE));
+		    records.saveRecordsToFile("PatientsAndRecords",
+		    		context.openFileOutput("PatientsAndRecords",
+		    				Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/** Updates a Record's latest recording. 
+	/** Updates a Record's latest vitals recording. 
 	 * @param The Record in question.
-	 * @param heartRate The new symptoms.
-	 * @throws NoRecordSpecifiedException 
+	 * @param symptoms The new symptoms.
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
 	public void setSymptoms(Record record, String symptoms) throws
 	NoRecordSpecifiedException {
 		
 		if (record == null) {
-			throw new NoRecordSpecifiedException("No record has been specified.");
+			throw new NoRecordSpecifiedException("No record has been " +
+					"specified.");
 		}
 		
 		record.setSymptoms(symptoms);
 	}
 		
-	/** Save the information about vitals in a Record to disk.
+	/** Saves the information about vitals in a Record to disk.
 	 * @param The Record in question.
-	 * @throws NoRecordSpecifiedException 
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
 	public void updateVitals(Record record, Context context) throws
 	NoRecordSpecifiedException{
@@ -219,9 +232,9 @@ public class StaffMember implements Serializable {
 		record.updateRecordVitalsSymptoms(context);
 	}
 	
-	/** Save the information about vitals in a Record to disk.
+	/** Saves the information about vitals in a Record to disk.
 	 * @param The Record in question.
-	 * @throws NoRecordSpecifiedException 
+	 * @throws NoRecordSpecifiedException If this record does not exist.
 	 */
 	public void updatePrescription(Record record, Context context) throws
 	NoRecordSpecifiedException {
@@ -251,20 +264,21 @@ public class StaffMember implements Serializable {
 		
 		return records.getRecord(healthCardNum);
 	}
+	
 	/**
-	 * Gets record manager of this StaffMember.
-	 * @return Record Manager "records". 
+	 * Gets record manager of this hospital.
+	 * @return A Record Manager for this hospital.
 	 */
 	public static RecordManager getRecords() {
 		return records;
 	}
 	
 	/**
-	 * Returns a StringBuilder containing the Record information from a record filed with the name from parameter
-	 * "healthNum"
+	 * Returns a StringBuilder containing the Record information from a record
+	 * filed with the name from parameter "healthNum".
 	 * @param context Context from an Activity for Reading.
 	 * @param healthNum Name of Record File (a Patient's health card number).
-	 * @return a StringBuilder of all the information from the Record File.
+	 * @return A StringBuilder of all the information from the Record File.
 	 */
 	public StringBuilder getInfo(Context context, Record record) {
 	    
@@ -288,54 +302,62 @@ public class StaffMember implements Serializable {
 	    return(text);
 	}
 
-/**
- * Returns a StringBuilder consisting of all patients sorted by Urgency.
- * @return a StringBuilder consisting of all patients sorted by Urgency.
- */
-public StringBuilder getUrgencyInfo() {
-	LinkedList<String> urgencyRecord = records.getUrgencyRecords();
-	StringBuilder urgency = new StringBuilder();
+	/**
+	 * Returns a StringBuilder consisting of all patients sorted by urgency.
+	 * @return a StringBuilder consisting of all patients sorted by urgency.
+	 	*/
+	public StringBuilder getUrgencyInfo() {
+		LinkedList<String> urgencyRecord = records.getUrgencyRecords();
+		StringBuilder urgency = new StringBuilder();
 		
-	for(String healthCardNumber: urgencyRecord) {
-		Record record = records.getRecord(healthCardNumber);
-		String[] name = record.getName();
-		urgency.append(name[0] + " " + name[1] + "\n");
-		urgency.append("Urgency: " + record.getUrgencyRating() + "\n");
-		urgency.append("Health Card Number: " + record.getHealthCardNum() + "\n");
-		urgency.append("Arrival Time: " + record.getArrivalTime() + "\n");
-		urgency.append("\n");
-	}
+		for(String healthCardNumber: urgencyRecord) {
+			Record record = records.getRecord(healthCardNumber);
+			String[] name = record.getName();
+			urgency.append(name[0] + " " + name[1] + "\n");
+			urgency.append("Urgency: " + record.getUrgencyRating() + "\n");
+			urgency.append("Health Card Number: " + record.getHealthCardNum()
+					+ "\n");
+			urgency.append("Arrival Time: " + record.getArrivalTime() + "\n");
+			urgency.append("\n");
+		}
 	
-	return(urgency);	
-			
-	}
-
-/** Updates a Record's latest recording. 
- * @param The Record in question.
- * @param heartRate The new symptoms.
- * @throws NoRecordSpecifiedException 
- * @throws FileNotFoundException 
- */
-public void setPrescription(Record record, String prescriptionName, String
-		prescriptionInstructions, Context context) throws NoRecordSpecifiedException, FileNotFoundException {
-	
-	if (record == null) {
-		throw new NoRecordSpecifiedException("No record has been specified.");
-	}
-	
-	record.setPrescriptionName(prescriptionName);
-	record.setPrescriptionInstructions(prescriptionInstructions);
-	
-	records.addPrescription("Patient: " + record.getHealthCardNum() + "\n" + prescriptionName + ":\n\t" + prescriptionInstructions, context);
-	
+	return(urgency);		
 	}
 
-public void updateUrgency(Record record) {
-	record.updateUrgencyRating();
+	/** Updates a Record's latest recording. 
+	 * @param The Record in question.
+	 * @param heartRate The new symptoms.
+	 * @throws NoRecordSpecifiedException If this record does not exist.
+	 * @throws FileNotFoundException If the file does not exist.
+	 */
+	public void setPrescription(Record record, String prescriptionName, String
+		prescriptionInstructions, Context context) throws
+		NoRecordSpecifiedException, FileNotFoundException {
+	
+		if (record == null) {
+			throw new NoRecordSpecifiedException("No record has been specified.");
+		}
+	
+		record.setPrescriptionName(prescriptionName);
+		record.setPrescriptionInstructions(prescriptionInstructions);
+	
+		records.addPrescription("Patient: " + record.getHealthCardNum() + "\n" 
+		+ prescriptionName + ":\n\t" + prescriptionInstructions, context);
+	}
+	
+	/** Updates a Record's latest urgency rating. 
+	 * @param The Record in question,
+	 */
+	public void updateUrgency(Record record) {
+		record.updateUrgencyRating();
 	}
 
-public String getPrescription(Context context) throws FileNotFoundException {
-	return this.records.getPrescription(context);
-}
-
+	/** Returns the first prescription to be filled. 
+	 * @return A String of the first prescription to be filled.
+	 * @throws FileNotFoundException If the file does not exist.
+	 */
+	public String getPrescription(Context context) throws 
+	FileNotFoundException {
+		return StaffMember.getRecords().getPrescription(context);
+	}
 }
