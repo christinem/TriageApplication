@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/** Allows the user to try to access an existing record for modification
+ * after failing to enter a valid health card number.
+ */
 public class ForceAccessRecordActivity extends Activity {
 
 	@Override
