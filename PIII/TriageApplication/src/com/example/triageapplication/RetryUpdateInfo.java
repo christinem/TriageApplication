@@ -20,13 +20,13 @@ public class RetryUpdateInfo extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds items to the action bar if it is present
 		getMenuInflater().inflate(R.menu.retry_update_info, menu);
 		return true;
 	}
 	
-	 /** Updates a given patient's record by taking input from the user
-	  *  and modify the record files saved on disk.
+	/** Updates a given patient's record by taking input from the user
+	 *  and modifying the record files saved on disk.
 	 * @param view This is the window where this activity is created.
 	 */
 	public void updatePatient(View view) {
@@ -54,11 +54,12 @@ public class RetryUpdateInfo extends Activity {
 	    EditText seenBy = (EditText) findViewById(R.id.prescription_name);
 	    String seenByDoctorString = seenBy.getText().toString();
 	    
-	    //Sets in the record whether this patient has seen a doctor yet. 
+	    // Sets in the record whether this patient has seen a doctor yet. 
 	    seenByDoctor = seenByDoctorString.equals("Yes");
 	    
 	    // Sets the new patient's symptoms.
-	    EditText symptom = (EditText) findViewById(R.id.prescription_instructions);
+	    EditText symptom = (EditText) findViewById(
+	    		R.id.prescription_instructions);
 	    String symptoms = symptom.getText().toString();
 	    
 	    // Sets the new patient's temperature. 
@@ -67,7 +68,7 @@ public class RetryUpdateInfo extends Activity {
 	    double temperature = Double.parseDouble(temperatureString);
 	     
 	    try {
-	    	//This patient's record exists add to it.
+	    	// This patient's record exists add to it.
 	    	staff.setTemperature(record, temperature);
 	    	staff.setBloodPressure(record, bloodPressure);
 		    staff.setHeartRate(record, heartRate);
@@ -77,24 +78,23 @@ public class RetryUpdateInfo extends Activity {
 		    staff.updateUrgency(record);
 		    
 		} catch (Exception e) {
-			// prompt for a record
+			// Prompt for a record
 			   Intent reenter = new Intent(this, RetryUpdateInfo.class);
 			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
 	    
-	    // Mathias Added this to match the EnterUpdateInfoAct
-	    
 		try {
 			StaffMember.getRecords().removePatient(record.getHealthCardNum());
 			StaffMember.getRecords().add(record);
-			StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
+			StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", 
+					openFileOutput(
 					"PatientsAndRecords", Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	    
-	    //With this patient dealt with the previous activity is returned too.
+	    // With this patient dealt with the previous activity is returned to.
 	    Intent intent1 = new Intent(this, UpdatePatientActivity.class);
 	    intent1.putExtra("staff", staff);
 	    intent1.putExtra("record", record);
