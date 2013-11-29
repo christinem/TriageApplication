@@ -87,14 +87,17 @@ public class RetryAddPatientActivity extends Activity {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
+			
 		} catch (InvalidMonthOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
+			
 		} catch (InvalidYearOfBirthException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
 			startActivity(intent);
+			
 		} catch (InvalidHealthCardNumberException e) {
 			Intent intent = new Intent(this, RetryAddPatientActivity.class);
 			intent.putExtra("staff", staff);
