@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 
 /** If the input was invalid for creating a patient this allows
- *  the staff member to input valid information.
+ * the staff member to input valid information.
  */
 public class RetryAddPatientActivity extends Activity {
 
@@ -25,7 +25,7 @@ public class RetryAddPatientActivity extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds items to the action bar if it is present
 		getMenuInflater().inflate(R.menu.retry_add_patient, menu);
 		return true;
 	}
@@ -37,7 +37,8 @@ public class RetryAddPatientActivity extends Activity {
 		
 		// Grabs the staff from the previous Activity.
         Intent intentStaff = getIntent();
-        StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
+        StaffMember staff = (StaffMember) 
+        		intentStaff.getSerializableExtra("staff");
         
         // These grab the new patient's information from the user input fields.
 		EditText first_name = (EditText)findViewById(R.id.first_name);
@@ -63,23 +64,23 @@ public class RetryAddPatientActivity extends Activity {
 		
 		try {
 			// All user input is valid, so let's create this patient.
-			staff.addPatient(name, dob, healthCardNumber, this.getApplicationContext());
+			staff.addPatient(name, dob, healthCardNumber,
+					this.getApplicationContext());
 			
 			// Save to file
-			try {
-				StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
-						"PatientsAndRecords",Context.MODE_PRIVATE));
+			try {StaffMember.getRecords().saveRecordsToFile(
+					"PatientsAndRecords", openFileOutput("PatientsAndRecords", 
+							Context.MODE_PRIVATE));
 
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-
-			}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+		}
 			
-			// With the new patient dealt with the application
-			// passes back to the home page activity.
-			Intent intent = new Intent(this, NurseHomePageActivity.class);
-			intent.putExtra("staff", staff);
-			startActivity(intent);
+		// With the new patient dealt with the application
+		// passes back to the home page activity.
+		Intent intent = new Intent(this, NurseHomePageActivity.class);
+		intent.putExtra("staff", staff);
+		startActivity(intent);
 			
 	    // These catch any invalid input given by the user.
 		} catch (InvalidDayOfBirthException e) {
