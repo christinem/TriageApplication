@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/** This activity allows access to patient records. */
+/** This activity allows access to patient records for modification. */
 public class AccessRecordActivity extends Activity {
 	
 	@Override
