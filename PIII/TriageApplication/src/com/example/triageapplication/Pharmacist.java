@@ -6,6 +6,9 @@ import android.content.Context;
 
 public class Pharmacist extends StaffMember {
 
+	/** A unique ID for serialization. */
+	private static final long serialVersionUID = -5484303895168366958L;
+
 	/** Constructs a Pharmacist that is also a StaffMember with a username
 	 * @param username This Pharmacist's username.
 	 */
@@ -14,10 +17,10 @@ public class Pharmacist extends StaffMember {
 	}
 	
 	/** Fills a prescription from a doctor for a patient.
-	 * @param context This activities' context.
+	 * @param context This activity's context.
 	 * @return
 	 */
-	public String fillPerscription(Context context){
+	public String fillPrescription(Context context){
 		String prescription = null;
 		
 		try {
@@ -25,7 +28,7 @@ public class Pharmacist extends StaffMember {
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
+	}
 		
 		return prescription;
 	}
@@ -35,5 +38,4 @@ public class Pharmacist extends StaffMember {
 	public String toString() {
 		return "Pharmacist";
 	}
-
 }
