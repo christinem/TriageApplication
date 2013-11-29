@@ -39,10 +39,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int access_record=0x7f090028;
         public static final int action_settings=0x7f09002b;
         public static final int add=0x7f09000b;
-        public static final int add_patient=0x7f09001b;
+        public static final int add_patient=0x7f09001f;
         public static final int birthdate_header=0x7f090009;
         public static final int blood_pressure=0x7f090018;
-        public static final int button1=0x7f09001c;
+        public static final int button1=0x7f09001b;
         public static final int choose_password=0x7f090026;
         public static final int choose_username=0x7f090025;
         public static final int day=0x7f090008;
@@ -59,11 +59,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int month=0x7f09000a;
         public static final int next_prescription=0x7f090021;
         public static final int not_checked_in=0x7f090010;
-        public static final int pass=0x7f09001d;
+        public static final int pass=0x7f09001c;
         public static final int prescription=0x7f09001a;
         public static final int prescription_instructions=0x7f090016;
         public static final int prescription_name=0x7f090014;
-        public static final int progressBar1=0x7f09001f;
+        public static final int progressBar1=0x7f09001e;
         public static final int progressBar2=0x7f090024;
         public static final int re_login=0x7f090023;
         public static final int register_nurse_botton=0x7f090027;
@@ -77,7 +77,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int update_record=0x7f090012;
         public static final int urgency_info=0x7f090020;
         public static final int urgency_list=0x7f09002a;
-        public static final int username=0x7f09001e;
+        public static final int username=0x7f09001d;
         public static final int year=0x7f09000d;
     }
     public static final class layout {
@@ -91,17 +91,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_fill_prescription=0x7f030007;
         public static final int activity_force_access_display=0x7f030008;
         public static final int activity_force_access_record=0x7f030009;
-        public static final int activity_home_page=0x7f03000a;
-        public static final int activity_main=0x7f03000b;
-        public static final int activity_nurse_home_page=0x7f03000c;
-        public static final int activity_pharmacist_home_page=0x7f03000d;
-        public static final int activity_re_login=0x7f03000e;
-        public static final int activity_register_nurse=0x7f03000f;
-        public static final int activity_retry_add_patient=0x7f030010;
-        public static final int activity_retry_update_info=0x7f030011;
-        public static final int activity_update_patient=0x7f030012;
-        public static final int activity_update_prescription=0x7f030013;
-        public static final int activity_urgency_list_view=0x7f030014;
+        public static final int activity_main=0x7f03000a;
+        public static final int activity_nurse_home_page=0x7f03000b;
+        public static final int activity_pharmacist_home_page=0x7f03000c;
+        public static final int activity_re_login=0x7f03000d;
+        public static final int activity_register_nurse=0x7f03000e;
+        public static final int activity_retry_add_patient=0x7f03000f;
+        public static final int activity_retry_update_info=0x7f030010;
+        public static final int activity_update_patient=0x7f030011;
+        public static final int activity_update_prescription=0x7f030012;
+        public static final int activity_urgency_list_view=0x7f030013;
     }
     public static final class menu {
         public static final int access_display_record=0x7f080000;
