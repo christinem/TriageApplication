@@ -39,7 +39,6 @@ private StaffMember staff;
         //Displays the message in textview.
         tv.setTextSize(20);
         tv.setText(message);
-        
     }
     
 	@Override
@@ -52,7 +51,7 @@ private StaffMember staff;
 	    
     /** Passes the current activity into the FillPrescriptionActivity.
      * @param view This will the new window that the showPrescription activity
-     *              will be created in.
+     * will be created in.
      */
     public void showPrescription(View view) {
     	Intent intent = new Intent(this, FillPrescriptionActivity.class);
