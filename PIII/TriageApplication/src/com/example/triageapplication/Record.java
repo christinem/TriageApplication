@@ -103,7 +103,8 @@ public class Record implements Serializable {
     
 	/**
 	 * Set whether the Patient of this Record is checked out or not.
-	 * @param checkedOut whether the Patient of this Record is checked out or not.
+	 * @param checkedOut whether the Patient of this 
+	 * 						Record is checked out or not.
 	 */
 	public void setCheckedOut(boolean checkedOut) {
 		this.checkedOut = checkedOut;
@@ -318,7 +319,8 @@ public class Record implements Serializable {
 	this.getDob()[1] + "," + this.getDob()[2]	+ "," + 
 	this.getTemperature() + "," + 	this.getBloodPressure() + 
 	"," + this.getHeartRate() + "," + 	this.getSymptoms() + "," 
-	+ this.getSeenByDoctor() + "," + this.getArrivalTime() + "," + String.valueOf(this.isCheckedOut()));
+	+ this.getSeenByDoctor() + "," + this.getArrivalTime() + "," + 
+	String.valueOf(this.isCheckedOut()));
 	}
 
 	/**
@@ -353,12 +355,16 @@ public class Record implements Serializable {
 		String[] first = this.getArrivalTime().substring(0, 10).split("/");
 		String[] second = this.getArrivalTime().substring(11).split(":");
 		
-		    List<String> both = new ArrayList<String>(first.length + second.length);
-		    Collections.addAll(both, first);
-		    Collections.addAll(both, second);
+		List<String> both = new ArrayList<String>(first.length +
+		    		second.length);
+		    
+		Collections.addAll(both, first);
+		Collections.addAll(both, second);
+		    
 		String[] stringArray = both.toArray(new String[both.size()]);
 
 		int[] intArray = new int[stringArray.length];
+		
 		for(int i=0; i < stringArray.length; i++)
 		{
 		    try{
@@ -451,7 +457,8 @@ public class Record implements Serializable {
 	}
 	
 	/** 
-	 * Sets the arrival time of the patient associated with this Record.Pressure
+	 * Sets the arrival time of the patient 
+	 * associated with this Record.Pressure
 	 * @param arrivalTime The new arrival time.
 	 */
 	public void setArrivalTime(String arrivalTime) {
@@ -530,8 +537,4 @@ public class Record implements Serializable {
 	public void setPrescriptionInstructions(String prescriptionInstructions) {
 		this.prescriptionInstructions = prescriptionInstructions;
 	}
-
-
-
-
 }
