@@ -28,7 +28,7 @@
 
     <!-- For adding a new patient and retrying adding a patient -->
     <string name="title_activity_create_patient">Create A New Patient</string>
-    <string name="title_activity_retry_add_patient">RetryAddPatientActivity</string>
+    <string name="title_activity_retry_add_patient">Retry Add Patient</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="day">dd</string>

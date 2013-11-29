@@ -8,6 +8,13 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import com.example.exceptions.InvalidDayOfBirthException;
+import com.example.exceptions.InvalidHealthCardNumberException;
+import com.example.exceptions.InvalidMonthOfBirthException;
+import com.example.exceptions.InvalidYearOfBirthException;
+import com.example.exceptions.NoRecordSpecifiedException;
+import com.example.exceptions.NotCheckedInException;
+
 import android.content.Context;
 
 /** A staff member. */
