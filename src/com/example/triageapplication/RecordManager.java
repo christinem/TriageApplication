@@ -44,7 +44,9 @@ public class RecordManager implements Serializable {
      * @param context The context of this Android application.
      * @throws IOException
      */
-    public RecordManager(File dir, String fileName1, String fileName2, Context context)
+    public RecordManager(File dir, String fileName1, String fileName2, 
+    		Context context)
+    
     		throws IOException {
     	
     	records = new HashMap<String, Record>();
@@ -79,7 +81,8 @@ public class RecordManager implements Serializable {
         
         if (!record.isCheckedOut() && !record.getSeenByDoctor()) {
         	
-	        //Add if the patient has a lower priority and was came after all the other patients 
+	        //Add if the patient has a lower priority 
+        	// and was came after all the other patients 
         	// or if the List is of size 0.
         	if (position >= recordsByUrgency.size() - 1) {
         		recordsByUrgency.add(position, record.getHealthCardNum());
@@ -88,9 +91,11 @@ public class RecordManager implements Serializable {
 		        
 	        	else {		        
 			        while (position < recordsByUrgency.size()) {
-				    		Record thisRecord = records.get((String) recordsByUrgency.get(position));
+				    		Record thisRecord = records.get((String) 
+				    				recordsByUrgency.get(position));
 				    		
-				        	// If the new patient has a higher urgency rating than this one, add it here.
+				        	// If the new patient has a higher urgency 
+				    		// rating than this one, add it here.
 				        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
 				        		recordsByUrgency.add(position, record.getHealthCardNum());
 				        		return;
@@ -101,22 +106,7 @@ public class RecordManager implements Serializable {
 				        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
 				        		recordsByUrgency.add(position, record.getHealthCardNum());	
 				        		break;
-//				        		int[] thisArraivalTime = (int[]) thisRecord.getDobAsIntArray();
-//				        		int[] newArrivalTime = (int[]) record.getDobAsIntArray();
-//				        		
-//				        		// Which patient arrived first?	
-//				        		for (int i = 0; i < 6; i++) {
-//				        			if (thisArraivalTime[i] < newArrivalTime[i]) {
-//				        				position = position + 1;
-//				        				break;
-//				        			}
-//				        			
-//					        		// The record should be added before the next one	
-//					        		if (thisArraivalTime[i] > newArrivalTime[i]){
-//				        				recordsByUrgency.add(position, record.getHealthCardNum());		        			
-//					        			return;
-//					        			}
-//					        		}	
+	
 				        		}
 				    			        		
 				        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
@@ -207,13 +197,16 @@ public class RecordManager implements Serializable {
     /** Saves the Record objects to file outputStream.
      * @param outputStream The output stream.
      */
-    public void saveRecordsToFile(String filename, FileOutputStream outputStream) {
+    public void saveRecordsToFile(String filename, 
+    		FileOutputStream outputStream) {
+    	
     	clearFile(filename);
         try {
         	// write record info one per line into outputStream
         	for (Record r : records.values()) {
         		outputStream.write((r.toString() + "\n").getBytes());
             }
+        	
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -222,13 +215,15 @@ public class RecordManager implements Serializable {
     /** Saves the prescriptions to file outputStream.
      * @param outputStream The output stream.
      */
-    public void savePerscriptionsToFile(String filename, FileOutputStream outputStream) {
+    public void savePerscriptionsToFile(String filename, 
+    		FileOutputStream outputStream) {
     	clearFile(filename);  	
         try {
         	// write record info one per line into outputStream
         	for (String r : prescriptions) {
         		outputStream.write((r + "\n").getBytes());
             }
+        	
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -321,10 +316,7 @@ public class RecordManager implements Serializable {
 		String patient = prescriptions.remove();
 		savePerscriptionsToFile("Prescriptions", context.openFileOutput(
 				"Prescriptions",Context.MODE_PRIVATE));		
-		return patient;
-
-
-		
+		return patient;	
 	}
 
 	/**
@@ -333,7 +325,6 @@ public class RecordManager implements Serializable {
 	 */
 	public File getDirectory() {
 		return directory;
-	}
-	
+	}	
 }
 
