@@ -31,7 +31,8 @@ private StaffMember staff;
         
         //String username = intent.getStringExtra("user");
         // Grabs the StaffMember object from the previous activity.
-        StaffMember staff = (StaffMember) intent.getSerializableExtra("staff");
+        StaffMember staff = 
+        		(StaffMember) intent.getSerializableExtra("staff");
         
         //Provides a welcome message to the staff member that has logged in.
         String message = "Welcome " + staff.getUsername() + "!";
