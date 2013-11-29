@@ -18,6 +18,7 @@ public class FillPrescriptionActivity extends Activity {
 	/** This staff member is logged in. */
 	private StaffMember staff;
 	
+	/** This activities Intent object. */
 	private Intent intent;
 	
 	

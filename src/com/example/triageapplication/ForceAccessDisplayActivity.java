@@ -17,28 +17,39 @@ public class ForceAccessDisplayActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds items 
+		// to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.force_access_display, menu);
 		return true;
 	}
 	
+	/** 
+	 * @param view This activities display window.
+	 */
 	public void display(View view){
 		Intent intentStaff = getIntent();
-	    StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
+	    StaffMember staff = 
+	    		(StaffMember) intentStaff.getSerializableExtra("staff");
 	    
-	    EditText healthCardNum = (EditText) findViewById(R.id.idnumber_display);
+	    EditText healthCardNum = 
+	    		(EditText) findViewById(R.id.idnumber_display);
 	    String healthNum = healthCardNum.getText().toString();
 	    
 	     try {
 			//If this record exists retrieve it.  
 			Record record = staff.getRecord(healthNum);
-			Intent intent = new Intent(this, DisplayInformationActivity.class);
+			Intent intent = new Intent(this, 
+					DisplayInformationActivity.class);
+			
 		    //intent.putExtra("healthcardnumber", healthNum);
 		    intent.putExtra("record", record);
 			intent.putExtra("staff", staff);
 		    startActivity(intent);
+		    
 		} catch (NoRecordSpecifiedException e) {
-			   Intent reenter = new Intent(this, ForceAccessDisplayActivity.class);
+			   Intent reenter = new Intent(this, 
+					   ForceAccessDisplayActivity.class);
+			   
 			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}
