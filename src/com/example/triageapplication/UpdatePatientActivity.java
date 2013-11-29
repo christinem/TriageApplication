@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-/** Allows the user to update patient information and save 
- *  this to the disc.  
- */
+/** Allows the user to update patient information and save this to the disc. */
 public class UpdatePatientActivity extends Activity {
 	
 	/** This staff member is logged in. */
@@ -32,12 +30,12 @@ public class UpdatePatientActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+		// Inflate the menu; this adds items to the action bar if it is present
 		getMenuInflater().inflate(R.menu.update_patient, menu);
 		return true;
 	}
 	
-	/** Passes into the an activity to access patient records.
+	/** Passes into the activity to access patient records.
 	 * @param view 
 	 */
 	public void switchAccessRecord(View view) {
@@ -55,13 +53,13 @@ public class UpdatePatientActivity extends Activity {
 	public void saveData(View view) throws FileNotFoundException {
 		try {
 			// Saves patient information
-			
             if (staff instanceof Nurse) {
             	staff.updateVitals(record, this.getApplicationContext());
                 Intent intent = new Intent(this, NurseHomePageActivity.class);
     			intent.putExtra("staff", staff);
         		startActivity(intent);
             }
+            
             else {
             	staff.updatePrescription(record, this.getApplicationContext());
             	Intent intent = new Intent(this, DoctorHomePageActivity.class);
@@ -71,7 +69,8 @@ public class UpdatePatientActivity extends Activity {
 
 		} catch (NoRecordSpecifiedException e) {
 			// prompt for a record
-			   Intent reenter = new Intent(this, ForceAccessRecordActivity.class);
+			   Intent reenter = new Intent(this, 
+					   ForceAccessRecordActivity.class);
 			   reenter.putExtra("staff", staff);
 			   startActivity(reenter);
 		}		

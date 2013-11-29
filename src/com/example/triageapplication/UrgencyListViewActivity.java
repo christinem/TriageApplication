@@ -30,5 +30,4 @@ public class UrgencyListViewActivity extends Activity {
 		getMenuInflater().inflate(R.menu.urgency_list_view, menu);
 		return true;
 	}
-
 }
