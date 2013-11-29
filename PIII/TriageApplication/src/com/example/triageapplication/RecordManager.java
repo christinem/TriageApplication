@@ -6,9 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Map;
 import java.util.Scanner;
 
 import android.content.Context;
@@ -45,9 +44,7 @@ public class RecordManager implements Serializable {
      * @throws IOException
      */
     public RecordManager(File dir, String fileName1, String fileName2, 
-    		Context context)
-    
-    		throws IOException {
+    		Context context) throws IOException {
     	
     	records = new HashMap<String, Record>();
     	recordsByUrgency = new LinkedList<String>();
@@ -89,44 +86,51 @@ public class RecordManager implements Serializable {
         		return;
 	        	}
 		        
-	        	else {		        
-			        while (position < recordsByUrgency.size()) {
-				    		Record thisRecord = records.get((String) 
-				    				recordsByUrgency.get(position));
+	        else {		        
+	        	while (position < recordsByUrgency.size()) {
+	        		Record thisRecord = records.get((String)
+	        				recordsByUrgency.get(position));
 				    		
-				        	// If the new patient has a higher urgency 
-				    		// rating than this one, add it here.
-				        	if (thisRecord.getUrgencyRating() < record.getUrgencyRating()) {
-				        		recordsByUrgency.add(position, record.getHealthCardNum());
-				        		return;
-				        	}
-				    		
-				        	
-							// Does the new record have the same urgency as this one?
-				        	if (thisRecord.getUrgencyRating() == record.getUrgencyRating()) {
-				        		recordsByUrgency.add(position, record.getHealthCardNum());	
+	        		// If the new patient has a higher urgency
+	        		// rating than this one, add it here.
+	        		if (thisRecord.getUrgencyRating() < 
+	        				record.getUrgencyRating()) {
+	        			recordsByUrgency.add(position,
+	        					record.getHealthCardNum());
+	        			return;
+	        			}
+
+	        		// Does the new record have the same urgency as this one?
+	        		if (thisRecord.getUrgencyRating() == 
+	        				record.getUrgencyRating()) {
+	        			recordsByUrgency.add(position, 
+	        					record.getHealthCardNum());	
 				        		break;
 	
-				        		}
+				        }
 				    			        		
-				        	// The new patient has a lower urgency than this one, try the next one ie. advance.        	        			 
-				    		else {
-				    			position =  position + 1;
-				    			}
-				        	}
-			        }
+	        		// The new patient has a lower urgency than this one, try
+	        		// the next one ie. advance.
+	        		else {
+	        			position =  position + 1;
+	        		}
+	        	}
+	        }
         }
-        }
+	}
 		    
     /**
      * Removes the given health card number from the RecordManager
      * @param healthcardnum the health card number of a patient
      */
     public void removePatient(String healthcardnum) {
-        //recordsByUrgency.remove(records.get(healthcardnum));
         records.remove(healthcardnum);
     }
     
+    /**
+     * Removes the given Record from the urgency list.
+     * @param record The Record object of a patient.
+     */  
     public void removePatientFromUrgency(Record record) {
     	int location = recordsByUrgency.indexOf(record.getHealthCardNum());
     	if (location != -1){
@@ -134,7 +138,6 @@ public class RecordManager implements Serializable {
     	}
     }
 
-    
     /**
      * Returns the Records managed by this RecordManager.
      * @return A map of patient health card numbers to Record objects.
@@ -144,20 +147,21 @@ public class RecordManager implements Serializable {
     }
         
     /**
-     * Returns the Patient with the highest priority.
-     * @return the Patient with the highest priority.
+     * Returns the Record with the highest priority.
+     * @return The Record with the highest priority.
      */
     public String getFirst() {
     	return this.recordsByUrgency.removeFirst();
     }
     
     /**
-     * Returns the list of Patients sorted by Urgency.
-     * @return the list of Patients sorted by Urgency
+     * Returns the list of Records sorted by urgency.
+     * @return the list of Records sorted by urgency
      */
     public LinkedList<String> getUrgencyRecords() {
 		return this.recordsByUrgency;    	
     }
+    
     /**
      * Return the patient Record which corresponds to a given health card
      * number.
@@ -178,12 +182,13 @@ public class RecordManager implements Serializable {
     	String result = "";
     	for (Record r : records.values()) {
     		result += r.toString() + "\n";
-    		}
+    	}
     	return result;
     }
+    
     /**
-     * Deletes the file filename from internal storage. Then creates a new file.
-     * @param filename the file that is to be deleted.
+     * Deletes the file filename from internal storage then creates a new file.
+     * @param filename The file that is to be deleted.
      */
     public void clearFile(String filename){
     	File file = new File(this.getDirectory(), filename);
@@ -191,7 +196,6 @@ public class RecordManager implements Serializable {
 	        file.delete();
         }
         new File(this.getDirectory(), filename);
-        
     }
 
     /** Saves the Record objects to file outputStream.
@@ -231,7 +235,7 @@ public class RecordManager implements Serializable {
     
     /** Populates the map of Records from the file at path filePath.
      * @param filePath The filepath of the data file.
-     * @throws FileNotFoundException If record file doesn't exist 
+     * @throws FileNotFoundException If record file doesn't exist.
      */
     private void populateRecords(String filePath, Context context) throws 
     FileNotFoundException {
@@ -271,13 +275,12 @@ public class RecordManager implements Serializable {
     
     /** Populates the Queue of Prescriptions from the file at path filePath.
      * @param filePath The filepath of the data file.
-     * @throws FileNotFoundException If record file doesn't exist 
+     * @throws FileNotFoundException If record file doesn't exist.
      */
-    private void populatePrescriptions(String filePath, Context context) throws 
+    private void populatePrescriptions(String filePath, Context context) throws
     FileNotFoundException {
         
         Scanner scanner = new Scanner(new FileInputStream(filePath));
-        String perscription;
         
         while (scanner.hasNextLine()) {
         	String prescription = scanner.nextLine();
@@ -285,30 +288,30 @@ public class RecordManager implements Serializable {
         	prescription = prescription + "\n" + scanner.nextLine();
 
         	addPrescription(prescription, context); 
-        }
-        
+        } 
         scanner.close();
-        
     }    
     
     /**
-     * Adds the specified prescription to the list of prescriptions to be filled.
-     * @param prescription the prescription to be added.
+     * Adds the specified prescription to the list of prescriptions to be
+     * filled.
+     * @param prescription The prescription to be added.
      */
-    public void addPrescription(String prescription, Context context) throws FileNotFoundException{
+    public void addPrescription(String prescription, Context context) throws
+    FileNotFoundException{
     	this.prescriptions.add(prescription);
 
 		savePerscriptionsToFile("Prescriptions", context.openFileOutput(
-				"Prescriptions",Context.MODE_PRIVATE));
-       
+				"Prescriptions",Context.MODE_PRIVATE));  
     }
     
     /**
      * Returns the next prescription to fill.
-     * @return the next prescription to fill.
-     * @throws FileNotFoundException 
+     * @return The next prescription to fill.
+     * @throws FileNotFoundException If record file doesn't exist.
      */
-	public String getPrescription(Context context) throws FileNotFoundException {
+	public String getPrescription(Context context) throws
+	FileNotFoundException {
 		if (prescriptions.isEmpty()){
 			return "There currently aren't any prescriptions to be filled!";
 		}
@@ -320,8 +323,8 @@ public class RecordManager implements Serializable {
 	}
 
 	/**
-	 * returns the directory files are saved to in this RecordManager.
-	 * @return the directory files are saved to in this RecordManager.
+	 * Returns the directory files are saved to in this RecordManager.
+	 * @return The directory files are saved to in this RecordManager.
 	 */
 	public File getDirectory() {
 		return directory;
