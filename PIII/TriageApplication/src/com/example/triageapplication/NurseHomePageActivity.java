@@ -74,7 +74,9 @@ private StaffMember staff;
      * @param view A User Interface type
      */
     public void displayInfo(View view) {
-    	Intent intent = new Intent(this, AccessDisplayRecordActivity.class);
+    	Intent intent = new Intent(this,
+    			AccessDisplayRecordActivity.class);
+    	
     	intent.putExtra("staff", staff);
     	startActivity(intent);
     }
