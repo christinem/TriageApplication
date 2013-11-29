@@ -28,22 +28,6 @@ public class MainActivity extends Activity {
 		// Sets the layout resource for this activity.
 		setContentView(R.layout.activity_main);
 		
-		/*File dir = this.getApplicationContext().getFilesDir();
-		File file = new File(dir, "PatientsAndRecords");
-		boolean deleted = file.delete(); */
-		/*
-		 String string = "Mathias\n1234\nDoctor\n\nChristine\n2345\nNurse\n\nNathan\n4567\nPharmacist\n\n";
-        
-		OutputStreamWriter outputStreamWriter;
-		try {
-			outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput("passwords.txt", 
-			Context.MODE_PRIVATE));
-			outputStreamWriter.write(string);
-			outputStreamWriter.close();	
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 	}
 		
 	/** Adds a menu title to this activity 
@@ -78,7 +62,7 @@ public class MainActivity extends Activity {
 		String pass = password.getText().toString();
 		
 		//Read from file containing usernames and passwords
-		File passwdFile = new File (this.getApplicationContext().getFilesDir(), 
+		File passwdFile = new File (this.getApplicationContext().getFilesDir(),
 				"passwords.txt");
 		
 		StaffMember staff;
@@ -97,7 +81,8 @@ public class MainActivity extends Activity {
 				    
 				    else if (acceptLogIn[1].equalsIgnoreCase("pharmacist")) {
 				       staff = new Pharmacist(username);
-				       intent = new Intent(this, PharmacistHomePageActivity.class);
+				       intent = new Intent(this, 
+				    		   		PharmacistHomePageActivity.class);
 				    }
 				    
 					else {
@@ -106,17 +91,25 @@ public class MainActivity extends Activity {
 				    }
 				
 				    try {
-				    	File file1 = new File(this.getApplicationContext().getFilesDir(), "PatientsAndRecords");
-				    	File file2 = new File(this.getApplicationContext().getFilesDir(), "Prescriptions");
+				    	File file1 = new File(
+				    			this.getApplicationContext().getFilesDir(), 
+				    			"PatientsAndRecords");
+				    	
+				    	File file2 = new File(
+				    			this.getApplicationContext().getFilesDir(),
+				    			"Prescriptions");
 				    	
 						if (!file1.exists()) {
 							file1.createNewFile();
 						}
+						
 						if (!file2.exists()) {
 							file2.createNewFile();
 						}
 						
-				    	staff.createRecordManager(this.getApplicationContext().getFilesDir(), "PatientsAndRecords", "Prescriptions", 
+				    	staff.createRecordManager(
+				    			this.getApplicationContext().getFilesDir(),
+				    			"PatientsAndRecords", "Prescriptions", 
 								this.getApplicationContext());
 				    	
 					} catch (IOException e) {
@@ -127,6 +120,7 @@ public class MainActivity extends Activity {
 					startActivity(intent);	
 					finish();
 			   } 
+			   
 			} catch (LogInNotAcceptedException e) { 
 				// re-prompt for new username and password
 				   Intent reenter = new Intent(this, ReLoginActivity.class);
@@ -156,19 +150,23 @@ public class MainActivity extends Activity {
 		while (scanner.hasNextLine()){
 			String line = scanner.nextLine();
 			if(!line.equals(username)){ //if you haven't found username in file
-				// read past password, type of user, and blank line, to next username
+				// read past password, type of user, 
+				// and blank line, to next username
 				line = scanner.nextLine();
 				line = scanner.nextLine();
 				line = scanner.nextLine();
 			}
+			
 			else { // if found username in file
 				// read down to password
 				line = scanner.nextLine();
+				
 				if(line.equals(password)) { // if right password for username
 					authentication = true;
 					line = scanner.nextLine();
 					staff = line;
 					break;
+					
 				} else {
 					// read past blank line to next username
 					line = scanner.nextLine();
@@ -177,6 +175,7 @@ public class MainActivity extends Activity {
 			}
 		}
 		scanner.close();
+		
 		// make a String Array of authentication, and type of staff
 		String[] values = {String.valueOf(authentication), staff};
 		
@@ -184,6 +183,7 @@ public class MainActivity extends Activity {
 		if(authentication){
 			return(values);
 		}
+		
 		else {
 		    throw new LogInNotAcceptedException("Log-In not authenticated");	
 		}
