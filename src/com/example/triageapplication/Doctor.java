@@ -17,6 +17,7 @@ public class Doctor extends StaffMember implements Serializable{
 		super(username);
 	}
 
+	/* Return's this user's type as a String  */
 	@Override
 	public String toString() {
 		return "Doctor";
