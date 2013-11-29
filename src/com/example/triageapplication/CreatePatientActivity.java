@@ -38,7 +38,8 @@ public class CreatePatientActivity extends Activity {
 		
 		// Grabs the staff from the previous Activity.
         Intent intentStaff = getIntent();
-        StaffMember staff = (StaffMember) intentStaff.getSerializableExtra("staff");
+        StaffMember staff = 
+        		(StaffMember) intentStaff.getSerializableExtra("staff");
         
         // These grab the new patient's information from the user input fields.
 		EditText first_name = (EditText)findViewById(R.id.first_name);
@@ -64,12 +65,14 @@ public class CreatePatientActivity extends Activity {
 		
 		try {
 			// All user input is valid, so let's create this patient.
-			staff.addPatient(name, dob, healthCardNumber, this.getApplicationContext());
+			staff.addPatient(name, dob, healthCardNumber,
+					this.getApplicationContext());
 			
 			// Save to file
 			try {
-				StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords", openFileOutput(
-						"PatientsAndRecords",Context.MODE_PRIVATE));
+				StaffMember.getRecords().saveRecordsToFile("PatientsAndRecords",
+						openFileOutput("PatientsAndRecords",
+								Context.MODE_PRIVATE));
 
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
