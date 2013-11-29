@@ -29,18 +29,25 @@ public class EnterPrescriptionInfoActivity extends Activity {
 		return true;
 	}
 	
+	/** Updates  a patient's information prescription information.
+	 * @param view This activities' window.
+	 */
 	public void updatePatient(View view) {
 		Intent intent = getIntent();
 
 		// Get the staff member from AccessRecordActivity.
-	    StaffMember staff = (StaffMember) intent.getSerializableExtra("staff");
+	    StaffMember staff = 
+	    		(StaffMember) intent.getSerializableExtra("staff");
 	    
 	    // Get Record from AccessRecordActivity
 	    Record record = (Record) intent.getSerializableExtra("record");
 	    
 	    // Sets patient's new prescription name. 
-	    EditText prescriptionName = (EditText) findViewById(R.id.prescription_name);
-	    String prescriptionNameString = prescriptionName.getText().toString();
+	    EditText prescriptionName = 
+	    		(EditText) findViewById(R.id.prescription_name);
+	    
+	    String prescriptionNameString =
+	    		prescriptionName.getText().toString();
 	    
 	    // Sets patient's new prescription instructions. 
 	    EditText prescriptionInstructions = (EditText)
@@ -50,8 +57,10 @@ public class EnterPrescriptionInfoActivity extends Activity {
 	     
 	    try {
 	    	//This patient's record exists add to it.
-	    	staff.setPrescription(record, prescriptionNameString, prescriptionInstructionsString,
-	    			this.getApplicationContext());
+	    	staff.setPrescription(record, prescriptionNameString, 
+	    			prescriptionInstructionsString,
+	    			
+	    	this.getApplicationContext());
 		    
 		} catch (Exception e) {
 			// prompt for a record
