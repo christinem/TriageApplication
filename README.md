@@ -8,16 +8,21 @@ The file passwords.txt is provided in the repository, this file needs to be adde
 
 The application launches a login page, in which you can enter this username and password for a Nurse:
 
+```
 Username: christine
 Password: 2345
+```
 
 Or this username and password for a Doctor:
 
+```
 Username: mathias
 Password: 1234
+```
 
 Or this username and password for a Pharmacist:
 
+```
 Username: nathan
 Password: 4567
-
+```
