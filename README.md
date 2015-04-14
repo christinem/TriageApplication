@@ -3,6 +3,8 @@
 This was a Nurse Application created for a class project in CSC207 Fall 2013, that allows you to track patients coming into a hospital, keep records
 of their files, see their prescriptions, and allows Doctors and Pharmacists to log in and interact with the application too.
 
+Made with Eclipse.
+
 #Notes
 The file passwords.txt is provided in the repository, this file needs to be added to internal memory to be used.
 
